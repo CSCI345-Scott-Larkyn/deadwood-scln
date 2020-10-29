@@ -1,13 +1,13 @@
 public class Player {
     private String name;
-    private location Location;
+    private Location location;
     private int rank;
     private int practiceChips;
     private int money;
     private int credits;
     private boolean hasRole;
     private boolean isOnCard;
-    private playerView PlayerView;
+    private PlayerView playerView;
     
     public Player(String name, PlayerView playerView) {
         this.name = name;

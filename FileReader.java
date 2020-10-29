@@ -6,10 +6,10 @@ public class FileReader {
     }
     
     public Location[] getLocations() {
-    
+        return null;
     }
     
     public Scene[] getSceneDeck() {
-    
+        return null;
     }
 }

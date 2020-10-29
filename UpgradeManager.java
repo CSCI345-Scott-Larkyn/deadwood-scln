@@ -3,6 +3,6 @@ public class UpgradeManager {
     private int[] creditCosts;
     
     public int[] upgrade(int[] currentStats) {
-    
+        return null;
     }
 }

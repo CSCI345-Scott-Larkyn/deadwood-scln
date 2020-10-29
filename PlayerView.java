@@ -3,18 +3,18 @@ public class PlayerView {
     private int[] upgradeList;
     
     public int promptForActionInRole() {
-    
+        return 1;
     }
     
     public int promptForActionNotInRole() {
-    
+        return 1;
     }
     
     public int[] promptUpgrade(int[] currentStats) {
-    
+        return null;
     }
     
-    public Location promptForMove(Location[]) {
-    
+    public Location promptForMove(Location[] locations) {
+        return null;
     }
 }
