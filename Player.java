@@ -32,6 +32,6 @@ public class Player {
     }
     
     public void takeTurn() {
-    
+        String action = playerView.promptForAction();
     }
 }
