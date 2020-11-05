@@ -12,15 +12,15 @@ public class Board{
 	//Attributes:
 	private Location[] locations;
 	private int scenesCompleted;
-	private Scene[] sceneDeck;
+	private Card[] cardDeck;
 
 	//Constructor:
-	public Board(Location[] locations, Scene[] sceneDeck){
+	public Board(Location[] locations, Card[] cardDeck){
 
 	}
 
 	//Methods:
-	public void dealScenes(){
+	public void dealCards(){
 
 	}
 	public void setup(){

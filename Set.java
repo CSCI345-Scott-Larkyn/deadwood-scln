@@ -3,12 +3,12 @@ public class Set{
  	//Attributes:
  	private int shotCount;
  	private Role[] offCardRoles;
- 	private Scene scene;
+ 	private Card card;
 
  	//Constructor:
- 	public Set(int shotCount, Role[] offCardRoles, Scene scene){
+ 	public Set(int shotCount, Role[] offCardRoles, Card card){
  		this.shotCount = shotCount;
- 		this.scene = scene;
+ 		this.card = card;
  		this.offCardRoles = offCardRoles;
 
  	}
@@ -17,7 +17,7 @@ public class Set{
  	public void assignRole(Player curPlayer, int roleRank){
 
  	}
- 	public void dealScene(Scene curScene){
+ 	public void dealCard(Card curCard){
 
  	}
  	public Player[] wrapScene(){
