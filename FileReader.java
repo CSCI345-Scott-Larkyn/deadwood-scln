@@ -94,7 +94,7 @@ public class FileReader {
         	System.out.println("Trailer Neighbors = " + trailNeighb);
         	trailerNeighbors[s] = new Location(trailNeighb);
         }
-        room[roomNum++] = new Location(trailerNeighbors, false, "Trailer");
+        room[roomNum+1] = new Location(trailerNeighbors, false, "Trailer");
         //something for area here eventually
         
         
@@ -117,7 +117,7 @@ public class FileReader {
         	int amount = Integer.parseInt(upgradeEl.getAttribute("amt"));
         	System.out.println("Upgrade: rank, currency, amt = " + rank + " " + currency + " " + amount);
         }
-        room[roomNum++] = new Location(officeNeighbs, true, "Office");
+        room[roomNum+2] = new Location(officeNeighbs, true, "Office");
        }
         
         
