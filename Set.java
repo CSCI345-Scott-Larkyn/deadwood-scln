@@ -6,12 +6,12 @@ public class Set{
  	private Card card;
 
  	//Constructor:
- 	public Set(int shotCount, Role[] offCardRoles, Card card){
+ 	public Set(int shotCount, Role[] offCardRoles){
  		this.shotCount = shotCount;
- 		this.card = card;
  		this.offCardRoles = offCardRoles;
 
  	}
+ 	
 
  	//Methods:
  	public void assignRole(Player curPlayer, int roleRank){

@@ -9,9 +9,13 @@ public class Location{
 
 
  	//Constructor:
- 	public Location(Location[] neighbors, boolean upgradeOK){
+ 	public Location(Location[] neighbors, boolean upgradeOK, String name){
  		this.neighbors = neighbors;
  		this.upgradeOK = upgradeOK;
+ 		this.name = name;
+ 	}
+ 	public Location(String name) {
+ 		this.name = name;
  	}
 
  	//Methods:
