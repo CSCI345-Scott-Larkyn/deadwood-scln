@@ -9,6 +9,7 @@ import org.w3c.dom.Element;
 import java.io.File;
 import java.util.*;
 
+//good luck out there, rip to the old xml parser
 public class FileReader {
 
     private Location[] locations;
@@ -19,39 +20,18 @@ public class FileReader {
         Element root = cardDoc.getDocumentElement();
         NodeList cards = root.getElementsByTagName("card");
         for (int i = 0; i < cards.getLength(); i++) {
-            Node card = cards.item(i);
+            Element card = (Element) cards.item(i);
             String budget = card.getAttributes().getNamedItem("budget").getNodeValue();
-            NodeList children = card.getChildNodes();
+            NodeList children = card.getElementsByTagName("part");
             Role[] roles = new Role[children.getLength()];
             
             for (int j = 0; j < children.getLength(); j++) {
                 Node child = children.item(j);
-                if ("part".equals(child.getNodeName())) {
-                    String level = child.getAttributes().getNamedItem("level").getNodeValue();
-                    roles[j] = new Role(Integer.parseInt(level));
-                }    
+                String level = child.getAttributes().getNamedItem("level").getNodeValue();
+                roles[j] = new Role(Integer.parseInt(level));  
             }
-            roles = shortenRoleArray(roles);
             cardList.add(new Card(Integer.parseInt(budget), roles));
         }
-    }
-    
-    private Role[] shortenRoleArray(Role[] roles) {
-        int roleCount = 0;
-        for (int i = 0; i < roles.length; i++) {
-            if (roles[i] != null) {
-                roleCount++;
-            }
-        }
-        Role[] shortRoles = new Role[roleCount];
-        int index = 0;
-        for (int i = 0; i < roles.length; i++) {
-            if (roles[i] != null) {
-                shortRoles[index] = roles[i];
-                index++;
-            }
-        }
-        return shortRoles;
     }
     
     public Location[] getLocations() {
@@ -75,7 +55,7 @@ public class FileReader {
         return doc;
     }
     
-    //unnecessary but nice to see that it works, will delete later
+    //felt cute, might delete later
     public void printCardList() {
         for (int i = 0; i < cardList.size(); i++) {
             Card cur = cardList.get(i);
