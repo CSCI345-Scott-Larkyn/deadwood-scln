@@ -158,8 +158,6 @@ public class FileReader {
             }
         }
     }
-    public void printBoard() {
-    	System.out.println(Arrays.toString(room));
-    	System.out.println(Arrays.toString(allSets));
-    }
+
 }
+
