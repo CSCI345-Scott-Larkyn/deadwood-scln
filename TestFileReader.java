@@ -6,5 +6,6 @@ public class TestFileReader {
         FileReader f2 = new FileReader();
         f2.parseBoardXML("board.xml");
         f.printCardList();
+        f2.printBoard();
     }
 }

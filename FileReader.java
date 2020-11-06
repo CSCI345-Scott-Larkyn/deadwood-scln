@@ -49,7 +49,7 @@ public class FileReader {
         	if(setNode.getNodeType() == Node.ELEMENT_NODE) {
         		Element set = (Element) setNode;
         		String setName = set.getAttribute("name");
-        		System.out.println("Set Name = "+ setName);
+        		//System.out.println("Set Name = "+ setName);
         	
         		NodeList neighbors = set.getElementsByTagName("neighbor");
         		NodeList takes = set.getElementsByTagName("take");
@@ -59,7 +59,7 @@ public class FileReader {
         		for(int j = 0; j < neighbors.getLength(); j++) {
         			Element neighbor = (Element) neighbors.item(j);
         			String neighborName = neighbor.getAttribute("name");
-        			System.out.println("Neighbor Name = " + neighborName);
+        			//System.out.println("Neighbor Name = " + neighborName);
         			setNeighbors[j] = new Location(neighborName);
         		
         		}
@@ -67,7 +67,7 @@ public class FileReader {
         		
         		Element take = (Element) takes.item(0);
         		int numTakes = Integer.parseInt(take.getAttribute("number"));
-        		System.out.println("Number of Takes = " + numTakes);
+        		//System.out.println("Number of Takes = " + numTakes);
         	
         		
         		Role[] ocRole = new Role[parts.getLength()];
@@ -75,14 +75,14 @@ public class FileReader {
         			Element part = (Element) parts.item(k);
         			String partName = part.getAttribute("name");
         			int partRank = Integer.parseInt(part.getAttribute("level"));
-        			System.out.println("Part Name = " + partName);
-        			System.out.println("Required Rank = " + partRank);
+        			//System.out.println("Part Name = " + partName);
+        			//System.out.println("Required Rank = " + partRank);
         			ocRole[k] = new Role(partRank);
         		}
         		allSets[i] = new Set(numTakes, ocRole);
         	}
         }
-        System.out.println("trailer list length: " + trailerList.getLength());
+        //System.out.println("trailer list length: " + trailerList.getLength());
         
         Element trailer = (Element) trailerList.item(0);
         	
@@ -91,10 +91,10 @@ public class FileReader {
         for(int s = 0; s < trailerNeighbs.getLength(); s++) {
         	Element neighborT = (Element) trailerNeighbs.item(s);
         	String trailNeighb = neighborT.getAttribute("name");
-        	System.out.println("Trailer Neighbors = " + trailNeighb);
+        	//System.out.println("Trailer Neighbors = " + trailNeighb);
         	trailerNeighbors[s] = new Location(trailNeighb);
         }
-        room[roomNum++] = new Location(trailerNeighbors, false, "Trailer");
+        room[roomNum+1] = new Location(trailerNeighbors, false, "Trailer");
         //something for area here eventually
         
         
@@ -107,7 +107,7 @@ public class FileReader {
         for(int n = 0; n < neighborO.getLength(); n++) {
         	Element ofNeighb = (Element) neighborO.item(n);
         	String officeNeighbors = ofNeighb.getAttribute("name");
-        	System.out.println("Office Neighbors = " + officeNeighbors);
+        	//System.out.println("Office Neighbors = " + officeNeighbors);
         	officeNeighbs[n] = new Location(officeNeighbors);
         }
         for(int m = 0; m < upgrade.getLength(); m++) {
@@ -115,9 +115,9 @@ public class FileReader {
         	int rank = Integer.parseInt(upgradeEl.getAttribute("level"));
         	String currency = upgradeEl.getAttribute("currency");
         	int amount = Integer.parseInt(upgradeEl.getAttribute("amt"));
-        	System.out.println("Upgrade: rank, currency, amt = " + rank + " " + currency + " " + amount);
+        	//System.out.println("Upgrade: rank, currency, amt = " + rank + " " + currency + " " + amount);
         }
-        room[roomNum++] = new Location(officeNeighbs, true, "Office");
+        room[roomNum+2] = new Location(officeNeighbs, true, "Office");
        }
         
         
@@ -157,5 +157,9 @@ public class FileReader {
                 System.out.println();
             }
         }
+    }
+    public void printBoard() {
+    	System.out.println(Arrays.toString(room));
+    	System.out.println(Arrays.toString(allSets));
     }
 }
