@@ -1,16 +1,16 @@
 import java.util.*;
 public class UpgradeView {
     public UpgradeData promptUpgrade(UpgradeData data, Scanner input) throws InputMismatchException {
-        int money = data.money;
+        int dollars = data.dollars;
         int credits = data.credits;
         int rank = data.rank;
         if (rank >= 6) {
             System.out.println("You are already max rank");
             return null;
         }
-        String moneyString = (money == 1) ? "dollar" : "dollars";
+        String dollarsString = (dollars == 1) ? "dollar" : "dollars";
         String creditsString = (credits == 1) ? "credit" : "credits";
-        System.out.println("You have " + money + " " + moneyString + " and " + credits + " " + creditsString);
+        System.out.println("You have " + dollars + " " + dollarsString + " and " + credits + " " + creditsString);
         System.out.println("You are rank " + rank);
         
         UpgradeManager upgrader = new UpgradeManager();

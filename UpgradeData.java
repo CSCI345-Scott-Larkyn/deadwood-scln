@@ -1,10 +1,10 @@
 public class UpgradeData {
-    public int money;
+    public int dollars;
     public int credits;
     public int rank;
     
-    public UpgradeData(int money, int credits, int rank) {
-        this.money = money;
+    public UpgradeData(int dollars, int credits, int rank) {
+        this.dollars = dollars;
         this.credits = credits;
         this.rank = rank;
     }

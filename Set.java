@@ -17,15 +17,28 @@ public class Set{
  	public void assignRole(Player curPlayer, int roleRank){
 
  	}
+     
  	public void dealCard(Card curCard){
 
  	}
+    
  	public Player[] wrapScene(){
  		return null;
  	}
+    
+    public Card getCard() {
+        return card;
+    }
+    
+    public int successfulShot() {
+        shotCount = shotCount - 1;
+        return shotCount;
+    }
+    
  	private void payActors(){
-
+        
  	}
+    
  	private Player[] gatherPlayers(){
  		return null;
  	}
