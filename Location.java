@@ -25,4 +25,20 @@ public class Location{
  	public void reclaimPlayers(){
 
  	}
+    
+    public Location[] getNeighbors() {
+        return neighbors;
+    }
+    
+    public Set getSet() {
+        return set;
+    }
+    
+    public boolean getUpgradeOK() {
+        return upgradeOK;
+    }
+    
+    public String getName() {
+        return name;
+    }
  }

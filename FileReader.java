@@ -9,10 +9,9 @@ import org.w3c.dom.Element;
 import java.io.File;
 import java.util.*;
 
-//good luck out there, rip to the old xml parser
 public class FileReader {
 
-    private Location[] room = new Location[12];
+    private Location[] rooms = new Location[12];
     private List<Card> cardList = new ArrayList<Card>();
     private Set[] allSets = new Set[10];
     
@@ -42,10 +41,10 @@ public class FileReader {
         NodeList trailerList = root.getElementsByTagName("trailer");
         NodeList officeList = root.getElementsByTagName("office");
         
-        int roomNum = 0;
+        int roomsNum = 0;
         for(int i = 0; i < setList.getLength(); i++) {
         	Node setNode = setList.item(i);
-        	roomNum = i;
+        	roomsNum = i;
         	if(setNode.getNodeType() == Node.ELEMENT_NODE) {
         		Element set = (Element) setNode;
         		String setName = set.getAttribute("name");
@@ -63,7 +62,7 @@ public class FileReader {
         			setNeighbors[j] = new Location(neighborName);
         		
         		}
-        		room[i] = new Location(setNeighbors, false, setName);
+        		rooms[i] = new Location(setNeighbors, false, setName);
         		
         		Element take = (Element) takes.item(0);
         		int numTakes = Integer.parseInt(take.getAttribute("number"));
@@ -94,7 +93,7 @@ public class FileReader {
         	//System.out.println("Trailer Neighbors = " + trailNeighb);
         	trailerNeighbors[s] = new Location(trailNeighb);
         }
-        room[roomNum+1] = new Location(trailerNeighbors, false, "Trailer");
+        rooms[roomsNum+1] = new Location(trailerNeighbors, false, "Trailer");
         //something for area here eventually
         
         
@@ -117,7 +116,8 @@ public class FileReader {
         	int amount = Integer.parseInt(upgradeEl.getAttribute("amt"));
         	//System.out.println("Upgrade: rank, currency, amt = " + rank + " " + currency + " " + amount);
         }
-        room[roomNum+2] = new Location(officeNeighbs, true, "Office");
+        rooms[roomsNum+2] = new Location(officeNeighbs, true, "Office");
+        System.out.println();
        }
         
         
@@ -157,6 +157,10 @@ public class FileReader {
                 System.out.println();
             }
         }
+    }
+    
+    public void printBoard() {
+    
     }
 
 }
