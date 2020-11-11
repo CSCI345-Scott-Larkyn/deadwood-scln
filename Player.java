@@ -4,24 +4,21 @@ public class Player {
     private String name;
     private Location location;
     private int rank;
-    private int practiceChips;
-    private int dollars;
+    private int practiceChips = 0;
+    private int dollars = 0;
     private int credits;
-    private boolean hasRole;
-    private boolean isOnCard;
+    private boolean hasRole = false;
+    private boolean isOnCard = false;
+    private boolean hasMoved = false;
+    private boolean canAct = false;
     private PlayerView playerView;
-    private Random randy;
+    private Random randy = new Random();
     
     public Player(String name, PlayerView playerView) {
         this.name = name;
         this.playerView = playerView;
         rank = 1;
-        practiceChips = 0;
-        dollars = 0;
         credits = 0;
-        hasRole = false;
-        isOnCard = false;
-        randy = new Random();
     }
     
     //in case of larger games with different starts
@@ -29,17 +26,16 @@ public class Player {
         this.name = name;
         this.playerView = playerView;
         this.rank = rank;
-        dollars = 0;
         this.credits = credits;
-        hasRole = false;
-        isOnCard = false;
-        randy = new Random();
     }
     
     public void takeTurn() {
+        hasMoved = false;
+        canAct = hasRole;
         String turnOptions = getTurnOptions();
         while (!turnOptions.equals("")) {
-            if (chooseAction(turnOptions)) {
+            boolean isDone = chooseAction(turnOptions);
+            if (isDone) {
                 turnOptions = "";
             } else {
                 turnOptions = getTurnOptions();
@@ -48,23 +44,42 @@ public class Player {
     }
     
     public String getTurnOptions() {
-        return "";
+        String actions = "";
+        if (isOKToTakeRole()) {
+            actions = actions + "t"; //take role
+        }
+        if (location.getUpgradeOK()) {
+            actions = actions + "u"; //upgrade
+        }
+        if (hasRole && canAct) {
+            actions = actions + "a"; //act
+        }
+        if (hasRole && canAct && practiceChips + 1 < location.getSet().getCard().getBudget()) {
+            actions = actions + "r"; //rehearse
+        }
+        if (!hasRole && !hasMoved) {
+            actions = actions + "m"; //move
+        }
+        if (!hasRole) {
+            actions = actions + "e"; //end turn
+        }
+        return actions;
     }
     
     //returns isDone boolean
     public boolean chooseAction(String allowableActions) {
-        String action = playerView.promptForAction();
-        if (action.equals("t")) {
+        String action = playerView.promptForAction(allowableActions);
+        if (action.equals("t")) { //take role
             takeRole();
-        } else if (action.equals("u")) {
+        } else if (action.equals("u")) { //upgrade
             upgrade();
-        } else if (action.equals("a")) {
+        } else if (action.equals("a")) { //act
             act();
-        } else if (action.equals("r")) {
+        } else if (action.equals("r")) { //rehearse
             rehearse();
-        } else if (action.equals("m")) {
+        } else if (action.equals("m")) { //move
             move();
-        } else if (action.equals("d")) {
+        } else if (action.equals("e")) { //end turn
             return true;
         } else {
             System.out.println("Invalid input for action");
@@ -72,8 +87,38 @@ public class Player {
         return false;
     }
     
+    //positive int means on card, negative means off card
+    //kinda relies on a lot of things going right/other checks working
     public void takeRole() {
-    
+        Role[] offCardRoles = location.getSet().getOffCardRoles();
+        Role[] onCardRoles = location.getSet().getCard().getRoles();
+        int signedRole = playerView.promptForRole(offCardRoles, onCardRoles, rank);
+        if (signedRole < 0) {
+            for (int index = 0; index < offCardRoles.length; index++) {
+                if (!hasRole && !offCardRoles[index].getIsOccupied()) {
+                    if (-signedRole == offCardRoles[index].getRank()) {
+                        offCardRoles[index].addPlayer(this);
+                        hasRole = true;
+                    }
+                }
+            }
+        } else if (signedRole > 0) {
+            for (int index = 0; index < onCardRoles.length; index++) {
+                if (!hasRole && !onCardRoles[index].getIsOccupied()) {
+                    if (signedRole == onCardRoles[index].getRank()) {
+                        onCardRoles[index].addPlayer(this);
+                        hasRole = true;
+                        isOnCard = true;
+                    }
+                }
+            }
+        } else {
+            System.out.println("No role take for none were free");
+        }
+        
+        if (!hasRole) {
+            System.out.println("Didn't take a role when should have");
+        }
     }
     
     public void upgrade() {
@@ -102,11 +147,13 @@ public class Player {
                 getPaid("failure");
                 playerView.printActingResults((-roll));
             }
-        }        
+        }   
+        canAct = false;     
     }
     
     public int rehearse() {
         practiceChips = practiceChips + 1;
+        canAct = false;
         return practiceChips;
     }
     
@@ -120,6 +167,7 @@ public class Player {
             return false;
         } else {
             location = destination;
+            hasMoved = true;
             return true;
         }
     }
@@ -141,5 +189,24 @@ public class Player {
                 dollars = dollars + 1;
             }
         }
+    }
+    
+    private boolean isOKToTakeRole() {
+        if (hasRole || location.getSet() == null || location.getSet().getCard() == null) {
+            return false;
+        }
+        Role[] offCardRoles = location.getSet().getOffCardRoles();
+        Role[] onCardRoles = location.getSet().getCard().getRoles();
+        for (int index = 0; index < offCardRoles.length; index++) {
+            if (!offCardRoles[index].getIsOccupied()) {
+                return true;
+            }
+        }
+        for (int index = 0; index < onCardRoles.length; index++) {
+            if (!onCardRoles[index].getIsOccupied()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

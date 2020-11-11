@@ -35,6 +35,10 @@ public class Set{
         return shotCount;
     }
     
+    public Role[] getOffCardRoles() {
+        return offCardRoles;
+    }
+    
  	private void payActors(){
         
  	}
