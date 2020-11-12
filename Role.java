@@ -12,18 +12,11 @@ public class Role{
  	}
 
  	//Methods:
- 	public Player returnPlayer() {
- 		return null;
- 	}
-    
+ 	
     public void addPlayer(Player player) {
         this.player = player;
         isOccupied = true;
     }
-    
- 	public void payPlayer(int payment) {
-
- 	}
     
     public int getRank() {
         return rank;
@@ -31,5 +24,8 @@ public class Role{
     
     public boolean getIsOccupied() {
         return isOccupied;
+    }
+    public Player getPlayer() {
+    	return player;
     }
  }

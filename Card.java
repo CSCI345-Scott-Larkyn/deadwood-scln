@@ -11,10 +11,7 @@ public class Card{
  	}
 
  	//Methods:
- 	public void assignRole(Player curPlayer, int rank){
-
- 	}
-    
+ 	
     public int getBudget() {
         return budget;
     }
