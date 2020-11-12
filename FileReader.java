@@ -123,11 +123,11 @@ public class FileReader {
         
     
     public Location[] getLocations() {
-        return null;
+        return rooms;
     }
     
-    public Card[] getCardDeck() {
-        return null;
+    public List<Card> getCardDeck() {
+        return cardList;
     }
     
     private Document getDocFromFile(String fileName) throws ParserConfigurationException {

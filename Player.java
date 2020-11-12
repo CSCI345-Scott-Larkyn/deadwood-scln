@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Player {
     private String name;
+    private int playerNum;
     private Location location;
     private int rank;
     private int practiceChips = 0;
@@ -14,22 +15,25 @@ public class Player {
     private PlayerView playerView;
     private Random randy = new Random();
     
-    public Player(String name, PlayerView playerView) {
+    public Player(String name, PlayerView playerView, int playerNum) {
         this.name = name;
         this.playerView = playerView;
         rank = 1;
         credits = 0;
+        this.playerNum = playerNum;
     }
     
     //in case of larger games with different starts
-    public Player(String name, PlayerView playerView, int credits, int rank) {
+    public Player(String name, PlayerView playerView, int credits, int rank, int playerNum) {
         this.name = name;
         this.playerView = playerView;
         this.rank = rank;
         this.credits = credits;
+        this.playerNum = playerNum;
     }
     
     public void takeTurn() {
+        playerView.printTurnStartStats(dollars, credits, rank, location.getName());
         hasMoved = false;
         canAct = hasRole;
         String turnOptions = getTurnOptions();
@@ -208,5 +212,17 @@ public class Player {
             }
         }
         return false;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public int getScore() {
+        return dollars + credits + 5 * rank;
+    }
+    
+    public int getPlayerNum() {
+        return playerNum;
     }
 }

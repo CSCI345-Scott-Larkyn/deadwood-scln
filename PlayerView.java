@@ -149,4 +149,11 @@ public class PlayerView {
             }
         }    
     }
+    
+    public void printTurnStartStats(int dollars, int credits, int rank, String locationName) {
+        String dollarString = "dollar" + (dollars == 1 ? "" : "s");
+        String creditString = "credit" + (credits == 1 ? "" : "s");
+        System.out.println("You have " + dollars + " " + dollarString + " and " + credits + " " + creditString); 
+        System.out.println("You are rank " + rank + " and you are in the " + locationName);
+    }
 }
