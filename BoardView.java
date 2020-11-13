@@ -157,7 +157,7 @@ public class BoardView {
     }
     
     private void calculateStoreStrings(Location loc) {
-        store[1] = "Store:" + shot(loc) + "   vis  ";
+        store[1] = " Store:" + shot(loc) + "  vis  ";
         store[2] = "card  ex +----+";
         store[3] = "+---++--+|" + vis1234(loc) + "|";
         store[4] = "|" + card123(loc) + "||" + ex(1, loc) + ex(2, loc) + "||" + vis5678(loc) + "|";
@@ -165,7 +165,7 @@ public class BoardView {
     }
     
     private void calculateSaloonStrings(Location loc) {
-        saloon[1] = "Saloon:" + shot(loc) + "       ";
+        saloon[1] = "  Saloon:" + shot(loc) + "     ";
         saloon[2] = "          vis  ";
         saloon[3] = "card  ex +----+";
         saloon[4] = "+---++--+|" + vis1234(loc) + "|";
