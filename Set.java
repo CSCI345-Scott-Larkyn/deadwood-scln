@@ -3,16 +3,17 @@ import java.util.*;
 public class Set{
 
  	//Attributes:
- 	private int shotCount;
+ 	private int setShotCount;
+    private int currentShotCount;
  	private Role[] offCardRoles;
  	private Card card;
- 	private Role[] onCardRoles;
- 	private Player curPlayer;
+ 	//private Role[] onCardRoles;
  	private Random randy = new Random();
 
  	//Constructor:
  	public Set(int shotCount, Role[] offCardRoles){
- 		this.shotCount = shotCount;
+ 		setShotCount = shotCount;
+        currentShotCount = shotCount;
  		this.offCardRoles = offCardRoles;
 
  	}
@@ -20,21 +21,8 @@ public class Set{
 
  	//Methods:
  	 
- 	public void dealCard(Card curCard){
- 		//location call set.dealcard to set card to be whatever it receives... setter
- 	}
-    
- 	public Player[] wrapScene(){
- 		Player[] playersOnSet;
- 		if(onCardRoles.length > 0) {
- 			
- 		}else {
- 			
- 		}
- 		//do this one!
- 		//pay everyone.. on card and off card
- 		//return them to whoever calls wrapScene
- 		return null;
+ 	public void dealCard(Card card){
+ 		this.card = card;
  	}
     
     public Card getCard() {
@@ -42,40 +30,96 @@ public class Set{
     }
     
     public int successfulShot() {
-        shotCount = shotCount - 1;
-        return shotCount;
+        currentShotCount = currentShotCount - 1;
+        return currentShotCount;
     }
     
     public Role[] getOffCardRoles() {
         return offCardRoles;
     }
     
-    //location calls this one then location calls wrap
- 	private void payActors(){
+    public int getCurrentShotCount() {
+        return currentShotCount;
+    }
+    
+    //location calls this one then location calls reclaim
+ 	public void payActors() {
  		int numDie = card.getBudget();
- 		int[] diceToSort = new int[numDie];
- 		for(int i = 1; i <= numDie; i++) {
+ 		int[] diceRolls = new int[numDie];
+ 		for(int i = 0; i < numDie; i++) {
  			int roll = 1 + randy.nextInt(5);
- 			diceToSort[i-1] = roll;
+ 			diceRolls[i] = roll;
  		}
- 		Arrays.sort(diceToSort);	//sorted from smallest to largest
- 		//need to go through ranks of on card and sort them
- 		int[] onCardRank = new int[onCardRoles.length];
- 		int[] index = new int[onCardRoles.length];
- 		for(int j = 0; j < onCardRoles.length; j++) {
- 			onCardRank[j] = onCardRoles[j].getRank();
-		}
- 		
- 	
- 		for(int k = 0; k < numDie; k++) {
- 			
- 		}
- 		
- 		
+ 		Arrays.sort(diceRolls);	//sorted from smallest to largest       
+        Role[] onCardRoles = sortOnCardRoles();
+        reverseArrays(diceRolls, onCardRoles);
         
+        int numOnCard = onCardRoles.length;
+ 	    if (numOnCard > 0) {
+ 		    for(int die = 0; die < numDie; die++) {
+ 	            onCardRoles[die % numOnCard].getPlayer().addDollars(diceRolls[die]);
+ 		    }
+            for (int off = 0; off < offCardRoles.length; off++) {
+                if (offCardRoles[off].getPlayer() != null) {
+                    offCardRoles[off].getPlayer().addDollars(offCardRoles[off].getRank());
+                }
+            }
+        }   
+        currentShotCount = setShotCount;  
  	}
     
- 	private Player[] gatherPlayers(){
- 		return null;
+    private Role[] sortOnCardRoles() {
+        int numActors = 0;
+        for (Role r : card.getRoles()) {
+            if (r.getPlayer() != null) {
+                numActors++;
+            }
+        }
+        Role[] onCardRoles = new Role[numActors];
+        int index = 0;
+        for (Role r : card.getRoles()) {
+            if (r.getPlayer() != null) {
+                onCardRoles[index] = r;
+                index++;
+            }
+        }
+ 		Arrays.sort(onCardRoles);
+        return onCardRoles;
+    }
+    
+    private void reverseArrays(int[] diceRolls, Role[] onCardRoles) {
+        int diceLength = diceRolls.length;
+        int rolesLength = onCardRoles.length;
+        int[] newRolls = new int[diceLength];
+        Role[] newOnCards = new Role[rolesLength];
+        for (int i = 0; i < diceLength; i++) {
+            newRolls[i] = diceRolls[diceLength - i - 1];
+        }
+        for (int i = 0; i < rolesLength; i++) {
+            newOnCards[i] = onCardRoles[rolesLength - i - 1];
+        }
+        diceRolls = newRolls;
+        onCardRoles = newOnCards;
+    }
+    
+ 	public List<Player> reclaimPlayers() {
+ 		List<Player> returners = new ArrayList<Player>();
+        for (int ind = 0; ind < offCardRoles.length; ind++) {
+            Player beingMoved = offCardRoles[ind].removePlayer();
+            if (beingMoved != null) {
+                beingMoved.takeOutOfRole();
+                returners.add(beingMoved);
+            }    
+        }
+        Role[] onCardRoles = card.getRoles();
+        for (int ind = 0; ind < onCardRoles.length; ind++) {
+            Player beingMoved = onCardRoles[ind].removePlayer();
+            if (beingMoved != null) {
+                beingMoved.takeOutOfRole();
+                returners.add(beingMoved);
+            }
+        }
+        card = null;
+        return returners;
  	}
  }

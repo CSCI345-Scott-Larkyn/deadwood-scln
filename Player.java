@@ -15,21 +15,23 @@ public class Player {
     private PlayerView playerView;
     private Random randy = new Random();
     
-    public Player(String name, PlayerView playerView, int playerNum) {
+    public Player(String name, PlayerView playerView, int playerNum, Location trailer) {
         this.name = name;
         this.playerView = playerView;
         rank = 1;
         credits = 0;
         this.playerNum = playerNum;
+        location = trailer;
     }
     
     //in case of larger games with different starts
-    public Player(String name, PlayerView playerView, int credits, int rank, int playerNum) {
+    public Player(String name, PlayerView playerView, int credits, int rank, int playerNum, Location trailer) {
         this.name = name;
         this.playerView = playerView;
         this.rank = rank;
         this.credits = credits;
         this.playerNum = playerNum;
+        location = trailer;
     }
     
     public void takeTurn() {
@@ -72,7 +74,11 @@ public class Player {
     
     //returns isDone boolean
     public boolean chooseAction(String allowableActions) {
-        String action = playerView.promptForAction(allowableActions);
+        int budget = -1;
+        if (hasRole) {
+            budget = location.getSet().getCard().getBudget();
+        }
+        String action = playerView.promptForAction(allowableActions, budget, practiceChips);
         if (action.equals("t")) { //take role
             takeRole();
         } else if (action.equals("u")) { //upgrade
@@ -102,6 +108,7 @@ public class Player {
                 if (!hasRole && !offCardRoles[index].getIsOccupied()) {
                     if (-signedRole == offCardRoles[index].getRank()) {
                         offCardRoles[index].addPlayer(this);
+                        location.removePlayer(this);
                         hasRole = true;
                     }
                 }
@@ -111,17 +118,14 @@ public class Player {
                 if (!hasRole && !onCardRoles[index].getIsOccupied()) {
                     if (signedRole == onCardRoles[index].getRank()) {
                         onCardRoles[index].addPlayer(this);
+                        location.removePlayer(this);
                         hasRole = true;
                         isOnCard = true;
                     }
                 }
             }
         } else {
-            System.out.println("No role take for none were free");
-        }
-        
-        if (!hasRole) {
-            System.out.println("Didn't take a role when should have");
+            System.out.println("No role was taken");
         }
     }
     
@@ -144,8 +148,8 @@ public class Player {
                 getPaid("success");
                 playerView.printActingResults(roll);
                 if (shotsLeft == 0) {
-                    //gotta wrap scene and pay everyone
-                    //and reset practice chips
+                    location.wrapScene();
+                    practiceChips = 0;
                 }
             } else {
                 getPaid("failure");
@@ -170,7 +174,9 @@ public class Player {
         if (destination == null) {
             return false;
         } else {
+            location.removePlayer(this);
             location = destination;
+            location.addPlayer(this);
             hasMoved = true;
             return true;
         }
@@ -224,5 +230,14 @@ public class Player {
     
     public int getPlayerNum() {
         return playerNum;
+    }
+    
+    public void addDollars(int income) {
+        dollars = dollars + income;
+    }
+    
+    public void takeOutOfRole() {
+        hasRole = false;
+        isOnCard = false;
     }
 }

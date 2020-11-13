@@ -1,7 +1,8 @@
+import java.util.*;
 public class Location{ 
 
  	//Attributes:
- 	private Player[] visitingPlayers;
+ 	private List<Player> visitingPlayers = new ArrayList<Player>();
  	private Location[] neighbors;
  	private Set set;
  	private boolean upgradeOK;
@@ -15,28 +16,44 @@ public class Location{
  		this.name = name;
  		
  	}
+    
  	public Location(String name) {
  		this.name = name;
  	}
+    
  	public void createSet(int shotCt, Role[] offCardRoles) {
  		
  		set = new Set(shotCt, offCardRoles);
  		
  	}
-
- 	//Methods:
- 	public void assignRole(Player curPlayer, int roleRank){
- 		
- 		
- 	}
- 	//ARRAY LIST
- 	public Player[] reclaimPlayers(){
- 		
- 		return null;
+    
+    public void wrapScene() {
+        set.payActors();
+        reclaimPlayers();
+    }
+    
+ 	public List<Player> reclaimPlayers() {
+        List<Player> returners = set.reclaimPlayers();
+        for (Player p : returners) {
+            visitingPlayers.add(p);
+        }
+        return returners;
  	}
     
     public Location[] getNeighbors() {
         return neighbors;
+    }
+    
+    public void addPlayer(Player p) {
+        visitingPlayers.add(p);
+    }
+    
+    public void removePlayer(Player p) {
+        visitingPlayers.remove(p);
+    }
+    
+    public List<Player> getVisitingPlayers() {
+        return visitingPlayers;
     }
     
     public Set getSet() {

@@ -1,4 +1,5 @@
-public class Role{
+//Note: this class has a natural ordering that is inconsistent with equals 
+public class Role implements Comparable<Role> {
 
  	//Attributes:
  	private int rank;
@@ -27,5 +28,15 @@ public class Role{
     }
     public Player getPlayer() {
     	return player;
+    }
+    public Player removePlayer() {
+        Player p = player;
+        player = null;
+        return p;
+    }
+    
+    //a role is greater than another if it is of higher rank
+    public int compareTo(Role r) {
+        return rank - r.getRank();
     }
  }

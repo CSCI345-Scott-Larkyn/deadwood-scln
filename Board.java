@@ -1,49 +1,67 @@
 ////////////////////////////////////////////////////////////////////////////////
 // 	Larkyn & Scott
-//		Deadwood- SKELETON CODE
+//		Deadwood
 //
-//	Larkyn- board, location, set, role, scene
-//
-////////////////////////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////
+import java.util.*;
 
 public class Board{
 	
 	//Attributes:
 	private Location[] locations;
 	private int scenesCompleted;
-	private Card[] cardDeck;
+	private List<Card> cards;
 	private static int dayNum = 0;
 
 
 	//Constructor:
-	public Board(Location[] locations, Card[] cardDeck){
+	public Board(Location[] locations, List<Card> cards){
 		this.locations = locations;
-		this.cardDeck = cardDeck;
+		this.cards = cards;
 		
 		
 	}
 
-	//Methods:
-	//cards are array list.. still have index. go through each location that has a set, get a random card and put it in
-	// the location
-	// put it in the location
-	//then set that card in array list to null
-	
+	//Methods:	
 	public void dealCards(){
-		for(int i = 0; i <= 9; i++) {
-			//get card from array list, set to null after
+        Random randy = new Random();
+		for(Location loc : locations) {
+            if (loc.getSet() != null) {
+                if (loc.getSet().getCard() != null) {
+                    loc.reclaimPlayers();
+                }
+			    int index = randy.nextInt(cards.size());
+                Card toAdd = cards.remove(index);
+                loc.getSet().dealCard(toAdd);
+            }
 		}
 	}
 	public void setup(){
 		if(dayNum == 0) {
-			
+		    
 		}
 	}
-	public void endOfDay() {
-		
+	public void endDay() {
+		dealCards();
+        moveAllToTrailers();
 	}
-
+    
+    public Location[] getLocations() {
+        return locations;
+    }
+    
+    private void moveAllToTrailers() {
+        Location trailer = locations[10];
+        for (Location loc : locations) {
+            if (!loc.getName().equals("Trailer")) {
+                List<Player> visitors = loc.getVisitingPlayers();
+                for (Player p : visitors) {
+                    trailer.addPlayer(p);
+                    loc.removePlayer(p);
+                }
+            }    
+        }
+    }
 }
 
 

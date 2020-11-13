@@ -11,27 +11,28 @@ public class PlayerView {
     public Location promptForMove(Location[] neighbors) {
         System.out.print("Which of these locations would you like to go to: ");
         for (Location loc : neighbors) {
-            System.out.print(loc.getName() + " ");
+            System.out.print("(" + loc.getName() + ") ");
         }
         System.out.println();
         String destination = "";
+        input.nextLine();
         while (destination.equals("")) {
-            destination = input.next().trim().toLowerCase();
+            destination = input.nextLine().toLowerCase().trim();
             if (destination.equals("q")) {
                 return null;
             }
             for (Location loc : neighbors) {
-                if (destination.equals(loc.getName())) {
+                if (destination.equals(loc.getName().toLowerCase())) {
                     return loc;
                 }
             }
-            System.out.print("Please type one of the locations or q to quit");
+            System.out.print("Please type one of the locations or (q)uit ");
             destination = "";
         }
         return null;
     }
     
-    public String promptForAction(String options) {
+    public String promptForAction(String options, int budget, int practiceChips) {
         String possibleActions = "";
         if (options.contains("t"))
             possibleActions = possibleActions + "(t)ake role ";
@@ -46,10 +47,14 @@ public class PlayerView {
         if (options.contains("e"))
             possibleActions = possibleActions + "(e)nd turn ";
         System.out.println("Your possible actions are: " + possibleActions);   
+        if (options.contains("a")) {
+            String chipString = "chip" + (practiceChips == 1 ? "" : "s");
+            System.out.println("You have " + practiceChips + " " + chipString + " and the budget is " + budget); 
+        }
               
         String action = "";
         while (action.equals("")) {
-            System.out.print("What move would you like to make? ");
+            System.out.print("What action would you like to take? ");
             action = input.next();
             if (options.contains(action) && action.length() == 1) {
             } else {
@@ -92,8 +97,11 @@ public class PlayerView {
         while (onOrOff.equals("")) {
             System.out.print("Would you like an o(n)-card role or of(f)-card role? ");
             onOrOff = input.next();
-            if (!onOrOff.equals("n") || !onOrOff.equals("f")) {
-                System.out.println("Please type 'n' or 'f' for an on- or off-card role");
+            if (onOrOff.equals("q")) {
+                return 0;
+            }
+            if (!onOrOff.equals("n") && !onOrOff.equals("f")) {
+                System.out.println("Please type 'n' or 'f' for an on- or off-card role, (q)uit");
                 onOrOff = "";
             }
             if (onOrOff.equals("n") && onCardOptions.equals("")) {
@@ -110,25 +118,30 @@ public class PlayerView {
         System.out.println("You are rank " + playerRank);
         String rank = "";
         while (rank.equals("")) {
-            System.out.print("What rank of role would you like to take? ");
+            System.out.print("What rank of role would you like to take? (q)uit ");
             rank = input.next();
-            try {
-                int rankNum = Integer.parseInt(rank);
-                if (rankNum > playerRank) {
-                    System.out.println("You are not a high enough rank");
-                    rank = "";
-                } else {
-                    if (isOnCard && (!onCardOptions.contains(rank) || rank.length() != 1)) {
-                        System.out.println("There are no on-card roles with that rank");
+            if (rank.equals("q")) {
+                return 0;
+            } else {
+                try {
+                    int rankNum = Integer.parseInt(rank);
+                    if (rankNum > playerRank) {
+                        System.out.println("You are not a high enough rank");
                         rank = "";
-                    } else if (!isOnCard && (!offCardOptions.contains(rank) || rank.length() != 1)) {
-                        System.out.println("There are no off-card roles with that rank");
-                        rank = "";
+                    } else {
+                        if (isOnCard && (!onCardOptions.contains(rank) || rank.length() != 1)) {
+                            System.out.println("There are no on-card roles with that rank");
+                            rank = "";
+                        } else if (!isOnCard && (!offCardOptions.contains(rank) || rank.length() != 1)) {
+                            System.out.println("There are no off-card roles with that rank");
+                            rank = "";
+                        }
                     }
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Please type a number");
-            } 
+                } catch (NumberFormatException e) {
+                    System.out.println("Please type a number");
+                    rank = "";
+                } 
+            }    
         }
         if (isOnCard) {
             return Integer.parseInt(rank);

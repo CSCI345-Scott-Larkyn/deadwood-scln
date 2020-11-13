@@ -129,7 +129,7 @@ public class FileReader {
          	int amount = Integer.parseInt(upgradeEl.getAttribute("amt"));
          	
          }
-         rooms[roomsNum+2] = new Location(officeNeighbs, true, "Office");
+         rooms[roomsNum+2] = new Location(officeNeighbs, true, "Casting Office");
         
     }
     

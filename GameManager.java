@@ -3,6 +3,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class GameManager {
     private int numPlayers;
+    private Board board;
     private Location[] locations;
     private Player[] players;
     private List<Card> cards;
@@ -21,20 +22,26 @@ public class GameManager {
         locations = fileReader.getLocations();
         fileReader.parseCardsXML(cardsFileName);
         cards = fileReader.getCardDeck();
+        Location trailer = locations[10];
         if (numPlayers <= 4) {
-            makePlayers4OrLess();
+            makePlayers4OrLess(trailer);
         } else {
-            makePlayers5OrMore();
+            makePlayers5OrMore(trailer);
         }
+        board = new Board(locations, cards);
+        for (Player p : players) {
+            trailer.addPlayer(p);
+        }
+        board.dealCards();
     }
     
-    private void makePlayers4OrLess() {
+    private void makePlayers4OrLess(Location trailer) {
         for (int player = 0; player < numPlayers; player++) {
-            players[player] = new Player(playerIDs.substring(player, player + 1), playerView, player + 1);
+            players[player] = new Player(playerIDs.substring(player, player + 1), playerView, player + 1, trailer);
         }
     }
     
-    private void makePlayers5OrMore() {
+    private void makePlayers5OrMore(Location trailer) {
         int credits = 0;
         if (numPlayers == 5) {
             credits = 2;
@@ -46,7 +53,7 @@ public class GameManager {
             rank = 2;
         }
         for (int player = 0; player < numPlayers; player++) {
-            players[player] = new Player(playerIDs.substring(player, player + 1), playerView, credits, rank, player + 1);
+            players[player] = new Player(playerIDs.substring(player, player + 1), playerView, credits, rank, player + 1, trailer);
         }
     }
     
@@ -60,6 +67,7 @@ public class GameManager {
             currentPlayer.takeTurn();
             scenesCompleted = checkCompletedScenes();
             turnsTaken++;
+            System.out.println();
         }
     }
     
@@ -74,7 +82,7 @@ public class GameManager {
     }
     
     public void endDay() {
-        //board.endDay();
+        board.endDay();       
     }
     
     public void decideWinner() {
