@@ -4,6 +4,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class GameManager {
     private int numPlayers;
     private Board board;
+    private BoardView boardView = new BoardView();
     private Location[] locations;
     private Player[] players;
     private List<Card> cards;
@@ -60,6 +61,9 @@ public class GameManager {
     public void playDay() {
         int scenesCompleted = 0;       
         while (scenesCompleted < 9) {
+            boardView.printBoard(board);
+            System.out.println();
+            
             int curPlayerIndex = turnsTaken % numPlayers;
             Player currentPlayer = players[curPlayerIndex];
             String ID = currentPlayer.getName();
