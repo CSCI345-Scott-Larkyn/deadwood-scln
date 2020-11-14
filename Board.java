@@ -51,9 +51,9 @@ public class Board{
         for (Location loc : locations) {
             if (!loc.getName().equals("Trailer")) {
                 List<Player> visitors = loc.getVisitingPlayers();
-                for (Player p : visitors) {
-                    trailer.addPlayer(p);
-                    loc.removePlayer(p);
+                for (int i = 0; i < visitors.size(); i++) {
+                    trailer.addPlayer(visitors.get(i));
+                    loc.removePlayer(visitors.get(i));
                 }
             }    
         }
