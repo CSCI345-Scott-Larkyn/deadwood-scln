@@ -36,11 +36,7 @@ public class Board{
             }
 		}
 	}
-	public void setup(){
-		if(dayNum == 0) {
-		    
-		}
-	}
+
 	public void endDay() {
 		dealCards();
         moveAllToTrailers();
