@@ -1,3 +1,9 @@
+////////////////////////////////////////////////////////////////
+//  Larkyn & Scott
+//      Deadwood
+//
+////////////////////////////////////////////////////////////////
+
 import java.util.*;
 
 public class Set{
@@ -7,7 +13,6 @@ public class Set{
     private int currentShotCount;
  	private Role[] offCardRoles;
  	private Card card;
- 	//private Role[] onCardRoles;
  	private Random randy = new Random();
 
  	//Constructor:
@@ -20,29 +25,47 @@ public class Set{
  	
 
  	//Methods:
- 	 
+ 	
+    //void dealCard(Card card):
+    //  sets card in play 
  	public void dealCard(Card card){
  		this.card = card;
  	}
     
+    //Card getCard():
+    //  getter for card
     public Card getCard() {
         return card;
     }
     
+    // int successfulShot():
+    //  reduces current shot count if a scene is acted successfully
+    //  returns new shot count
     public int successfulShot() {
         currentShotCount = currentShotCount - 1;
         return currentShotCount;
     }
     
+    //getter for off card roles
     public Role[] getOffCardRoles() {
         return offCardRoles;
     }
     
+    //getter for current shot count
     public int getCurrentShotCount() {
         return currentShotCount;
     }
     
-    //location calls this one then location calls reclaim
+    //void payActors():
+    //  location calls this method after a scene is wrapped
+    //  then location calls reclaimPlayers
+    //  
+    //  random number generater is used to create dice, 
+    //      number of dice is dependent on budget. 
+    //      these are stored in an array of type int then sorted
+    //      role ranks are compared then sorted and then reversed so they
+    //      go from largest to smallest, then according to dice, players are paid
+    //      shot counter is adjusted
  	public void payActors() {
  		int numDie = card.getBudget();
  		int[] diceRolls = new int[numDie];
@@ -68,6 +91,8 @@ public class Set{
         currentShotCount = setShotCount;  
  	}
     
+    //Role[] sortOnCardRoles():
+    //      sorts onCardRoles according to rank of the roles to be compared to the dice
     private Role[] sortOnCardRoles() {
         int numActors = 0;
         for (Role r : card.getRoles()) {
@@ -87,6 +112,9 @@ public class Set{
         return onCardRoles;
     }
     
+    //void reverseArrays(int[], Role[]):
+    //  reverse the arrays for dice and card roles so that when
+    //      the dice are distributed, they go to the correct recipient.
     private void reverseArrays(int[] diceRolls, Role[] onCardRoles) {
         int diceLength = diceRolls.length;
         int rolesLength = onCardRoles.length;
@@ -102,6 +130,10 @@ public class Set{
         onCardRoles = newOnCards;
     }
     
+    //List<Player> reclaimPlayers():
+    //  takes all players off of their roles and adds to a list of people being moved
+    //      card is set to null since the scene is finished
+    //   list of players to be sent back trailer is returned
  	public List<Player> reclaimPlayers() {
  		List<Player> returners = new ArrayList<Player>();
         for (int ind = 0; ind < offCardRoles.length; ind++) {

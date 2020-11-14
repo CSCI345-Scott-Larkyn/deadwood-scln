@@ -1,3 +1,9 @@
+////////////////////////////////////////////////////////////////
+//  Larkyn & Scott
+//      Deadwood
+//
+////////////////////////////////////////////////////////////////
+
 public class Card{
 
  	//Attributes:
@@ -12,10 +18,12 @@ public class Card{
 
  	//Methods:
  	
+ 	//getter for budget
     public int getBudget() {
         return budget;
     }
     
+    //getter for oncard roles
     public Role[] getRoles() {
         return onCardRoles;
     }
