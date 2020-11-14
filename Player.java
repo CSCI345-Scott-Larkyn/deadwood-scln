@@ -154,6 +154,7 @@ public class Player {
         }
     }
     
+    //rolls a die and counts practice chips and updates financial info according to the results
     public void act() {
         if (location.getSet() == null) {
             playerView.printActingResults(0);
@@ -176,6 +177,7 @@ public class Player {
         canAct = false;     
     }
     
+    //simple stuff
     public int rehearse() {
         practiceChips = practiceChips + 1;
         canAct = false;
@@ -183,6 +185,8 @@ public class Player {
     }
     
     //returns a boolean telling whether the player actually moved
+    //ensures players can only move once per turn
+    //precondition: player is not in role
     public boolean move() {
         if (hasRole == true) {
             System.out.println("You just moved while in a role.");
@@ -218,6 +222,8 @@ public class Player {
         }
     }
     
+    //returns true if the player is not currently in a role
+    //and also are in a place with at least 1 free role
     private boolean isOKToTakeRole() {
         if (hasRole || location.getSet() == null || location.getSet().getCard() == null) {
             return false;
@@ -253,6 +259,7 @@ public class Player {
         dollars = dollars + income;
     }
     
+    //called when wraping scene and reclaiming players
     public void takeOutOfRole() {
         hasRole = false;
         isOnCard = false;

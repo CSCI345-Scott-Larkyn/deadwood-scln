@@ -1,3 +1,11 @@
+////////////////////////////////////////////////////////////////////////////////
+// 	Larkyn & Scott
+//		Deadwood
+//
+////////////////////////////////////////////////////////////////
+//this class is the controller in the MVC model
+//it sets up everything from the files 
+//and takes care of finishing days and the game
 import java.util.*;
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -17,6 +25,10 @@ public class GameManager {
         players = new Player[numPlayers];
     }
     
+    //reads in data from the XML files
+    //and creates all the players
+    //and assebles the board
+    //and puts all the players in the trailers
     public void setup(String boardFileName, String cardsFileName) throws ParserConfigurationException {
         FileReader fileReader = new FileReader();
         fileReader.parseBoardXML(boardFileName);
@@ -36,12 +48,14 @@ public class GameManager {
         board.dealCards();
     }
     
+    //sets player data for small games
     private void makePlayers4OrLess(Location trailer) {
         for (int player = 0; player < numPlayers; player++) {
             players[player] = new Player(playerIDs.substring(player, player + 1), playerView, player + 1, trailer);
         }
     }
     
+    //takes care of the different initial stats for larger games
     private void makePlayers5OrMore(Location trailer) {
         int credits = 0;
         if (numPlayers == 5) {
@@ -58,6 +72,8 @@ public class GameManager {
         }
     }
     
+    //prints the board and then keeps calling players in order
+    //to take turns until all but one scene is completed
     public void playDay() {
         int scenesCompleted = 0;       
         while (scenesCompleted < 9) {
@@ -75,6 +91,7 @@ public class GameManager {
         }
     }
     
+    //adds up the number of completed scenes and returns it
     private int checkCompletedScenes() {
         int completedScenes = 0;
         for (int ind = 0; ind < locations.length; ind++) {
@@ -89,6 +106,8 @@ public class GameManager {
         board.endDay();       
     }
     
+    //adds up the scorea and declares a winner
+    //or declares multiple winners if there is a tie
     public void decideWinner() {
         int topScore = 0;
         for (int ind = 0; ind < players.length; ind++) {

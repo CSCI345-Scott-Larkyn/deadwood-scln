@@ -1,3 +1,10 @@
+////////////////////////////////////////////////////////////////////////////////
+// 	Larkyn & Scott
+//		Deadwood
+//
+////////////////////////////////////////////////////////////////
+//deals with all the printing to console and user input
+//associated with a player taking their turn
 import java.util.*;
 
 public class PlayerView {
@@ -8,6 +15,9 @@ public class PlayerView {
         return upgradeView.promptUpgrade(data, input);
     }
     
+    //takes an array of all the player's neighboring locations
+    //and returns one of them that the player chooses
+    //or null if they end up not moving
     public Location promptForMove(Location[] neighbors) {
         System.out.println("Which of these locations would you like to go to: ");
         for (Location loc : neighbors) {
@@ -32,6 +42,9 @@ public class PlayerView {
         return null;
     }
     
+    //takes a string of the initials of all the allowable actions
+    //and returns a string of length 1 with one of the actions
+    //or "e" for ending the player's turn
     public String promptForAction(String options, int budget, int practiceChips) {
         String possibleActions = "";
         if (options.contains("t"))
@@ -65,6 +78,12 @@ public class PlayerView {
         return action;
     }
     
+    //prints all the available roles that the player can take in their location
+    //and does not allow them to take a role above their rank
+    //returns 0 if no role was taken
+    //returns the rank of the role taken if one was taken
+    //it will be a positive number if that role was on-card
+    //and negative if off-card
     public int promptForRole(Role[] offCardRoles, Role[] onCardRoles, int playerRank) {
         System.out.print("The ranks of the available on-card roles: ");
         String onCardOptions = "";
@@ -150,6 +169,7 @@ public class PlayerView {
         }
     }
     
+    //lets player know how acting went
     public void printActingResults(int roll) {
         if (roll == 0) {
             System.out.println("You cannot act in your location");
@@ -163,6 +183,7 @@ public class PlayerView {
         }    
     }
     
+    //prints helpful information for a player to know at the start of their turn
     public void printTurnStartStats(int dollars, int credits, int rank, String locationName) {
         String dollarString = "dollar" + (dollars == 1 ? "" : "s");
         String creditString = "credit" + (credits == 1 ? "" : "s");

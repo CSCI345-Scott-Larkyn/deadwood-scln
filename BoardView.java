@@ -1,3 +1,10 @@
+////////////////////////////////////////////////////////////////////////////////
+// 	Larkyn & Scott
+//		Deadwood
+//
+////////////////////////////////////////////////////////////////
+//this class is simply used to print an ASCI representation
+//of the game board at the start of each player's turn
 import java.util.*;
 
 public class BoardView {   
@@ -73,6 +80,7 @@ public class BoardView {
         System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
     }
     
+    //returns a string of the rank of the role or "x" if there is no role
     private String card(int num, Location loc) {
         if (loc.getSet().getCard() == null) {
             return "x";
@@ -88,6 +96,8 @@ public class BoardView {
         }
     }
     
+    //returns the rank of the off card role (for extras) or "x"
+    //if the scene has already been completed
     private String ex(int num, Location loc) {
         if (loc.getSet().getCard() == null) {
             return "x";
@@ -100,6 +110,7 @@ public class BoardView {
         }
     }
     
+    //returns the ID of the player at the num positions in the visitors array
     private String vis(int num, Location loc) {
         if (num > loc.getVisitingPlayers().size()) {
             return ".";
@@ -108,18 +119,22 @@ public class BoardView {
         }
     }
     
+    //returns the remaining shots to be completed
     private String shot(Location loc) {
         return "" + loc.getSet().getCurrentShotCount();
     }
     
+    //streamlined printing card ranks
     private String card123(Location loc) {
         return card(1, loc) + card(2, loc) + card(3, loc);
     }
     
+    //streamlines printing visitor IDs
     private String vis1234(Location loc) {
         return vis(1, loc) + vis(2, loc) + vis(3, loc) + vis(4, loc);
     }
     
+    //streamlines printing visitor IDs
     private String vis5678(Location loc) {
         return vis(5, loc) + vis(6, loc) + vis(7, loc) + vis(8, loc);
     }

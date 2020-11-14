@@ -1,3 +1,12 @@
+////////////////////////////////////////////////////////////////////////////////
+// 	Larkyn & Scott
+//		Deadwood
+//
+////////////////////////////////////////////////////////////////
+//the main class to be run to play the game
+//requires a single int argument for the number of players
+//runs the game for the proper number of days 
+//ands prompts the GameManager to show the winner when the game is over
 import javax.xml.parsers.ParserConfigurationException;
 
 public class Deadwood {
