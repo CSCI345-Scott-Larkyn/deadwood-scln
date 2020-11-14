@@ -196,7 +196,7 @@ public class BoardView {
         ranch[1] = "  Ranch:" + shot(loc) + "       ";
         ranch[2] = "card  es vis    ";
         ranch[3] = "+---++-+ +----+ ";
-        ranch[4] = "|" + card123(loc) + "||" + ex(1, loc) + "| |" + vis5678(loc) + "| ";
+        ranch[4] = "|" + card123(loc) + "||" + ex(1, loc) + "| |" + vis1234(loc) + "| ";
         ranch[5] = "+---+|" + ex(2, loc) + "| |" + vis5678(loc) + "| ";
         ranch[6] = "     |" + ex(3, loc) + "| +----+ ";
         ranch[7] = "     +-+        "; 

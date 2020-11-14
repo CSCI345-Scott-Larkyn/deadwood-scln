@@ -129,7 +129,7 @@ public class FileReader {
          	int amount = Integer.parseInt(upgradeEl.getAttribute("amt"));
          	
          }
-         rooms[roomsNum+2] = new Location(officeNeighbs, true, "Casting Office");
+         rooms[roomsNum+2] = new Location(officeNeighbs, true, "office");
         
     }
     
@@ -151,7 +151,7 @@ public class FileReader {
     			}
     		}
     	}
-    	
+    	rooms[11].setName("Casting Office");
     }
     
     public Location[] getLocations() {

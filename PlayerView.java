@@ -9,11 +9,11 @@ public class PlayerView {
     }
     
     public Location promptForMove(Location[] neighbors) {
-        System.out.print("Which of these locations would you like to go to: ");
+        System.out.println("Which of these locations would you like to go to: ");
         for (Location loc : neighbors) {
             System.out.print("(" + loc.getName() + ") ");
         }
-        System.out.println();
+        System.out.print(": ");
         String destination = "";
         input.nextLine();
         while (destination.equals("")) {
