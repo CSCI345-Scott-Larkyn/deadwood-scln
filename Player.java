@@ -127,6 +127,7 @@ public class Player {
         } else {
             System.out.println("No role was taken");
         }
+        practiceChips = 0;
     }
     
     public void upgrade() {
