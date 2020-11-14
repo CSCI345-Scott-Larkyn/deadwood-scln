@@ -1,5 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+// 	Larkyn & Scott
+//		Deadwood
+//
+////////////////////////////////////////////////////////////////
+//deals with the user input and prompting for upgrading the player
 import java.util.*;
 public class UpgradeView {
+    //what is called to upgrade a player
+    //returns an UpgradeData of updated dollars, credits, and ranks upon successful upgrade
+    //returns null upon unsuccessful upgrade
     public UpgradeData promptUpgrade(UpgradeData data, Scanner input) throws InputMismatchException {
         int dollars = data.dollars;
         int credits = data.credits;
@@ -33,6 +42,7 @@ public class UpgradeView {
         return newData;
     }
     
+    //returns the rank the player wishes to upgrade to
     private int getIntendedRank(int rank, Scanner input) {
         int upRank = -1;      
         System.out.println("The ranks you can upgrade to are: " + makePossibleRanksString(rank) + ", (0 to quit)");
@@ -54,6 +64,7 @@ public class UpgradeView {
         return upRank;
     }
     
+    //returns whether the player wants to upgrade with credits or dollars
     private String getPaymentType(Scanner input) {
         String paymentType = "";
         while (paymentType.equals("")) {
@@ -67,6 +78,7 @@ public class UpgradeView {
         return paymentType;    
     }
     
+    //lists the available ranks to upgrade to
     private String makePossibleRanksString(int rank) {
         String possibleRanks = "6";
         for (int i = 5; i > rank; i--) {
@@ -75,7 +87,7 @@ public class UpgradeView {
         return possibleRanks;
     }
     
-     private void printUpgradePrices() {
+    private void printUpgradePrices() {
         System.out.println("Rank | Dollars | Credits");
         System.out.println(" 2   |    4    |   5    ");
         System.out.println(" 3   |    10   |   10   ");

@@ -130,7 +130,7 @@ public class BoardView {
         station[3] = "+---+  ";
         station[4] = "|" + card123(loc) + "|  ";
         station[5] = "+---+  ";
-        station[6] = "e+    +";
+        station[6] = "e+----+";
         station[7] = "x|" + ex(1, loc) + ex(2, loc) + ex(3, loc) + ex(4, loc) + "|";
         station[8] = " +----+";
         station[9] = " +----+";

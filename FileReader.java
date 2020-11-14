@@ -1,3 +1,8 @@
+////////////////////////////////////////////////////////////////////////////////
+// 	Larkyn & Scott
+//		Deadwood
+//
+////////////////////////////////////////////////////////////////
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.ParserConfigurationException;
@@ -15,6 +20,7 @@ public class FileReader {
     private List<Card> cardList = new ArrayList<Card>();
     private static int roomsNum = 0;
     
+    //reads in and creates cards, adding them to the cardList
     public void parseCardsXML(String cardFileName) throws ParserConfigurationException {
         Document cardDoc = getDocFromFile(cardFileName);
         Element root = cardDoc.getDocumentElement();
@@ -161,7 +167,7 @@ public class FileReader {
     public List<Card> getCardDeck() {
         return cardList;
     }
-    
+    //given code
     private Document getDocFromFile(String fileName) throws ParserConfigurationException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
@@ -175,7 +181,7 @@ public class FileReader {
         return doc;
     }
     
-    //felt cute, might delete later
+    //for testing
     public void printCardList() {
         for (int i = 0; i < cardList.size(); i++) {
             Card cur = cardList.get(i);
@@ -190,10 +196,5 @@ public class FileReader {
             }
         }
     }
-    
-    public void printBoard() {
-    
-    }
-
 }
 

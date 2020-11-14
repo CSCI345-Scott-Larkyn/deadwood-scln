@@ -1,3 +1,11 @@
+////////////////////////////////////////////////////////////////////////////////
+// 	Larkyn & Scott
+//		Deadwood
+//
+////////////////////////////////////////////////////////////////
+//contains all the data and methods that a player needs
+//including methods for each possible action
+//and processing flags from PlayerView on which action to take
 import java.util.*;
 
 public class Player {
@@ -34,6 +42,8 @@ public class Player {
         location = trailer;
     }
     
+    //what GameManager calls
+    //keeps running as long as the player has viable actions
     public void takeTurn() {
         playerView.printTurnStartStats(dollars, credits, rank, location.getName());
         hasMoved = false;
@@ -49,6 +59,7 @@ public class Player {
         }
     }
     
+    //returns a string of the initials of all allowed actions to be passed to PlayerView
     public String getTurnOptions() {
         String actions = "";
         if (isOKToTakeRole()) {
@@ -72,7 +83,8 @@ public class Player {
         return actions;
     }
     
-    //returns isDone boolean
+    //gets an action from PlayerView and calls the appropriate method
+    //returns isDone boolean, true if player chose to end the turn
     public boolean chooseAction(String allowableActions) {
         int budget = -1;
         if (hasRole) {
@@ -97,8 +109,9 @@ public class Player {
         return false;
     }
     
-    //positive int means on card, negative means off card
-    //kinda relies on a lot of things going right/other checks working
+    //places player in the proper role in its location
+    //and updates fields like hasRole and isOnCard accordingly
+    //positive int for signedRole means on card, negative means off card
     public void takeRole() {
         Role[] offCardRoles = location.getSet().getOffCardRoles();
         Role[] onCardRoles = location.getSet().getCard().getRoles();
@@ -130,12 +143,15 @@ public class Player {
         practiceChips = 0;
     }
     
+    //calls on other classes for a new UpgradeData and upgrades financial fields accordingly
     public void upgrade() {
         UpgradeData data = new UpgradeData(dollars, credits, rank);
         UpgradeData newData = playerView.promptForUpgrade(data);
-        dollars = newData.dollars;
-        credits = newData.credits;
-        rank = newData.rank;
+        if (newData != null) {
+            dollars = newData.dollars;
+            credits = newData.credits;
+            rank = newData.rank;
+        }
     }
     
     public void act() {
