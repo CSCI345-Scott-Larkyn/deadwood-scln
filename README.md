@@ -19,3 +19,7 @@ the trailers and casting office only have a vis box for obvious reasons
 
 each location has a sometimes shortened name printed in it with colon then a number
 that number is how many shots are left to be completed before the scene wraps
+
+the cards are not hidden until players show up as the rules say they should be
+it is simply to help players to know where they are and what options are available
+for the GUI version we will of course implement this
