@@ -1,7 +1,7 @@
 # deadwood-scln
 
-type "javac *.java" in command prompt in the proper directory to compile all the file at once
-otherwise you'll run into troubles compiling files one by one
+type "javac *.java" in command prompt in the proper directory to compile all the files
+at once otherwise you'll run into troubles compiling files one by one
 then run Deadwood.java x, where x is the number of players you want
 
 for the ASCI board, it's a bit difficult to readbut helpful if you can understand it
@@ -23,3 +23,7 @@ that number is how many shots are left to be completed before the scene wraps
 the cards are not hidden until players show up as the rules say they should be
 it is simply to help players to know where they are and what options are available
 for the GUI version we will of course implement this
+
+at each stage when you are prompted for input, your options for what to type
+will be in parentheses. For example (m)ove means you should type "m" if you 
+want to move.
