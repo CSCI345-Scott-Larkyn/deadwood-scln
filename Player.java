@@ -264,4 +264,8 @@ public class Player {
         hasRole = false;
         isOnCard = false;
     }
+    
+    public void moveToTrailers(Location trailers) {
+        location = trailers;
+    }
 }

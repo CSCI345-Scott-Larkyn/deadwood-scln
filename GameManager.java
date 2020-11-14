@@ -103,7 +103,10 @@ public class GameManager {
     }
     
     public void endDay() {
-        board.endDay();       
+        board.endDay();  
+        for (int i = 0; i < players.length; i++) {
+            players[i].moveToTrailers(locations[10]);
+        }     
     }
     
     //adds up the scorea and declares a winner

@@ -48,6 +48,7 @@ public class Role implements Comparable<Role> {
     public Player removePlayer() {
         Player p = player;
         player = null;
+        isOccupied = false;
         return p;
     }
     
