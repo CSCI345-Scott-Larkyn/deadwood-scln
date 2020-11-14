@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 // 	Larkyn & Scott
 //		Deadwood
 //
@@ -23,6 +23,12 @@ public class Board{
 	}
 
 	//Methods:	
+
+    //void dealCards(): called by GameManager in setup method
+    // 
+    //  creates object random number for picking random card from deck  
+    //     goes through locations and puts cards at each set (locations not including office and trailer)
+    //     If there is not a card, one is added to the set and taken out of card list.
 	public void dealCards(){
         Random randy = new Random();
 		for(Location loc : locations) {
@@ -37,15 +43,25 @@ public class Board{
 		}
 	}
 
+
+    //void endDay(): called by GameManager endDay method
+    //
+    //  calls deal cards() method above and moveAllToTrailers()
 	public void endDay() {
 		dealCards();
         moveAllToTrailers();
 	}
     
+    //getter for location array
     public Location[] getLocations() {
         return locations;
     }
     
+    //void moveAllToTrailers(): called by endDay()
+    //
+    //  after players are gathered they are taken back to the trailer for the next day to begin
+    //      this is done by going through each location that is not the trailer and gathering all players
+    //      and adding them to the trailer location and removing them from the location that is not trailer
     private void moveAllToTrailers() {
         Location trailer = locations[10];
         for (Location loc : locations) {

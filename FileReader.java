@@ -1,8 +1,11 @@
-////////////////////////////////////////////////////////////////////////////////
-// 	Larkyn & Scott
-//		Deadwood
+
+////////////////////////////////////////////////////////////////
+//  Larkyn & Scott
+//      Deadwood
 //
 ////////////////////////////////////////////////////////////////
+
+
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.ParserConfigurationException;
@@ -40,6 +43,12 @@ public class FileReader {
         }
     }
     
+
+    //parseBoardXML
+    //  there are 3 main lists from the root- set, trailer, and office
+    //      there are separate methods to parse each of these called from parseBoardXML
+    //      nothing returned
+    //      special method to fix neighbors from shadow objects to connected.
     public void parseBoardXML(String boardFileName) throws ParserConfigurationException {
     	Document boardDoc = getDocFromFile(boardFileName);
         Element root = boardDoc.getDocumentElement();
@@ -57,7 +66,14 @@ public class FileReader {
         
         
        }
-        
+    
+    //parse through the setList
+    //  saves each set into an array of locations
+    //  saves neighbors as a list, the number of takes, and parts as well
+    //      parts represent off card roles- these have associated ranks as well
+    //      takes represent the number of shots
+    //      name is name of location as well as names of neighbors
+
     public void setListParse(NodeList setList) {
     	
         for(int i = 0; i < setList.getLength(); i++) {
@@ -96,11 +112,16 @@ public class FileReader {
         			ocRole[k] = new Role(partRank);
         		}
         		rooms[i].createSet(numTakes, ocRole);
-        		// also need to add the lines here somewhere
+
+        		// The lines for each part will be here somewhere also
         	}
         }
     }
     
+
+    //trailerListParse
+    //  saves neighbors of the trailer
+
     public void trailerListParse(NodeList trailerList) {
     	Element trailer = (Element) trailerList.item(0);
     	
@@ -116,6 +137,10 @@ public class FileReader {
         rooms[roomsNum+1] = new Location(trailerNeighbors, false, "Trailer");
     }
     
+    //officeListParse
+    //  gets names of neighbors 
+    //      when creating this object, the flag for upgradeOkay will be set to true
+
     public void officeListParse(NodeList officeList) {
     	 Element office = (Element) officeList.item(0);
      	
@@ -139,6 +164,11 @@ public class FileReader {
         
     }
     
+    //void fixNeighbors()
+    //  goes through neighbors to connect them to real objects, 
+    //      before, some of them were constructed by name and not connected to the other locations
+    //  loop through each room and get the neighbors and connect them to the actual room.
+    //      another functionality: change name of "office" to "Casting Office"
     public void fixNeighbors() {
     	
     	for(int i = 0; i < rooms.length; i++) {
@@ -160,14 +190,18 @@ public class FileReader {
     	rooms[11].setName("Casting Office");
     }
     
+    //getter for locations
     public Location[] getLocations() {
         return rooms;
     }
     
+    //getter for cards
     public List<Card> getCardDeck() {
         return cardList;
     }
+
     //given code
+
     private Document getDocFromFile(String fileName) throws ParserConfigurationException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
@@ -181,6 +215,7 @@ public class FileReader {
         return doc;
     }
     
+
     //for testing
     public void printCardList() {
         for (int i = 0; i < cardList.size(); i++) {
