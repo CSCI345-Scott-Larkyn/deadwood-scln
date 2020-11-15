@@ -70,7 +70,7 @@ public class Set{
  		int numDie = card.getBudget();
  		int[] diceRolls = new int[numDie];
  		for(int i = 0; i < numDie; i++) {
- 			int roll = 1 + randy.nextInt(5);
+ 			int roll = 1 + randy.nextInt(6);
  			diceRolls[i] = roll;
  		}
  		Arrays.sort(diceRolls);	//sorted from smallest to largest       

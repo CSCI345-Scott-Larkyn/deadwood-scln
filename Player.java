@@ -160,7 +160,7 @@ public class Player {
             playerView.printActingResults(0);
         } else {
             int budget = location.getSet().getCard().getBudget();
-            int roll = 1 + randy.nextInt(5);
+            int roll = 1 + randy.nextInt(6);
             if (roll + practiceChips >= budget) {
                 int shotsLeft = location.getSet().successfulShot();
                 getPaid("success");
