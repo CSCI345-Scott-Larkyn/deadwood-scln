@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<SplitPane dividerPositions="0.7922297297297297" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="839.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <SplitPane dividerPositions="0.24282296650717702" layoutX="-1.0" layoutY="-2.0" prefHeight="469.0" prefWidth="838.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="446.0" prefWidth="192.0" style="-fx-background-color: grey;">
+                     <children>
+                        <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="470.0" prefWidth="199.0" spacing="24.0">
+                           <children>
+                              <Text id="curPlayerName" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Text>
+                              <Line endX="81.29559326171875" endY="4.589557647705078E-6" startX="-100.0">
+                                 <VBox.margin>
+                                    <Insets top="-14.0" />
+                                 </VBox.margin>
+                              </Line>
+                              <MenuButton id="moveButton" mnemonicParsing="false" style="-fx-background-color: blue; -fx-background-radius: 10; -fx-font-size: 24; -fx-text-fill: black;" text="Move" textFill="WHITE">
+                                <items>
+                                  <MenuItem id="bankMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Bank" />
+                                    <MenuItem id="castingOfficeMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Casting Office" />
+                                  <MenuItem id="churchMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Church" />
+                                    <MenuItem id="generalStoreMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="General Store" />
+                                    <MenuItem id="hotelMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Hotel" />
+                                    <MenuItem id="jailMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Jail" />
+                                    <MenuItem id="mainStreetMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Main Street" />
+                                    <MenuItem id="ranchMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Ranch" />
+                                    <MenuItem id="saloonMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Saloon" />
+                                    <MenuItem id="secretHideoutMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Secret Hideout" />
+                                    <MenuItem id="trailersMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Trailers" />
+                                    <MenuItem id="trainStationMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Train Station" />
+                                </items>
+                              </MenuButton>
+                              <Button id="takeRoleButton" alignment="TOP_CENTER" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Take Role" />
+                              <Button id="actButton" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Act" />
+                              <Button id="rehearseButton" minHeight="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="123.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Rehearse">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Button>
+                              <Button id="upgradeButton" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Upgrade" />
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children></AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="440.0" prefWidth="596.0" style="-fx-background-color: grey;">
+                     <children>
+                        <ImageView id="boardPic" fitHeight="468.0" fitWidth="638.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@board.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="jailShot1" fitHeight="30.0" fitWidth="25.0" layoutX="230.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="trainStationShot1" fitHeight="30.0" fitWidth="25.0" layoutX="19.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="trainStationShot2" fitHeight="30.0" fitWidth="25.0" layoutX="47.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="trainStationShot3" fitHeight="30.0" fitWidth="25.0" layoutX="74.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="generalStoreShot1" fitHeight="30.0" fitWidth="25.0" layoutX="163.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="generalStoreShot2" fitHeight="30.0" fitWidth="25.0" layoutX="164.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="mainStreetShot1" fitHeight="30.0" fitWidth="25.0" layoutX="418.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="mainStreetShot2" fitHeight="30.0" fitWidth="25.0" layoutX="446.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="mainStreetShot3" fitHeight="30.0" fitWidth="25.0" layoutX="474.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="saloonShot2" fitHeight="30.0" fitWidth="25.0" layoutX="325.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="saloonShot1" fitHeight="30.0" fitWidth="25.0" layoutX="354.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="bankShot1" fitHeight="30.0" fitWidth="25.0" layoutX="437.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="churchShot2" fitHeight="30.0" fitWidth="25.0" layoutX="325.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="churchShot1" fitHeight="30.0" fitWidth="25.0" layoutX="355.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="hotelShot1" fitHeight="30.0" fitWidth="25.0" layoutX="578.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="hotelShot2" fitHeight="30.0" fitWidth="25.0" layoutX="551.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="hotelShot3" fitHeight="30.0" fitWidth="25.0" layoutX="523.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="ranchShot2" fitHeight="30.0" fitWidth="25.0" layoutX="246.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="ranchShot1" fitHeight="30.0" fitWidth="25.0" layoutX="274.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="secretHideoutShot3" fitHeight="30.0" fitWidth="25.0" layoutX="128.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="secretHideoutShot2" fitHeight="30.0" fitWidth="25.0" layoutX="156.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView id="secretHideoutShot1" fitHeight="30.0" fitWidth="25.0" layoutX="185.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <HBox layoutX="14.0" layoutY="-19.0" prefHeight="189.0" prefWidth="898.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox id="p1StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 1" />
+                        <Line endX="1.2928924560546875" startX="-100.0">
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </Line>
+                        <Text id="p1DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text id="p1CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView id="p1RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </VBox>
+                  <Line id="p1RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox id="p2StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 2" />
+                        <Line endX="1.2928924560546875" startX="-100.0">
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </Line>
+                        <Text id="p2DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text id="p2CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView id="p2RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/c2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </VBox>
+                  <Line id="p2RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox id="p3StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 3" />
+                        <Line endX="1.2928924560546875" startX="-100.0">
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </Line>
+                        <Text id="p3DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text id="p3CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView id="p3RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/g2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </VBox>
+                  <Line id="p3RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox id="p4StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 4" />
+                        <Line endX="1.2928924560546875" startX="-100.0">
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </Line>
+                        <Text id="p4DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text id="p4CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView id="p4RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/o2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </VBox>
+                  <Line id="p4RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox id="p5StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 5" />
+                        <Line endX="1.2928924560546875" startX="-100.0">
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </Line>
+                        <Text id="p5DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text id="p5CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView id="p5RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/p2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </VBox>
+                  <Line id="p5RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox id="p6StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 6" />
+                        <Line endX="1.2928924560546875" startX="-100.0">
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </Line>
+                        <Text id="p6DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text id="p6CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView id="p6RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/r2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </VBox>
+                  <Line id="p6RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox id="p7StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 7" />
+                        <Line endX="1.2928924560546875" startX="-100.0">
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </Line>
+                        <Text id="p7DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text id="p7CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView id="p7RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/v2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </VBox>
+                  <Line id="p7RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox id="p8StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 8" />
+                        <Line endX="1.2928924560546875" startX="-100.0">
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </Line>
+                        <Text id="p8DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text id="p8CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView id="p8RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/y2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </VBox>
+               </children></HBox>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
