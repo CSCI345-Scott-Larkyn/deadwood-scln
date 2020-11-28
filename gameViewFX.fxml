@@ -25,7 +25,7 @@
                      <children>
                         <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="470.0" prefWidth="199.0" spacing="24.0">
                            <children>
-                              <Text id="curPlayerName" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER">
+                              <Text fx:id="curPlayerName" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -38,7 +38,7 @@
                                     <Insets top="-14.0" />
                                  </VBox.margin>
                               </Line>
-                              <MenuButton id="moveButton" mnemonicParsing="false" style="-fx-background-color: blue; -fx-background-radius: 10; -fx-font-size: 24; -fx-text-fill: black;" text="Move" textFill="WHITE">
+                              <MenuButton fx:id="moveButton" mnemonicParsing="false" style="-fx-background-color: blue; -fx-background-radius: 10; -fx-font-size: 24; -fx-text-fill: black;" text="Move" textFill="WHITE">
                                 <items>
                                   <MenuItem id="bankMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Bank" />
                                     <MenuItem id="castingOfficeMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Casting Office" />
@@ -54,14 +54,14 @@
                                     <MenuItem id="trainStationMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Train Station" />
                                 </items>
                               </MenuButton>
-                              <Button id="takeRoleButton" alignment="TOP_CENTER" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Take Role" />
-                              <Button id="actButton" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Act" />
-                              <Button id="rehearseButton" minHeight="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="123.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Rehearse">
+                              <Button fx:id="takeRoleButton" alignment="TOP_CENTER" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Take Role" />
+                              <Button fx:id="actButton" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Act" />
+                              <Button fx:id="rehearseButton" minHeight="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="123.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Rehearse">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
                               </Button>
-                              <Button id="upgradeButton" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Upgrade" />
+                              <Button fx:id="upgradeButton" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Upgrade" />
                            </children>
                            <padding>
                               <Insets top="10.0" />
@@ -70,117 +70,117 @@
                      </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="440.0" prefWidth="596.0" style="-fx-background-color: grey;">
                      <children>
-                        <ImageView id="boardPic" fitHeight="468.0" fitWidth="638.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
+                        <ImageView fx:id="boardPic" fitHeight="468.0" fitWidth="638.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
                            <image>
                               <Image url="@board.jpg" />
                            </image>
                         </ImageView>
-                        <ImageView id="jailShot1" fitHeight="30.0" fitWidth="25.0" layoutX="230.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="jailShot1" fitHeight="30.0" fitWidth="25.0" layoutX="230.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="trainStationShot1" fitHeight="30.0" fitWidth="25.0" layoutX="19.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="trainStationShot1" fitHeight="30.0" fitWidth="25.0" layoutX="19.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="trainStationShot2" fitHeight="30.0" fitWidth="25.0" layoutX="47.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="trainStationShot2" fitHeight="30.0" fitWidth="25.0" layoutX="47.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="trainStationShot3" fitHeight="30.0" fitWidth="25.0" layoutX="74.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="trainStationShot3" fitHeight="30.0" fitWidth="25.0" layoutX="74.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="generalStoreShot1" fitHeight="30.0" fitWidth="25.0" layoutX="163.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="generalStoreShot1" fitHeight="30.0" fitWidth="25.0" layoutX="163.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="generalStoreShot2" fitHeight="30.0" fitWidth="25.0" layoutX="164.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="generalStoreShot2" fitHeight="30.0" fitWidth="25.0" layoutX="164.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="mainStreetShot1" fitHeight="30.0" fitWidth="25.0" layoutX="418.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="mainStreetShot1" fitHeight="30.0" fitWidth="25.0" layoutX="418.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="mainStreetShot2" fitHeight="30.0" fitWidth="25.0" layoutX="446.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="mainStreetShot2" fitHeight="30.0" fitWidth="25.0" layoutX="446.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="mainStreetShot3" fitHeight="30.0" fitWidth="25.0" layoutX="474.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="mainStreetShot3" fitHeight="30.0" fitWidth="25.0" layoutX="474.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="saloonShot2" fitHeight="30.0" fitWidth="25.0" layoutX="325.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="saloonShot2" fitHeight="30.0" fitWidth="25.0" layoutX="325.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="saloonShot1" fitHeight="30.0" fitWidth="25.0" layoutX="354.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="saloonShot1" fitHeight="30.0" fitWidth="25.0" layoutX="354.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="bankShot1" fitHeight="30.0" fitWidth="25.0" layoutX="437.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="bankShot1" fitHeight="30.0" fitWidth="25.0" layoutX="437.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="churchShot2" fitHeight="30.0" fitWidth="25.0" layoutX="325.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="churchShot2" fitHeight="30.0" fitWidth="25.0" layoutX="325.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="churchShot1" fitHeight="30.0" fitWidth="25.0" layoutX="355.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="churchShot1" fitHeight="30.0" fitWidth="25.0" layoutX="355.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="hotelShot1" fitHeight="30.0" fitWidth="25.0" layoutX="578.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="hotelShot1" fitHeight="30.0" fitWidth="25.0" layoutX="578.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="hotelShot2" fitHeight="30.0" fitWidth="25.0" layoutX="551.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="hotelShot2" fitHeight="30.0" fitWidth="25.0" layoutX="551.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="hotelShot3" fitHeight="30.0" fitWidth="25.0" layoutX="523.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="hotelShot3" fitHeight="30.0" fitWidth="25.0" layoutX="523.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="ranchShot2" fitHeight="30.0" fitWidth="25.0" layoutX="246.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ranchShot2" fitHeight="30.0" fitWidth="25.0" layoutX="246.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="ranchShot1" fitHeight="30.0" fitWidth="25.0" layoutX="274.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ranchShot1" fitHeight="30.0" fitWidth="25.0" layoutX="274.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="secretHideoutShot3" fitHeight="30.0" fitWidth="25.0" layoutX="128.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="secretHideoutShot3" fitHeight="30.0" fitWidth="25.0" layoutX="128.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="secretHideoutShot2" fitHeight="30.0" fitWidth="25.0" layoutX="156.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="secretHideoutShot2" fitHeight="30.0" fitWidth="25.0" layoutX="156.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView id="secretHideoutShot1" fitHeight="30.0" fitWidth="25.0" layoutX="185.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="secretHideoutShot1" fitHeight="30.0" fitWidth="25.0" layoutX="185.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
@@ -194,7 +194,7 @@
          <children>
             <HBox layoutX="14.0" layoutY="-19.0" prefHeight="189.0" prefWidth="898.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox id="p1StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                  <VBox fx:id="p1StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 1" />
                         <Line endX="1.2928924560546875" startX="-100.0">
@@ -202,9 +202,9 @@
                               <Point3D />
                            </rotationAxis>
                         </Line>
-                        <Text id="p1DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
-                        <Text id="p1CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
-                        <ImageView id="p1RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                        <Text fx:id="p1DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text fx:id="p1CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView fx:id="p1RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@dice/b2.png" />
                            </image>
@@ -214,8 +214,8 @@
                         <Insets top="4.0" />
                      </padding>
                   </VBox>
-                  <Line id="p1RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
-                  <VBox id="p2StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                  <Line fx:id="p1RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox fx:id="p2StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 2" />
                         <Line endX="1.2928924560546875" startX="-100.0">
@@ -223,9 +223,9 @@
                               <Point3D />
                            </rotationAxis>
                         </Line>
-                        <Text id="p2DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
-                        <Text id="p2CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
-                        <ImageView id="p2RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                        <Text fx:id="p2DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text fx:id="p2CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView fx:id="p2RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@dice/c2.png" />
                            </image>
@@ -235,8 +235,8 @@
                         <Insets top="4.0" />
                      </padding>
                   </VBox>
-                  <Line id="p2RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
-                  <VBox id="p3StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                  <Line fx:id="p2RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox fx:id="p3StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 3" />
                         <Line endX="1.2928924560546875" startX="-100.0">
@@ -244,9 +244,9 @@
                               <Point3D />
                            </rotationAxis>
                         </Line>
-                        <Text id="p3DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
-                        <Text id="p3CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
-                        <ImageView id="p3RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                        <Text fx:id="p3DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text fx:id="p3CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView fx:id="p3RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@dice/g2.png" />
                            </image>
@@ -256,8 +256,8 @@
                         <Insets top="4.0" />
                      </padding>
                   </VBox>
-                  <Line id="p3RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
-                  <VBox id="p4StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                  <Line fx:id="p3RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox fx:id="p4StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 4" />
                         <Line endX="1.2928924560546875" startX="-100.0">
@@ -265,9 +265,9 @@
                               <Point3D />
                            </rotationAxis>
                         </Line>
-                        <Text id="p4DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
-                        <Text id="p4CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
-                        <ImageView id="p4RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                        <Text fx:id="p4DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text fx:id="p4CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView fx:id="p4RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@dice/o2.png" />
                            </image>
@@ -277,8 +277,8 @@
                         <Insets top="4.0" />
                      </padding>
                   </VBox>
-                  <Line id="p4RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
-                  <VBox id="p5StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                  <Line fx:id="p4RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox fx:id="p5StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 5" />
                         <Line endX="1.2928924560546875" startX="-100.0">
@@ -286,9 +286,9 @@
                               <Point3D />
                            </rotationAxis>
                         </Line>
-                        <Text id="p5DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
-                        <Text id="p5CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
-                        <ImageView id="p5RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                        <Text fx:id="p5DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text fx:id="p5CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView fx:id="p5RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@dice/p2.png" />
                            </image>
@@ -298,8 +298,8 @@
                         <Insets top="4.0" />
                      </padding>
                   </VBox>
-                  <Line id="p5RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
-                  <VBox id="p6StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                  <Line fx:id="p5RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox fx:id="p6StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 6" />
                         <Line endX="1.2928924560546875" startX="-100.0">
@@ -307,9 +307,9 @@
                               <Point3D />
                            </rotationAxis>
                         </Line>
-                        <Text id="p6DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
-                        <Text id="p6CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
-                        <ImageView id="p6RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                        <Text fx:id="p6DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text fx:id="p6CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView fx:id="p6RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@dice/r2.png" />
                            </image>
@@ -319,8 +319,8 @@
                         <Insets top="4.0" />
                      </padding>
                   </VBox>
-                  <Line id="p6RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
-                  <VBox id="p7StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                  <Line fx:id="p6RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox fx:id="p7StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 7" />
                         <Line endX="1.2928924560546875" startX="-100.0">
@@ -328,9 +328,9 @@
                               <Point3D />
                            </rotationAxis>
                         </Line>
-                        <Text id="p7DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
-                        <Text id="p7CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
-                        <ImageView id="p7RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                        <Text fx:id="p7DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text fx:id="p7CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView fx:id="p7RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@dice/v2.png" />
                            </image>
@@ -340,8 +340,8 @@
                         <Insets top="4.0" />
                      </padding>
                   </VBox>
-                  <Line id="p7RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
-                  <VBox id="p8StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
+                  <Line fx:id="p7RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
+                  <VBox fx:id="p8StatBox" alignment="TOP_CENTER" prefHeight="164.0" prefWidth="100.0" spacing="5.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16;" text="Player 8" />
                         <Line endX="1.2928924560546875" startX="-100.0">
@@ -349,9 +349,9 @@
                               <Point3D />
                            </rotationAxis>
                         </Line>
-                        <Text id="p8DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
-                        <Text id="p8CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
-                        <ImageView id="p8RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                        <Text fx:id="p8DollarsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars: 5" />
+                        <Text fx:id="p8CreditsString" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits: 4" />
+                        <ImageView fx:id="p8RankPic" fitHeight="44.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@dice/y2.png" />
                            </image>
@@ -361,6 +361,7 @@
                         <Insets top="4.0" />
                      </padding>
                   </VBox>
+                  <Line fx:id="p8RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
                </children></HBox>
          </children></AnchorPane>
   </items>
