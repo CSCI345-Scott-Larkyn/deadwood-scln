@@ -10,13 +10,15 @@ import java.util.*;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class GameManager {
+    //public GUIBoardController getGUIBoardController() { return new GUIBoardController(); }
+
     private int numPlayers;
     private Board board;
-    private BoardView boardView = new BoardView();
+    private BoardView boardView = new BoardViewText();
     private Location[] locations;
     private Player[] players;
     private List<Card> cards;
-    private PlayerView playerView = new PlayerView();
+    private PlayerViewText playerView = new PlayerViewText();
     private String playerIDs = "!@#$%^&*";
     private int turnsTaken = 0;
     
@@ -94,8 +96,8 @@ public class GameManager {
     //adds up the number of completed scenes and returns it
     private int checkCompletedScenes() {
         int completedScenes = 0;
-        for (int ind = 0; ind < locations.length; ind++) {
-            if (locations[ind].getSet() != null && locations[ind].getSet().getCard() == null) {
+        for (Location location : locations) {
+            if (location.getSet() != null && location.getSet().getCard() == null) {
                 completedScenes++;
             }
         }
@@ -109,7 +111,7 @@ public class GameManager {
         }     
     }
     
-    //adds up the scorea and declares a winner
+    //adds up the scores and declares a winner
     //or declares multiple winners if there is a tie
     public void decideWinner() {
         int topScore = 0;

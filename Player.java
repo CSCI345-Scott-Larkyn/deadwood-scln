@@ -20,10 +20,10 @@ public class Player {
     private boolean isOnCard = false;
     private boolean hasMoved = false;
     private boolean canAct = false;
-    private PlayerView playerView;
+    private PlayerViewText playerView;
     private Random randy = new Random();
     
-    public Player(String name, PlayerView playerView, int playerNum, Location trailer) {
+    public Player(String name, PlayerViewText playerView, int playerNum, Location trailer) {
         this.name = name;
         this.playerView = playerView;
         rank = 1;
@@ -33,7 +33,7 @@ public class Player {
     }
     
     //in case of larger games with different starts
-    public Player(String name, PlayerView playerView, int credits, int rank, int playerNum, Location trailer) {
+    public Player(String name, PlayerViewText playerView, int credits, int rank, int playerNum, Location trailer) {
         this.name = name;
         this.playerView = playerView;
         this.rank = rank;
@@ -91,20 +91,27 @@ public class Player {
             budget = location.getSet().getCard().getBudget();
         }
         String action = playerView.promptForAction(allowableActions, budget, practiceChips);
-        if (action.equals("t")) { //take role
-            takeRole();
-        } else if (action.equals("u")) { //upgrade
-            upgrade();
-        } else if (action.equals("a")) { //act
-            act();
-        } else if (action.equals("r")) { //rehearse
-            rehearse();
-        } else if (action.equals("m")) { //move
-            move();
-        } else if (action.equals("e")) { //end turn
-            return true;
-        } else {
-            System.out.println("Invalid input for action");
+        switch (action) {
+            case "t":  //take role
+                takeRole();
+                break;
+            case "u":  //upgrade
+                upgrade();
+                break;
+            case "a":  //act
+                act();
+                break;
+            case "r":  //rehearse
+                rehearse();
+                break;
+            case "m":  //move
+                move();
+                break;
+            case "e":  //end turn
+                return true;
+            default:
+                System.out.println("Invalid input for action");
+                break;
         }
         return false;
     }
@@ -137,8 +144,6 @@ public class Player {
                     }
                 }
             }
-        } else {
-            System.out.println("No role was taken");
         }
         practiceChips = 0;
     }
@@ -188,7 +193,7 @@ public class Player {
     //ensures players can only move once per turn
     //precondition: player is not in role
     public boolean move() {
-        if (hasRole == true) {
+        if (hasRole) {
             System.out.println("You just moved while in a role.");
         }
         Location destination = playerView.promptForMove(location.getNeighbors());
@@ -210,7 +215,7 @@ public class Player {
     private void getPaid(String result) {
         if (result.equals("success")) {
             if (isOnCard) {
-                credits = credits +2;
+                credits = credits + 2;
             } else {
                 credits = credits + 1;
                 dollars = dollars + 1;
@@ -259,7 +264,7 @@ public class Player {
         dollars = dollars + income;
     }
     
-    //called when wraping scene and reclaiming players
+    //called when wrapping scene and reclaiming players
     public void takeOutOfRole() {
         hasRole = false;
         isOnCard = false;
