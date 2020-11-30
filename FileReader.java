@@ -28,16 +28,39 @@ public class FileReader {
         Document cardDoc = getDocFromFile(cardFileName);
         Element root = cardDoc.getDocumentElement();
         NodeList cards = root.getElementsByTagName("card");
+
+        //new variables to store additional info
+        List<String> cardName = new ArrayList<String>();
+        List<String> roleName = new ArrayList<String>();
+        List<int[]> roleArea = new ArrayList<int[]>();
+        int[] roleAArr = new int[4];
+
         for (int i = 0; i < cards.getLength(); i++) {
             Element card = (Element) cards.item(i);
             String budget = card.getAttributes().getNamedItem("budget").getNodeValue();
             NodeList children = card.getElementsByTagName("part");
             Role[] roles = new Role[children.getLength()];
+
+            String cName = card.getAttributes().getNamedItem("name").getNodeValue();
+            cardName.add(cName);
+            //System.out.println(cName);
             
             for (int j = 0; j < children.getLength(); j++) {
                 Node child = children.item(j);
                 String level = child.getAttributes().getNamedItem("level").getNodeValue();
-                roles[j] = new Role(Integer.parseInt(level));  
+                roles[j] = new Role(Integer.parseInt(level));
+                String pName = child.getAttributes().getNamedItem("name").getNodeValue();
+                roleName.add(pName);
+                //System.out.println(pName);
+                Element part = (Element) children.item(j);
+                NodeList area = part.getElementsByTagName("area");
+                Element areaE = (Element) area.item(0);
+                roleAArr[0] = Integer.parseInt(areaE.getAttribute("x"));
+                roleAArr[1] = Integer.parseInt(areaE.getAttribute("y"));
+                roleAArr[2] = Integer.parseInt(areaE.getAttribute("h"));
+                roleAArr[3] = Integer.parseInt(areaE.getAttribute("w"));
+                //System.out.println(roleAArr[0] + " " + roleAArr[1] + " " + roleAArr[2] + " " + roleAArr[3]);
+                roleArea.add(roleAArr);
             }
             cardList.add(new Card(Integer.parseInt(budget), roles));
         }
@@ -75,20 +98,22 @@ public class FileReader {
     //      name is name of location as well as names of neighbors
 
     public void setListParse(NodeList setList) {
-    	
+    	int[] setArea = new int[4];
+    	int[] partArea = new int[4];
+
         for(int i = 0; i < setList.getLength(); i++) {
         	Node setNode = setList.item(i);
         	roomsNum = i;
         	if(setNode.getNodeType() == Node.ELEMENT_NODE) {
         		Element set = (Element) setNode;
         		String setName = set.getAttribute("name");
-        		
-        	
+
         		NodeList neighbors = set.getElementsByTagName("neighbor");
         		NodeList takes = set.getElementsByTagName("take");
         		NodeList parts = set.getElementsByTagName("part");
-        		//NodeList area = set.getElementsByTagName("area");
-        		Location[] setNeighbors = new Location[neighbors.getLength()]; 
+        		NodeList areas = set.getElementsByTagName("area");
+        		Location[] setNeighbors = new Location[neighbors.getLength()];
+
         		for(int j = 0; j < neighbors.getLength(); j++) {
         			Element neighbor = (Element) neighbors.item(j);
         			String neighborName = neighbor.getAttribute("name");
@@ -97,23 +122,36 @@ public class FileReader {
         		
         		}
         		rooms[i] = new Location(setNeighbors, false, setName);
-        		
+                Element area = (Element) areas.item(0);
+                setArea[0] = Integer.parseInt(area.getAttribute("x"));
+                setArea[1] = Integer.parseInt(area.getAttribute("y"));
+                setArea[2] = Integer.parseInt(area.getAttribute("h"));
+                setArea[3] = Integer.parseInt(area.getAttribute("w"));
+
+                //System.out.println(setArea[0] + " " + setArea[1] + " " + setArea[2] + " " + setArea[3]);
         		Element take = (Element) takes.item(0);
         		int numTakes = Integer.parseInt(take.getAttribute("number"));
-        		
-        	
+
         		
         		Role[] ocRole = new Role[parts.getLength()];
         		for(int k = 0; k < parts.getLength(); k++) {
         			Element part = (Element) parts.item(k);
         			String partName = part.getAttribute("name");
         			int partRank = Integer.parseInt(part.getAttribute("level"));
-        			
         			ocRole[k] = new Role(partRank);
+        			NodeList pArea = part.getElementsByTagName("area");
+                    Element pAreaE = (Element) pArea.item(0);
+                    partArea[0] = Integer.parseInt(pAreaE.getAttribute("x"));
+                    partArea[1] = Integer.parseInt(pAreaE.getAttribute("y"));
+                    partArea[2] = Integer.parseInt(pAreaE.getAttribute("h"));
+                    partArea[3] = Integer.parseInt(pAreaE.getAttribute("w"));
+                    //System.out.println(partArea[0] + " " + partArea[1] + " " + partArea[2] + " " + partArea[3]);
+
         		}
+
         		rooms[i].createSet(numTakes, ocRole);
 
-        		// The lines for each part will be here somewhere also
+        		// The lines for each part will be here somewhere also... jk we don't need those
         	}
         }
     }
@@ -123,6 +161,7 @@ public class FileReader {
     //  saves neighbors of the trailer
 
     public void trailerListParse(NodeList trailerList) {
+        int[] trailerArea = new int[4];
     	Element trailer = (Element) trailerList.item(0);
     	
         NodeList trailerNeighbs = trailer.getElementsByTagName("neighbor");
@@ -135,6 +174,13 @@ public class FileReader {
         	
         }
         rooms[roomsNum+1] = new Location(trailerNeighbors, false, "Trailer");
+        NodeList trailA = trailer.getElementsByTagName("area");
+        Element tArea = (Element) trailA.item(0);
+        trailerArea[0] = Integer.parseInt(tArea.getAttribute("x"));
+        trailerArea[1] = Integer.parseInt(tArea.getAttribute("y"));
+        trailerArea[2] = Integer.parseInt(tArea.getAttribute("h"));
+        trailerArea[3] = Integer.parseInt(tArea.getAttribute("w"));
+        //System.out.println(trailerArea[0] + " " + trailerArea[1] + " " +trailerArea[2] + " " +trailerArea[3]);
     }
     
     //officeListParse
@@ -142,10 +188,12 @@ public class FileReader {
     //      when creating this object, the flag for upgradeOkay will be set to true
 
     public void officeListParse(NodeList officeList) {
+         int[] officeArea = new int[4];
     	 Element office = (Element) officeList.item(0);
      	
          NodeList neighborO = office.getElementsByTagName("neighbor");
          NodeList upgrade = office.getElementsByTagName("upgrade");
+         NodeList oArea = office.getElementsByTagName("area");
          Location[] officeNeighbs = new Location[neighborO.getLength()];
          for(int n = 0; n < neighborO.getLength(); n++) {
          	Element ofNeighb = (Element) neighborO.item(n);
@@ -161,6 +209,14 @@ public class FileReader {
          	
          }
          rooms[roomsNum+2] = new Location(officeNeighbs, true, "office");
+
+         Element officeA = (Element) oArea.item(0);
+         officeArea[0] = Integer.parseInt(officeA.getAttribute("x"));
+         officeArea[1] = Integer.parseInt(officeA.getAttribute("y"));
+         officeArea[2] = Integer.parseInt(officeA.getAttribute("h"));
+         officeArea[3] = Integer.parseInt(officeA.getAttribute("w"));
+         //System.out.println(officeArea[0] + " " + officeArea[1] + " " +officeArea[2] + " " +officeArea[3]);
+
         
     }
     
@@ -170,23 +226,23 @@ public class FileReader {
     //  loop through each room and get the neighbors and connect them to the actual room.
     //      another functionality: change name of "office" to "Casting Office"
     public void fixNeighbors() {
-    	
-    	for(int i = 0; i < rooms.length; i++) {
-    		Location[] neighborsS = rooms[i].getNeighbors();
-    		
-    		for(int j = 0; j < neighborsS.length; j++) {
-    			String neighbName = neighborsS[j].getName();
-    			for(int k = 0; k < rooms.length; k++) {
-    				String roomName = rooms[k].getName();
-    				
-    				if(roomName.equalsIgnoreCase(neighbName)) {
-    					neighborsS[j] = rooms[k];
-    					
-    					break;
-    				}
-    			}
-    		}
-    	}
+
+        for (Location room : rooms) {
+            Location[] neighborsS = room.getNeighbors();
+
+            for (int j = 0; j < neighborsS.length; j++) {
+                String neighbName = neighborsS[j].getName();
+                for (Location location : rooms) {
+                    String roomName = location.getName();
+
+                    if (roomName.equalsIgnoreCase(neighbName)) {
+                        neighborsS[j] = location;
+
+                        break;
+                    }
+                }
+            }
+        }
     	rooms[11].setName("Casting Office");
     }
     
