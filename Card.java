@@ -9,6 +9,7 @@ public class Card{
  	//Attributes:
  	private Role[] onCardRoles;
  	private int budget;
+ 	private boolean isFaceUp = false;
 
  	//Constructor:
  	public Card(int budget, Role[] onCardRoles){
@@ -23,8 +24,12 @@ public class Card{
         return budget;
     }
     
-    //getter for oncard roles
+    //getter for onCard roles
     public Role[] getRoles() {
         return onCardRoles;
+    }
+
+    public void flip() {
+ 	    isFaceUp = true;
     }
  }

@@ -12,9 +12,11 @@ public class Role implements Comparable<Role> {
  	private int rank;
  	private Player player;
  	private boolean isOccupied;
+ 	private PixelData pixelData;
 
  	//Constructor:
- 	public Role(int rank){
+ 	public Role(int rank, PixelData pixelData){
+ 	    this.pixelData = pixelData;
  		this.rank = rank;
         isOccupied = false;
  	}
@@ -57,5 +59,9 @@ public class Role implements Comparable<Role> {
     //a role is greater than another if it is of higher rank
     public int compareTo(Role r) {
         return rank - r.getRank();
+    }
+
+    public PixelData getPixelData() {
+ 	    return pixelData;
     }
  }

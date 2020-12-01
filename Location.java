@@ -13,6 +13,7 @@ public class Location{
  	private Set set;
  	private boolean upgradeOK;
  	private String name;
+ 	private boolean hasBeenVisited;
 
 
  	//Constructor:
@@ -68,6 +69,13 @@ public class Location{
     //  add a player to visiting player list
     public void addPlayer(Player p) {
         visitingPlayers.add(p);
+        if (!hasBeenVisited) {
+            if (set != null && set.getCard() != null) {
+                set.getCard().flip();
+            }
+            hasBeenVisited = true;
+        }
+
     }
     
     //void removePlayer(Player p)
@@ -97,8 +105,12 @@ public class Location{
         return name;
     }
     
-    //setter for set name for weird occurence with office from file reader
+    //setter for set name for weird occurrence with office from file reader
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void resetVisitation() {
+ 	    hasBeenVisited = false;
     }
  }

@@ -50,6 +50,9 @@ public class Board{
     //  calls deal cards() method above and moveAllToTrailers()
 	public void endDay() {
 		dealCards();
+		for (Location loc : locations) {
+		    loc.resetVisitation();
+        }
         moveAllToTrailers();
 	}
     

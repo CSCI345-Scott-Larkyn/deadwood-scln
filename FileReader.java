@@ -47,20 +47,24 @@ public class FileReader {
             
             for (int j = 0; j < children.getLength(); j++) {
                 Node child = children.item(j);
-                String level = child.getAttributes().getNamedItem("level").getNodeValue();
-                roles[j] = new Role(Integer.parseInt(level));
+
+
                 String pName = child.getAttributes().getNamedItem("name").getNodeValue();
                 roleName.add(pName);
                 //System.out.println(pName);
                 Element part = (Element) children.item(j);
                 NodeList area = part.getElementsByTagName("area");
                 Element areaE = (Element) area.item(0);
-                roleAArr[0] = Integer.parseInt(areaE.getAttribute("x"));
-                roleAArr[1] = Integer.parseInt(areaE.getAttribute("y"));
-                roleAArr[2] = Integer.parseInt(areaE.getAttribute("h"));
-                roleAArr[3] = Integer.parseInt(areaE.getAttribute("w"));
+                int x = Integer.parseInt(areaE.getAttribute("x"));
+                int y = Integer.parseInt(areaE.getAttribute("y"));
+                int h = Integer.parseInt(areaE.getAttribute("h"));
+                int w = Integer.parseInt(areaE.getAttribute("w"));
+                PixelData rolePixelData = new PixelData(x, y, h, w);
                 //System.out.println(roleAArr[0] + " " + roleAArr[1] + " " + roleAArr[2] + " " + roleAArr[3]);
                 roleArea.add(roleAArr);
+
+                String level = child.getAttributes().getNamedItem("level").getNodeValue();
+                roles[j] = new Role(Integer.parseInt(level), rolePixelData);
             }
             cardList.add(new Card(Integer.parseInt(budget), roles));
         }
@@ -138,15 +142,16 @@ public class FileReader {
         			Element part = (Element) parts.item(k);
         			String partName = part.getAttribute("name");
         			int partRank = Integer.parseInt(part.getAttribute("level"));
-        			ocRole[k] = new Role(partRank);
+
         			NodeList pArea = part.getElementsByTagName("area");
                     Element pAreaE = (Element) pArea.item(0);
-                    partArea[0] = Integer.parseInt(pAreaE.getAttribute("x"));
-                    partArea[1] = Integer.parseInt(pAreaE.getAttribute("y"));
-                    partArea[2] = Integer.parseInt(pAreaE.getAttribute("h"));
-                    partArea[3] = Integer.parseInt(pAreaE.getAttribute("w"));
+                    int x = Integer.parseInt(pAreaE.getAttribute("x"));
+                    int y = Integer.parseInt(pAreaE.getAttribute("y"));
+                    int h = Integer.parseInt(pAreaE.getAttribute("h"));
+                    int w = Integer.parseInt(pAreaE.getAttribute("w"));
                     //System.out.println(partArea[0] + " " + partArea[1] + " " + partArea[2] + " " + partArea[3]);
-
+                    PixelData rolePixelData = new PixelData(x, y, h, w);
+                    ocRole[k] = new Role(partRank, rolePixelData);
         		}
 
         		rooms[i].createSet(numTakes, ocRole);
