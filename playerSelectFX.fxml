@@ -13,12 +13,12 @@
             <Insets top="10.0" />
          </VBox.margin>
       </Text>
-      <Spinner fx:id="playerNumSpinner" prefHeight="53.0" prefWidth="69.0" style="-fx-background-color: blue; -fx-border-color: black;">
+      <Spinner fx:id="playerNumSpinner" prefHeight="53.0" prefWidth="69.0" style="-fx-background-color: #2196f3; -fx-border-color: black;">
          <VBox.margin>
             <Insets top="15.0" />
          </VBox.margin>
       </Spinner>
-      <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonClicked" style="-fx-background-radius: 5;" text="Start">
+      <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonClicked" style="-fx-background-radius: 5; -fx-background-color: #2196f3;" text="Start">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
