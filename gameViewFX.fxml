@@ -23,7 +23,7 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="446.0" prefWidth="192.0" style="-fx-background-color: grey;">
                      <children>
-                        <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="470.0" prefWidth="199.0" spacing="18.0">
+                        <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="470.0" prefWidth="199.0" spacing="15.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER">
                                  <font>
@@ -65,6 +65,31 @@
                                     <Insets />
                                  </VBox.margin>
                               </Button>
+                              <AnchorPane prefHeight="78.0" prefWidth="199.0">
+                                 <children>
+                                    <VBox fx:id="actingStatBox" alignment="CENTER" prefHeight="50.0" prefWidth="199.0" visible="false">
+                                       <children>
+                                          <Text fx:id="budget" strokeType="OUTSIDE" strokeWidth="0.0" text="Budget: 4">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="practiceChips" strokeType="OUTSIDE" strokeWidth="0.0" text="Practice Chips: 1">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets top="-7.0" />
+                                       </padding>
+                                    </VBox>
+                                    <Button fx:id="endTurnButton" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="End Turn" AnchorPane.leftAnchor="32.0" />
+                                 </children>
+                              </AnchorPane>
                            </children>
                            <padding>
                               <Insets top="10.0" />
@@ -213,24 +238,48 @@
                                     <Image url="@cards/01.png" />
                                  </image>
                               </ImageView>
+                              <ImageView fx:id="gsOff11" fitHeight="20.0" fitWidth="20.0" layoutX="9.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@dice/b2.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="gsOff12" fitHeight="20.0" fitWidth="20.0" layoutX="76.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@dice/b2.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="gsOff13" fitHeight="20.0" fitWidth="20.0" layoutX="42.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@dice/b2.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="mainStreetPane" layoutX="507.0" layoutY="12.0" prefHeight="65.0" prefWidth="110.0">
                            <children>
                               <ImageView fx:id="mainStreetCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
                                  <image>
-                                    <Image url="@cards/05.png" />
+                                    <Image url="@cards/12.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="sOff13" fitHeight="20.0" fitWidth="20.0" layoutX="42.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@dice/b2.png" />
                                  </image>
                               </ImageView>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="ranchPane" layoutX="134.0" layoutY="245.0" prefHeight="65.0" prefWidth="110.0">
                            <children>
-                              <ImageView fx:id="ranchCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
-                                 <image>
-                                    <Image url="@CardBack.jpg" />
-                                 </image>
-                              </ImageView>
+                              <AnchorPane layoutX="-2.0" prefHeight="65.0" prefWidth="110.0">
+                                 <children>
+                                    <ImageView fx:id="ranchCard" fitHeight="65.0" fitWidth="110.0" layoutX="110.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <image>
+                                          <Image url="@CardBack.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="bankPane" layoutX="328.0" layoutY="245.0" prefHeight="65.0" prefWidth="110.0">
@@ -247,6 +296,16 @@
                               <ImageView fx:id="saloonCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
                                  <image>
                                     <Image url="@cards/15.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="sOff11" fitHeight="20.0" fitWidth="20.0" layoutX="26.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@dice/b2.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="sOff12" fitHeight="20.0" fitWidth="20.0" layoutX="60.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@dice/b2.png" />
                                  </image>
                               </ImageView>
                            </children>
