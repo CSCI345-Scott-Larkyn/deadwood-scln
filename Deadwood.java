@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 public class Deadwood extends Application {
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("playerSelectFX.fxml"));
@@ -23,11 +24,25 @@ public class Deadwood extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.show();
+//        if(PlayerSelectController.getStartBtnClick() == true) {
+//            System.out.println("made it here!");
+//            Stage secondaryStage = new Stage();
+//            Parent root2 = FXMLLoader.load(getClass().getResource("gameViewFX.fxml"));
+//            Scene scene2 = new Scene(root2);
+//
+//            secondaryStage.setScene(scene2);
+//            secondaryStage.show();
+//            primaryStage.close();
+//        }else{
+//            System.out.println("something went horribly wrong");
+//        }
+
     }
 
     public static void main(String[] args) {
 
         launch(args);
+
     }
 //    public static void main(String[] args) throws NullPointerException, ParserConfigurationException {
 //
