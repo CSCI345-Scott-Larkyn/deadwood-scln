@@ -38,7 +38,7 @@
                                     <Insets top="-14.0" />
                                  </VBox.margin>
                               </Line>
-                              <MenuButton fx:id="moveButton" mnemonicParsing="false" onAction="#moveClicked" prefHeight="50.0" prefWidth="135.0" style="-fx-background-color: blue; -fx-background-radius: 10; -fx-font-size: 24; -fx-text-fill: black;" text="Move" textFill="WHITE">
+                              <MenuButton fx:id="moveButton" mnemonicParsing="false" onAction="#moveClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: blue; -fx-background-radius: 10; -fx-font-size: 24; -fx-text-fill: black;" text="Move" textFill="WHITE">
                                  <items>
                                     <MenuItem id="bankMenuItem" fx:id="moveBank" mnemonicParsing="false" onAction="#bankMoveClick" style="-fx-font-size: 16;" text="Bank" />
                                     <MenuItem id="castingOfficeMenuItem" fx:id="moveCO" mnemonicParsing="false" onAction="#coMoveClicked" style="-fx-font-size: 16;" text="Casting Office" />
@@ -54,13 +54,13 @@
                                     <MenuItem id="trainStationMenuItem" fx:id="moveTS" mnemonicParsing="false" onAction="#tsMoveClicked" style="-fx-font-size: 16;" text="Train Station" />
                                  </items>
                               </MenuButton>
-                              <Button fx:id="takeRoleButton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#takeRoleClicked" prefHeight="50.0" prefWidth="135.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Take Role" />
-                              <Button fx:id="upgradeButton" mnemonicParsing="false" onAction="#upgradeClicked" prefHeight="50.0" prefWidth="135.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Upgrade" />
-                              <Button fx:id="actButton" mnemonicParsing="false" onAction="#actClicked" prefHeight="50.0" prefWidth="135.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Act">
+                              <Button fx:id="takeRoleButton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#takeRoleClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Take Role" />
+                              <Button fx:id="upgradeButton" mnemonicParsing="false" onAction="#upgradeClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Upgrade" />
+                              <Button fx:id="actButton" mnemonicParsing="false" onAction="#actClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Act">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin></Button>
-                              <Button fx:id="rehearseButton" minHeight="20.0" mnemonicParsing="false" onAction="#rehearseClicked" prefHeight="50.0" prefWidth="135.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Rehearse">
+                              <Button fx:id="rehearseButton" minHeight="20.0" mnemonicParsing="false" onAction="#rehearseClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Rehearse">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -87,7 +87,7 @@
                                           <Insets top="-7.0" />
                                        </padding>
                                     </VBox>
-                                    <Button fx:id="endTurnButton" alignment="CENTER" mnemonicParsing="false" onAction="#endTurnClicked" prefHeight="50.0" prefWidth="135.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="End Turn" AnchorPane.leftAnchor="32.0" />
+                                    <Button fx:id="endTurnButton" alignment="CENTER" mnemonicParsing="false" onAction="#endTurnClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="End Turn" AnchorPane.leftAnchor="32.0" />
                                  </children>
                               </AnchorPane>
                            </children>
