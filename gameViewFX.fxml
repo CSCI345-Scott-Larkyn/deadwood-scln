@@ -15,17 +15,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.7922297297297297" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="839.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-  <items>
+<SplitPane dividerPositions="0.7922297297297297" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="839.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIBoardController">
+   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
             <SplitPane dividerPositions="0.24282296650717702" layoutX="-1.0" layoutY="-2.0" prefHeight="469.0" prefWidth="838.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="446.0" prefWidth="192.0" style="-fx-background-color: grey;">
                      <children>
-                        <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="470.0" prefWidth="199.0" spacing="24.0">
+                        <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="470.0" prefWidth="199.0" spacing="18.0">
                            <children>
-                              <Text fx:id="curPlayerName" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -38,7 +38,7 @@
                                     <Insets top="-14.0" />
                                  </VBox.margin>
                               </Line>
-                              <MenuButton fx:id="moveButton" mnemonicParsing="false" style="-fx-background-color: blue; -fx-background-radius: 10; -fx-font-size: 24; -fx-text-fill: black;" text="Move" textFill="WHITE">
+                              <MenuButton fx:id="moveButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" style="-fx-background-color: blue; -fx-background-radius: 10; -fx-font-size: 24; -fx-text-fill: black;" text="Move" textFill="WHITE">
                                 <items>
                                   <MenuItem id="bankMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Bank" />
                                     <MenuItem id="castingOfficeMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Casting Office" />
@@ -54,14 +54,17 @@
                                     <MenuItem id="trainStationMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Train Station" />
                                 </items>
                               </MenuButton>
-                              <Button fx:id="takeRoleButton" alignment="TOP_CENTER" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Take Role" />
-                              <Button fx:id="actButton" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Act" />
-                              <Button fx:id="rehearseButton" minHeight="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="123.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Rehearse">
+                              <Button fx:id="takeRoleButton" alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Take Role" />
+                              <Button fx:id="upgradeButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Upgrade" />
+                              <Button fx:id="actButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Act">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin></Button>
+                              <Button fx:id="rehearseButton" minHeight="20.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Rehearse">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="upgradeButton" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Upgrade" />
                            </children>
                            <padding>
                               <Insets top="10.0" />
@@ -130,7 +133,7 @@
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="bankShot1" fitHeight="30.0" fitWidth="25.0" layoutX="437.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="bankShot1" fitHeight="30.0" fitWidth="25.0" layoutX="438.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
@@ -140,7 +143,7 @@
                               <Image url="@shot.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="churchShot1" fitHeight="30.0" fitWidth="25.0" layoutX="355.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="churchShot1" fitHeight="30.0" fitWidth="25.0" layoutX="356.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
                            </image>
@@ -183,6 +186,241 @@
                         <ImageView fx:id="secretHideoutShot1" fitHeight="30.0" fitWidth="25.0" layoutX="185.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@shot.png" />
+                           </image>
+                        </ImageView>
+                        <AnchorPane fx:id="trainStationPane" layoutX="15.0" layoutY="32.0" prefHeight="65.0" prefWidth="110.0">
+                           <children>
+                              <ImageView fx:id="trainStationCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@CardBack.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="jailPane" layoutX="150.0" layoutY="11.0" prefHeight="65.0" prefWidth="110.0">
+                           <children>
+                              <ImageView fx:id="jailCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@CardBack.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="generalStorePane" layoutX="196.0" layoutY="144.0" prefHeight="65.0" prefWidth="110.0">
+                           <children>
+                              <ImageView fx:id="generalStoreCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@cards/01.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="mainStreetPane" layoutX="507.0" layoutY="12.0" prefHeight="65.0" prefWidth="110.0">
+                           <children>
+                              <ImageView fx:id="mainStreetCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@cards/05.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="ranchPane" layoutX="134.0" layoutY="245.0" prefHeight="65.0" prefWidth="110.0">
+                           <children>
+                              <ImageView fx:id="ranchCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@CardBack.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="bankPane" layoutX="328.0" layoutY="245.0" prefHeight="65.0" prefWidth="110.0">
+                           <children>
+                              <ImageView fx:id="bankCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@cards/07.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="saloonPane" layoutX="332.0" layoutY="143.0" prefHeight="65.0" prefWidth="110.0">
+                           <children>
+                              <ImageView fx:id="saloonCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@cards/15.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="secretHideoutPane" layoutX="17.0" layoutY="378.0" prefHeight="65.0" prefWidth="110.0">
+                           <children>
+                              <ImageView fx:id="secretHideoutCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@CardBack.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="churchPane" layoutX="328.0" layoutY="378.0" prefHeight="65.0" prefWidth="110.0">
+                           <children>
+                              <ImageView fx:id="churchCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@CardBack.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="hotelPane" layoutX="507.0" layoutY="382.0" prefHeight="65.0" prefWidth="110.0">
+                           <children>
+                              <ImageView fx:id="hotelCard" fitHeight="65.0" fitWidth="110.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-3.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@cards/04.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <ImageView fx:id="gsOff1" fitHeight="20.0" fitWidth="20.0" layoutX="127.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="msOff3" fitHeight="20.0" fitWidth="20.0" layoutX="379.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="msOff2" fitHeight="20.0" fitWidth="20.0" layoutX="336.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="msOff1" fitHeight="20.0" fitWidth="20.0" layoutX="378.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="msOff0" fitHeight="20.0" fitWidth="20.0" layoutX="336.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="shOff3" fitHeight="20.0" fitWidth="20.0" layoutX="275.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="shOff2" fitHeight="20.0" fitWidth="20.0" layoutX="230.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="shOff1" fitHeight="20.0" fitWidth="20.0" layoutX="275.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="shOff0" fitHeight="20.0" fitWidth="20.0" layoutX="230.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="rOff1" fitHeight="20.0" fitWidth="20.0" layoutX="258.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="rOff0" fitHeight="20.0" fitWidth="20.0" layoutX="219.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="rOff2" fitHeight="20.0" fitWidth="20.0" layoutX="258.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="tsOff3" fitHeight="20.0" fitWidth="20.0" layoutX="29.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="tsOff2" fitHeight="20.0" fitWidth="20.0" layoutX="63.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="tsOff0" fitHeight="20.0" fitWidth="20.0" layoutX="63.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="tsOff1" fitHeight="20.0" fitWidth="20.0" layoutX="30.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="gsOff0" fitHeight="20.0" fitWidth="20.0" layoutX="127.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="jOff1" fitHeight="20.0" fitWidth="20.0" layoutX="274.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="jOff0" fitHeight="20.0" fitWidth="20.0" layoutX="274.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="hOff3" fitHeight="20.0" fitWidth="20.0" layoutX="548.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="hOff2" fitHeight="20.0" fitWidth="20.0" layoutX="582.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="hOff1" fitHeight="20.0" fitWidth="20.0" layoutX="547.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="hOff0" fitHeight="20.0" fitWidth="20.0" layoutX="581.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="cOff1" fitHeight="20.0" fitWidth="20.0" layoutX="451.0" layoutY="423.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="cOff0" fitHeight="20.0" fitWidth="20.0" layoutX="450.0" layoutY="382.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="bOff0" fitHeight="20.0" fitWidth="20.0" layoutX="478.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="bOff1" fitHeight="20.0" fitWidth="20.0" layoutX="478.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="sOff0" fitHeight="20.0" fitWidth="20.0" layoutX="461.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="sOff1" fitHeight="20.0" fitWidth="20.0" layoutX="461.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@dice/b2.png" />
                            </image>
                         </ImageView>
                      </children>
