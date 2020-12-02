@@ -5,7 +5,6 @@
 ////////////////////////////////////////////////////////////////
 //this class is just plain old data
 //simply a convenient way of transferring a player's financial info
-package deadwood;
 
 public class UpgradeData {
     public int dollars;

@@ -1,4 +1,3 @@
-package deadwood;
 public class BoardViewFX implements BoardView {
     private Location[] locs;
     private Player[] players;

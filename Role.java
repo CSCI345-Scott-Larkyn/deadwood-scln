@@ -5,7 +5,7 @@
 ////////////////////////////////////////////////////////////////
 
 //Note: this class has a natural ordering that is inconsistent with equals
-package deadwood;
+
 public class Role implements Comparable<Role> {
 
  	//Attributes:

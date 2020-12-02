@@ -4,7 +4,6 @@
 //      Deadwood
 //
 ////////////////////////////////////////////////////////////////
-package deadwood;
 
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -73,7 +72,7 @@ public class FileReader {
             Card cardToAdd = new Card(Integer.parseInt(budget), roles);
             cardList.add(cardToAdd);
             String front = "cards/" + card.getAttributes().getNamedItem("img").getNodeValue();
-            CardGUI cardGUI = new CardGUI(front, "deadwood/CardBack.jpg", cardToAdd, children.getLength());
+            CardGUI cardGUI = new CardGUI(front, "CardBack.jpg", cardToAdd, children.getLength());
             cardToAdd.addCardGUI(cardGUI);
         }
     }

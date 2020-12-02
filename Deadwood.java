@@ -7,7 +7,6 @@
 //requires a single int argument for the number of players
 //runs the game for the proper number of days 
 //ands prompts the GameManager to show the winner when the game is over
-package deadwood;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

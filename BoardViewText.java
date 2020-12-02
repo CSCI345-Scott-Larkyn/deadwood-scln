@@ -5,7 +5,6 @@
 ////////////////////////////////////////////////////////////////
 //this class is simply used to print an ASCI representation
 //of the game board at the start of each player's turn
-package deadwood;
 
 public class BoardViewText implements BoardView {
     //treat as 1-indexed

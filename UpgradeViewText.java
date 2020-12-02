@@ -4,7 +4,6 @@
 //
 ////////////////////////////////////////////////////////////////
 //deals with the user input and prompting for upgrading the player
-package deadwood;
 
 import java.util.*;
 public class UpgradeViewText implements UpgradeView {

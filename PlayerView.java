@@ -1,4 +1,3 @@
-package deadwood;
 public interface PlayerView {
     UpgradeData promptForUpgrade(UpgradeData data);
     Location promptForMove(Location[] neighbors);

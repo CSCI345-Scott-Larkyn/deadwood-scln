@@ -38,7 +38,7 @@
                      <graphic>
                         <ImageView fx:id="onCardPic1" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dice/w1.png" />
+                              <Image url="@dice/w1.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -47,7 +47,7 @@
                      <graphic>
                         <ImageView fx:id="onCardPic2" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dice/w4.png" />
+                              <Image url="@dice/w4.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -56,7 +56,7 @@
                      <graphic>
                         <ImageView fx:id="onCardPic3" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dice/w5.png" />
+                              <Image url="@dice/w5.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -75,7 +75,7 @@
                      <graphic>
                         <ImageView fx:id="offCardPic1" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dice/w1.png" />
+                              <Image url="@dice/w1.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -84,7 +84,7 @@
                      <graphic>
                         <ImageView fx:id="offCardPic2" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dice/w2.png" />
+                              <Image url="@dice/w2.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -93,7 +93,7 @@
                      <graphic>
                         <ImageView fx:id="offCardPic3" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dice/w2.png" />
+                              <Image url="@dice/w2.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -102,7 +102,7 @@
                      <graphic>
                         <ImageView fx:id="offCardPic4" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../dice/w3.png" />
+                              <Image url="@dice/w3.png" />
                            </image>
                         </ImageView>
                      </graphic>

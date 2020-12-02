@@ -1,4 +1,3 @@
-package deadwood;
 public class PlayerViewFX implements PlayerView {
 
     public UpgradeData promptForUpgrade(UpgradeData data) {

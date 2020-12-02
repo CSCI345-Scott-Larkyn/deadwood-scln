@@ -1,5 +1,3 @@
-package deadwood;
-
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 

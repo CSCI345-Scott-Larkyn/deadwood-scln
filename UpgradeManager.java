@@ -4,7 +4,6 @@
 //
 ////////////////////////////////////////////////////////////////
 //this class handles the logic for upgrading players
-package deadwood;
 
 public class UpgradeManager {
     private int[] dollarCosts = new int[] {-1, -1, 4, 10, 18, 28, 40};
