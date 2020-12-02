@@ -10,7 +10,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="266.0" prefWidth="258.0" spacing="10.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What Role Would You Like?">
@@ -35,29 +34,29 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Button fx:id="onCardButton1" mnemonicParsing="false" style="-fx-background-color: #9e17b5; -fx-background-radius: 10;">
+                  <Button fx:id="onCardButton1" mnemonicParsing="false" style="-fx-background-color: blue; -fx-background-radius: 10;">
                      <graphic>
                         <ImageView fx:id="onCardPic1" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@dice/b2.png" />
+                              <Image url="@dice/w1.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="onCardButton2" mnemonicParsing="false" style="-fx-background-color: #9e17b5; -fx-background-radius: 10;">
+                  <Button fx:id="onCardButton2" mnemonicParsing="false" style="-fx-background-color: blue; -fx-background-radius: 10;">
                      <graphic>
                         <ImageView fx:id="onCardPic2" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@dice/b3.png" />
+                              <Image url="@dice/w4.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="onCardButton3" mnemonicParsing="false" style="-fx-background-color: #9e17b5; -fx-background-radius: 10;">
+                  <Button fx:id="onCardButton3" mnemonicParsing="false" style="-fx-background-color: blue; -fx-background-radius: 10;">
                      <graphic>
                         <ImageView fx:id="onCardPic3" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@dice/b4.png" />
+                              <Image url="@dice/w5.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -72,38 +71,38 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Button fx:id="offCardButton1" mnemonicParsing="false" style="-fx-background-color: #9e17b5; -fx-background-radius: 10;">
+                  <Button fx:id="offCardButton1" mnemonicParsing="false" style="-fx-background-color: blue; -fx-background-radius: 10;">
                      <graphic>
                         <ImageView fx:id="offCardPic1" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@dice/b1.png" />
+                              <Image url="@dice/w1.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="offCardButton2" mnemonicParsing="false" style="-fx-background-color: #9e17b5; -fx-background-radius: 10;">
+                  <Button fx:id="offCardButton2" mnemonicParsing="false" style="-fx-background-color: blue; -fx-background-radius: 10;">
                      <graphic>
                         <ImageView fx:id="offCardPic2" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@dice/b2.png" />
+                              <Image url="@dice/w2.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="offCardButton3" mnemonicParsing="false" style="-fx-background-color: #9e17b5; -fx-background-radius: 10;">
+                  <Button fx:id="offCardButton3" mnemonicParsing="false" style="-fx-background-color: blue; -fx-background-radius: 10;">
                      <graphic>
                         <ImageView fx:id="offCardPic3" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@dice/b2.png" />
+                              <Image url="@dice/w2.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="offCardButton4" mnemonicParsing="false" style="-fx-background-color: #9e17b5; -fx-background-radius: 10;">
+                  <Button fx:id="offCardButton4" mnemonicParsing="false" style="-fx-background-color: blue; -fx-background-radius: 10;">
                      <graphic>
                         <ImageView fx:id="offCardPic4" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@dice/b3.png" />
+                              <Image url="@dice/w3.png" />
                            </image>
                         </ImageView>
                      </graphic>
