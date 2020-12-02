@@ -10,6 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.ParserConfigurationException;
 
+import javafx.scene.image.ImageView;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -21,6 +22,7 @@ public class FileReader {
 
     private Location[] rooms = new Location[12];
     private List<Card> cardList = new ArrayList<Card>();
+    private List<RoleGUI> offCardRoleGUIs = new ArrayList<>();
     private static int roomsNum = 0;
     
     //reads in and creates cards, adding them to the cardList
@@ -64,9 +66,14 @@ public class FileReader {
                 roleArea.add(roleAArr);
 
                 String level = child.getAttributes().getNamedItem("level").getNodeValue();
-                roles[j] = new Role(Integer.parseInt(level), rolePixelData);
+                //took out pixelData
+                roles[j] = new Role(Integer.parseInt(level));
             }
-            cardList.add(new Card(Integer.parseInt(budget), roles));
+            Card cardToAdd = new Card(Integer.parseInt(budget), roles);
+            cardList.add(cardToAdd);
+            String front = "cards/" + card.getAttributes().getNamedItem("img").getNodeValue();
+            CardGUI cardGUI = new CardGUI(front, "CardBack.jpg", cardToAdd, children.getLength());
+            cardToAdd.addCardGUI(cardGUI);
         }
     }
     
@@ -151,7 +158,11 @@ public class FileReader {
                     int w = Integer.parseInt(pAreaE.getAttribute("w"));
                     //System.out.println(partArea[0] + " " + partArea[1] + " " + partArea[2] + " " + partArea[3]);
                     PixelData rolePixelData = new PixelData(x, y, h, w);
-                    ocRole[k] = new Role(partRank, rolePixelData);
+                    //took out pixelData
+                    ocRole[k] = new Role(partRank);
+                    RoleGUI roleGUI = new RoleGUI(new ImageView("dice/w1.png"), ocRole[k]);
+                    offCardRoleGUIs.add(roleGUI);
+                    ocRole[k].addRoleGUI(roleGUI);
         		}
 
         		rooms[i].createSet(numTakes, ocRole);

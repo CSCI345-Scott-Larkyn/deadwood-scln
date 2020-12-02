@@ -259,6 +259,8 @@ public class Player {
     public int getPlayerNum() {
         return playerNum;
     }
+
+    public int getRank() { return rank; }
     
     public void addDollars(int income) {
         dollars = dollars + income;

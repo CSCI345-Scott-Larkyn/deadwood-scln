@@ -10,6 +10,7 @@ public class Card{
  	private Role[] onCardRoles;
  	private int budget;
  	private boolean isFaceUp = false;
+ 	private CardGUI cardGUI;
 
  	//Constructor:
  	public Card(int budget, Role[] onCardRoles){
@@ -31,5 +32,15 @@ public class Card{
 
     public void flip() {
  	    isFaceUp = true;
+    }
+
+    public boolean isFaceUp() { return isFaceUp; }
+
+    public void addCardGUI(CardGUI c) {
+ 	    cardGUI = c;
+    }
+
+    public CardGUI getCardGUI() {
+ 	    return cardGUI;
     }
  }

@@ -4,19 +4,19 @@
 //
 ////////////////////////////////////////////////////////////////
 
-
-//Note: this class has a natural ordering that is inconsistent with equals 
+//Note: this class has a natural ordering that is inconsistent with equals
 public class Role implements Comparable<Role> {
 
  	//Attributes:
  	private int rank;
  	private Player player;
  	private boolean isOccupied;
- 	private PixelData pixelData;
+ 	private RoleGUI roleGUI;
+ 	//private PixelData pixelData;
 
  	//Constructor:
- 	public Role(int rank, PixelData pixelData){
- 	    this.pixelData = pixelData;
+ 	public Role(int rank){
+ 	    //this.pixelData = pixelData;
  		this.rank = rank;
         isOccupied = false;
  	}
@@ -53,6 +53,14 @@ public class Role implements Comparable<Role> {
         isOccupied = false;
         return p;
     }
+
+    public void addRoleGUI(RoleGUI r) {
+ 	    roleGUI = r;
+    }
+
+    public RoleGUI getRoleGUI() {
+ 	    return roleGUI;
+    }
     
     //int compareTo(Role):
     //  returns a negative number if comparing rank is larger, returns positive number if role is greater
@@ -61,7 +69,25 @@ public class Role implements Comparable<Role> {
         return rank - r.getRank();
     }
 
-    public PixelData getPixelData() {
- 	    return pixelData;
-    }
+    //public PixelData getPixelData() {
+ 	//    return pixelData;
+    //}
  }
+
+
+
+// class RoleInit
+// {
+//     static void Init()
+//     {
+//         new RoleGUI("#crustyProspector", model.getLocations[2].getOffCardRoles[3]);
+//
+//
+//         final int[][] roles = { // imageViewID, location, role
+//             { 12, 3, 5 },
+//             { 47, 6, 8 },
+//         };
+//
+//         ImageView txt = (ImageView) scene.lookup("#crustyProspector");
+//     }
+// }
