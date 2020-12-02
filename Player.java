@@ -6,6 +6,7 @@
 //contains all the data and methods that a player needs
 //including methods for each possible action
 //and processing flags from PlayerView on which action to take
+package deadwood;
 import java.util.*;
 
 public class Player {

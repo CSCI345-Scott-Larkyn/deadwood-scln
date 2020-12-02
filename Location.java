@@ -3,6 +3,7 @@
 //      Deadwood
 //
 ////////////////////////////////////////////////////////////////
+package deadwood;
 
 import java.util.*;
 public class Location{ 

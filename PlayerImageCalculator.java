@@ -1,3 +1,5 @@
+package deadwood;
+
 public class PlayerImageCalculator {
 
     private String[] player1Images = new String[6];

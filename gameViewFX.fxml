@@ -17,11 +17,11 @@
 
 <SplitPane dividerPositions="0.7922297297297297" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="600.0" prefWidth="839.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIBoardController">
    <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
             <SplitPane dividerPositions="0.24282296650717702" layoutX="-1.0" layoutY="-2.0" prefHeight="469.0" prefWidth="838.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="446.0" prefWidth="192.0" style="-fx-background-color: grey;">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="446.0" prefWidth="192.0" style="-fx-background-color: grey;">
                      <children>
                         <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="470.0" prefWidth="199.0" spacing="15.0">
                            <children>
@@ -39,10 +39,10 @@
                                  </VBox.margin>
                               </Line>
                               <MenuButton fx:id="moveButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" style="-fx-background-color: blue; -fx-background-radius: 10; -fx-font-size: 24; -fx-text-fill: black;" text="Move" textFill="WHITE">
-                                <items>
-                                  <MenuItem id="bankMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Bank" />
+                                 <items>
+                                    <MenuItem id="bankMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Bank" />
                                     <MenuItem id="castingOfficeMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Casting Office" />
-                                  <MenuItem id="churchMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Church" />
+                                    <MenuItem id="churchMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Church" />
                                     <MenuItem id="generalStoreMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="General Store" />
                                     <MenuItem id="hotelMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Hotel" />
                                     <MenuItem id="jailMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Jail" />
@@ -52,7 +52,7 @@
                                     <MenuItem id="secretHideoutMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Secret Hideout" />
                                     <MenuItem id="trailersMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Trailers" />
                                     <MenuItem id="trainStationMenuItem" mnemonicParsing="false" style="-fx-font-size: 16;" text="Train Station" />
-                                </items>
+                                 </items>
                               </MenuButton>
                               <Button fx:id="takeRoleButton" alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Take Role" />
                               <Button fx:id="upgradeButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" style="-fx-background-radius: 10; -fx-background-color: blue; -fx-font-size: 24; -fx-text-fill: black;" text="Upgrade" />
@@ -96,7 +96,7 @@
                            </padding>
                         </VBox>
                      </children></AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="440.0" prefWidth="596.0" style="-fx-background-color: grey;">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="440.0" prefWidth="596.0" style="-fx-background-color: grey;">
                      <children>
                         <ImageView fx:id="boardPic" fitHeight="468.0" fitWidth="638.0" layoutX="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
                            <image>
@@ -484,10 +484,10 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-              </items>
+               </items>
             </SplitPane>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
             <HBox layoutX="14.0" layoutY="-19.0" prefHeight="189.0" prefWidth="898.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -661,5 +661,5 @@
                   <Line fx:id="p8RightLine" endX="-100.20710754394531" endY="142.2928924560547" startX="-100.0" />
                </children></HBox>
          </children></AnchorPane>
-  </items>
+   </items>
 </SplitPane>

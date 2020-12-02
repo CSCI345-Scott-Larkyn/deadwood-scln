@@ -5,6 +5,8 @@
 ////////////////////////////////////////////////////////////////
 //deals with all the printing to console and user input
 //associated with a player taking their turn
+package deadwood;
+
 import java.util.*;
 
 public class PlayerViewText implements PlayerView {

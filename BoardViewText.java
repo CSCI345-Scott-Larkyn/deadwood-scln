@@ -5,6 +5,8 @@
 ////////////////////////////////////////////////////////////////
 //this class is simply used to print an ASCI representation
 //of the game board at the start of each player's turn
+package deadwood;
+
 import java.util.*;
 
 public class BoardViewText implements BoardView {

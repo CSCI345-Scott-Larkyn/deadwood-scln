@@ -6,6 +6,7 @@
 //this class is the controller in the MVC model
 //it sets up everything from the files 
 //and takes care of finishing days and the game
+package deadwood;
 import java.util.*;
 import javax.xml.parsers.ParserConfigurationException;
 

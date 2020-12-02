@@ -1,3 +1,4 @@
+package deadwood;
 public class PixelData {
     public int x;
     public int y;

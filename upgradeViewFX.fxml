@@ -59,27 +59,27 @@
             </Button>
             <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <image>
-                  <Image url="@dice/w2.png" />
+                  <Image url="@../dice/w2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <image>
-                  <Image url="@dice/w3.png" />
+                  <Image url="@../dice/w3.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <image>
-                  <Image url="@dice/w4.png" />
+                  <Image url="@../dice/w4.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <image>
-                  <Image url="@dice/w5.png" />
+                  <Image url="@../dice/w5.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <image>
-                  <Image url="@dice/w6.png" />
+                  <Image url="@../dice/w6.png" />
                </image>
             </ImageView>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dollars" textAlignment="CENTER">
@@ -196,7 +196,7 @@
          <children>
             <ImageView fx:id="upgradingPlayerRank" fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <image>
-                  <Image url="@dice/b4.png" />
+                  <Image url="@../dice/b4.png" />
                </image>
             </ImageView>
             <Text fx:id="upgradingPlayerDollars" strokeType="OUTSIDE" strokeWidth="0.0" text="5" GridPane.rowIndex="1">

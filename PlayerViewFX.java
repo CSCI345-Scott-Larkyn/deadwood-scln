@@ -1,3 +1,4 @@
+package deadwood;
 public class PlayerViewFX implements PlayerView {
 
     public UpgradeData promptForUpgrade(UpgradeData data) {
@@ -16,9 +17,9 @@ public class PlayerViewFX implements PlayerView {
     public String promptForAction(String options, int budget, int practiceChips) {
         return null;
     }
-        //enable and disable the proper buttons based on the options array
-        //this will be part of a call to update the whole game
-        //return, as a string, the initial of the action (m, t, u, a, r, e)
+    //enable and disable the proper buttons based on the options array
+    //this will be part of a call to update the whole game
+    //return, as a string, the initial of the action (m, t, u, a, r, e)
 
     public int promptForRole(Role[] offCardRoles, Role[] onCardRoles, int playerRank) {
         //open the takeRoleFX window and get a button press
