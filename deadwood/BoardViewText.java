@@ -7,8 +7,6 @@
 //of the game board at the start of each player's turn
 package deadwood;
 
-import java.util.*;
-
 public class BoardViewText implements BoardView {
     //treat as 1-indexed
     private String[] station = new String[13];
