@@ -8,7 +8,8 @@ public class PlayerImageCalculator {
     private String[] player6Images = new String[6];
     private String[] player7Images = new String[6];
     private String[] player8Images = new String[6];
-    private String[][] players = new String[8][6];
+    private String[] playerWImages = new String[6];
+    private String[][] players = new String[9][6];
 
     public PlayerImageCalculator() {
         populateArrays();
@@ -17,6 +18,10 @@ public class PlayerImageCalculator {
 
     public String getPlayerImage(Player player) {
         return players[player.getPlayerNum() - 1][player.getRank() - 1];
+    }
+
+    public String getBlankPlayerImage(int rank) {
+        return players[8][rank - 1];
     }
 
     private void populateArrays() {
@@ -76,6 +81,13 @@ public class PlayerImageCalculator {
         player8Images[4] = "dice/y5.png";
         player8Images[5] = "dice/y6.png";
 
+        playerWImages[0] = "dice/w1.png";
+        playerWImages[1] = "dice/w2.png";
+        playerWImages[2] = "dice/w3.png";
+        playerWImages[3] = "dice/w4.png";
+        playerWImages[4] = "dice/w5.png";
+        playerWImages[5] = "dice/w6.png";
+
         players[0] = player1Images;
         players[1] = player2Images;
         players[2] = player3Images;
@@ -84,6 +96,6 @@ public class PlayerImageCalculator {
         players[5] = player6Images;
         players[6] = player7Images;
         players[7] = player8Images;
-
+        players[8] = playerWImages;
     }
 }
