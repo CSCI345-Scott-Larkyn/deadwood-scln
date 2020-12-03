@@ -70,7 +70,7 @@ public class CardGUI {
         role2.setX(60);
         role2.setY(26);
         role2.setVisible(false);
-        roles[1] = role1;
+        roles[1] = role2;
 
         pane = new AnchorPane(imageView, roles[0], roles[1]);
     }
@@ -78,7 +78,6 @@ public class CardGUI {
     private void makeRoles3() {
         roles = new ImageView[3];
 
-        roles = new ImageView[2];
         ImageView role1 = new ImageView();
         role1.setFitWidth(20);
         role1.setFitHeight(20);
@@ -95,7 +94,6 @@ public class CardGUI {
         role2.setVisible(false);
         roles[1] = role2;
 
-        roles = new ImageView[2];
         ImageView role3 = new ImageView();
         role3.setFitWidth(20);
         role3.setFitHeight(20);

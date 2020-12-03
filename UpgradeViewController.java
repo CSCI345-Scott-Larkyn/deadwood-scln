@@ -13,6 +13,15 @@ public class UpgradeViewController {
         this.stage = stage;
     }
 
+    public void popup(Player player) {
+        updateUI(player);
+        stage.showAndWait();
+    }
+
+    public void updateUI(Player player) {
+        //mostly just make sure the three elements at the bottom are correct
+    }
+
     @FXML
     private Button rank2Dollars;
 

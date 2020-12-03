@@ -13,6 +13,18 @@ public class TakeRoleController {
         this.stage = stage;
     }
 
+    public void popup(Location loc) {
+        updateGUI(loc);
+        stage.showAndWait();
+    }
+
+    public void updateGUI(Location loc) {
+        //each role should have the correct image for the rank
+        //can use playerImageCalculator.getBlankPlayerImage
+        //and when there are fewer than 3 on card or 4 off card roles
+        //the rest should be invisible
+    }
+
     @FXML
     private Button onCardButton1;
 

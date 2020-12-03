@@ -13,6 +13,27 @@ import javafx.stage.Stage;
 
 public class GameViewController {
 
+    private Board board;
+    private Player[] players;
+    private Location[] locs;
+
+    public void addFields(Board board, Player[] players) {
+        this.board = board;
+        this.players = players;
+        this.locs = board.getLocations();
+    }
+
+    public void updateUI(Player curPlayer) {
+        //make sure everything with an fxid is displayed correctly
+        //such as buttons being enabled or disabled with curPlayer.getMoveOptions
+        //on and off card roles being invisible or having the proper image
+        //can use PlayerImageCalculator
+        //various fields in the stat box need correct values
+        //whole tiles of the stat field should likely be invisible
+        //cards should be face up, face down, or invisible
+
+    }
+
     @FXML
     private MenuButton moveButton;
 

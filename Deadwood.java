@@ -32,11 +32,9 @@ public class Deadwood extends Application {
         primaryStage.setTitle("Deadwood- Implementation by Scott Carlson & Larkyn Nelson");
         FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("gameViewFX.fxml"));
         primaryStage.setScene(new Scene(gameLoader.load()));
-        primaryStage.initModality(Modality.APPLICATION_MODAL);
         GameViewController gameController = gameLoader.getController();
 
         FXMLLoader playerLoader = new FXMLLoader(getClass().getResource("playerSelectFX.fxml"));
-        Parent playerRoot = playerLoader.load();
         Stage playerStage = new Stage();
         playerStage.setScene(new Scene(playerLoader.load()));
         playerStage.initModality(Modality.APPLICATION_MODAL);

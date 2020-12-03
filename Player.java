@@ -21,12 +21,10 @@ public class Player {
     private boolean isOnCard = false;
     private boolean hasMoved = false;
     private boolean canAct = false;
-    private PlayerViewText playerView;
     private Random randy = new Random();
     
-    public Player(String name, PlayerViewText playerView, int playerNum, Location trailer) {
+    public Player(String name, int playerNum, Location trailer) {
         this.name = name;
-        this.playerView = playerView;
         rank = 1;
         credits = 0;
         this.playerNum = playerNum;
@@ -34,9 +32,8 @@ public class Player {
     }
     
     //in case of larger games with different starts
-    public Player(String name, PlayerViewText playerView, int credits, int rank, int playerNum, Location trailer) {
+    public Player(String name, int credits, int rank, int playerNum, Location trailer) {
         this.name = name;
-        this.playerView = playerView;
         this.rank = rank;
         this.credits = credits;
         this.playerNum = playerNum;
@@ -46,7 +43,7 @@ public class Player {
     //what GameManager calls
     //keeps running as long as the player has viable actions
     public void takeTurn() {
-        playerView.printTurnStartStats(dollars, credits, rank, location.getName());
+        //playerView.printTurnStartStats(dollars, credits, rank, location.getName());
         hasMoved = false;
         canAct = hasRole;
         String turnOptions = getTurnOptions();
@@ -91,7 +88,8 @@ public class Player {
         if (hasRole) {
             budget = location.getSet().getCard().getBudget();
         }
-        String action = playerView.promptForAction(allowableActions, budget, practiceChips);
+        //String action = playerView.promptForAction(allowableActions, budget, practiceChips);
+        String action = "";
         switch (action) {
             case "t":  //take role
                 takeRole();
@@ -123,7 +121,8 @@ public class Player {
     public void takeRole() {
         Role[] offCardRoles = location.getSet().getOffCardRoles();
         Role[] onCardRoles = location.getSet().getCard().getRoles();
-        int signedRole = playerView.promptForRole(offCardRoles, onCardRoles, rank);
+        //int signedRole = playerView.promptForRole(offCardRoles, onCardRoles, rank);
+        int signedRole = 0;
         if (signedRole < 0) {
             for (int index = 0; index < offCardRoles.length; index++) {
                 if (!hasRole && !offCardRoles[index].getIsOccupied()) {
@@ -152,7 +151,8 @@ public class Player {
     //calls on other classes for a new UpgradeData and upgrades financial fields accordingly
     public void upgrade() {
         UpgradeData data = new UpgradeData(dollars, credits, rank);
-        UpgradeData newData = playerView.promptForUpgrade(data);
+        //UpgradeData newData = playerView.promptForUpgrade(data);
+        UpgradeData newData = null;
         if (newData != null) {
             dollars = newData.dollars;
             credits = newData.credits;
@@ -163,21 +163,21 @@ public class Player {
     //rolls a die and counts practice chips and updates financial info according to the results
     public void act() {
         if (location.getSet() == null) {
-            playerView.printActingResults(0);
+            //playerView.printActingResults(0);
         } else {
             int budget = location.getSet().getCard().getBudget();
             int roll = 1 + randy.nextInt(6);
             if (roll + practiceChips >= budget) {
                 int shotsLeft = location.getSet().successfulShot();
                 getPaid("success");
-                playerView.printActingResults(roll);
+                //playerView.printActingResults(roll);
                 if (shotsLeft == 0) {
                     location.wrapScene();
                     practiceChips = 0;
                 }
             } else {
                 getPaid("failure");
-                playerView.printActingResults((-roll));
+                //playerView.printActingResults((-roll));
             }
         }   
         canAct = false;     
@@ -197,7 +197,8 @@ public class Player {
         if (hasRole) {
             System.out.println("You just moved while in a role.");
         }
-        Location destination = playerView.promptForMove(location.getNeighbors());
+        //Location destination = playerView.promptForMove(location.getNeighbors());
+        Location destination = null;
         if (destination == null) {
             return false;
         } else {

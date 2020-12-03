@@ -14,9 +14,14 @@ import java.util.ResourceBundle;
 public class PlayerSelectController implements Initializable {
 
     private Stage stage;
+    public int playerNum;
 
     public void addStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public void popup() {
+        stage.showAndWait();
     }
 
     @FXML
@@ -33,7 +38,8 @@ public class PlayerSelectController implements Initializable {
 
     @FXML
     void startButtonClicked(){
-
+        playerNum = plNum.getValue();
+        stage.close();
     }
 }
 

@@ -54,7 +54,7 @@ public class GameManager {
     //sets player data for small games
     private void makePlayers4OrLess(Location trailer) {
         for (int player = 0; player < numPlayers; player++) {
-            players[player] = new Player(playerIDs.substring(player, player + 1), playerView, player + 1, trailer);
+            players[player] = new Player(playerIDs.substring(player, player + 1), player + 1, trailer);
         }
     }
     
@@ -71,7 +71,7 @@ public class GameManager {
             rank = 2;
         }
         for (int player = 0; player < numPlayers; player++) {
-            players[player] = new Player(playerIDs.substring(player, player + 1), playerView, credits, rank, player + 1, trailer);
+            players[player] = new Player(playerIDs.substring(player, player + 1), credits, rank, player + 1, trailer);
         }
     }
     
