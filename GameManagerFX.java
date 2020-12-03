@@ -17,6 +17,7 @@ public class GameManagerFX {
     private int turnsTaken = 0;
     private int numPlayers;
     private Player[] players;
+    private Player curPlayer;
 
     public GameManagerFX(GameViewController gCon, UpgradeViewController uCon, PlayerSelectController pCon, TakeRoleController rCon, Stage primaryStage) {
         gameController = gCon;
@@ -30,10 +31,34 @@ public class GameManagerFX {
         playerController.popup();
         numPlayers = playerController.playerNum;
         modelSetup();
+        curPlayer = players[0];
         primaryStage.show();
+        roleController.popup(locations[2]);
     }
 
+    public void move(Location location) {
 
+    }
+
+    public void promptTakeRole() {
+        roleController.popup(curPlayer.getLocation());
+    }
+
+    public void promptUpgrade() {
+        upgradeController.popup(curPlayer);
+    }
+
+    public void act() {
+
+    }
+
+    public void rehearse() {
+
+    }
+
+    public void endTurn() {
+
+    }
 
     private void modelSetup() throws ParserConfigurationException {
         String boardFileName = "board.xml";

@@ -269,6 +269,10 @@ public class Player {
     public int getDollars() { return dollars; }
 
     public int getCredits() { return credits; }
+
+    public Location getLocation() {
+        return location;
+    }
     
     public void addDollars(int income) {
         dollars = dollars + income;
