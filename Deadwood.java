@@ -12,38 +12,60 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Deadwood extends Application {
 
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("playerSelectFX.fxml"));
-        Scene scene = new Scene(root);
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
-//        if(PlayerSelectController.getStartBtnClick() == true) {
-//            System.out.println("made it here!");
-//            Stage secondaryStage = new Stage();
-//            Parent root2 = FXMLLoader.load(getClass().getResource("gameViewFX.fxml"));
-//            Scene scene2 = new Scene(root2);
-//
-//            secondaryStage.setScene(scene2);
-//            secondaryStage.show();
-//            primaryStage.close();
-//        }else{
-//            System.out.println("something went horribly wrong");
-//        }
-
-    }
+    Stage stage;
+    Scene scene1, scene2, scene3, scene4;
 
     public static void main(String[] args) {
 
         launch(args);
 
     }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        stage = primaryStage;
+
+        primaryStage.setTitle("Deadwood- Implementation by Scott Carlson & Larkyn Nelson");
+        FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("gameViewFX.fxml"));
+        Parent root = gameLoader.load();
+        GameViewController gvController = gameLoader.getController();
+
+        FXMLLoader playerLoader = new FXMLLoader(getClass().getResource("playerSelectFX.fxml"));
+        Parent root2 = playerLoader.load();
+        PlayerSelectController psController = playerLoader.getController();
+
+        FXMLLoader upgradeLoader = new FXMLLoader(getClass().getResource("upgradeViewFX.fxml"));
+        Parent root3 = upgradeLoader.load();
+        UpgradeViewController upgradeController = upgradeLoader.getController();
+
+        FXMLLoader roleLoader = new FXMLLoader(getClass().getResource("takeRoleFX.fxml"));
+        Parent root4 = roleLoader.load();
+        TakeRoleController roleController = roleLoader.getController();
+
+        Scene scene1 = new Scene(root);
+        Scene scene2 = new Scene(root2);
+        Scene scene3 = new Scene(root3);
+        Scene scene4 = new Scene(root4);
+
+
+
+        primaryStage.show();
+
+
+
+
+    }
+
+
 //    public static void main(String[] args) throws NullPointerException, ParserConfigurationException {
 //
 //        int numPlayers = Integer.parseInt(args[0]);
