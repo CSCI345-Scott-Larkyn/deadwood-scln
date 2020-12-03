@@ -262,6 +262,12 @@ public class Player {
     }
 
     public int getRank() { return rank; }
+
+    public int getPracticeChips() { return practiceChips; }
+
+    public int getDollars() { return dollars; }
+
+    public int getCredits() { return credits; }
     
     public void addDollars(int income) {
         dollars = dollars + income;

@@ -3,8 +3,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class UpgradeViewController {
+
+    private Stage stage;
+
+    public void addStage(Stage stage) {
+        this.stage = stage;
+    }
 
     @FXML
     private Button rank2Dollars;

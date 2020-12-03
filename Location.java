@@ -14,6 +14,7 @@ public class Location{
  	private boolean upgradeOK;
  	private String name;
  	private boolean hasBeenVisited;
+ 	private VisitorsGUI visitorsGUI;
 
 
  	//Constructor:
@@ -112,5 +113,13 @@ public class Location{
 
     public void resetVisitation() {
  	    hasBeenVisited = false;
+    }
+
+    public void addVisitorsGUI(VisitorsGUI vis){
+ 	    visitorsGUI = vis;
+    }
+
+    public VisitorsGUI getVisitorsGUI() {
+ 	    return visitorsGUI;
     }
  }

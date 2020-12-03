@@ -1,5 +1,6 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -8,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class GameViewController {
 
@@ -147,79 +149,31 @@ public class GameViewController {
     private AnchorPane trainStationPane;
 
     @FXML
-    private ImageView trainStationCard;
-
-    @FXML
     private AnchorPane jailPane;
-
-    @FXML
-    private ImageView jailCard;
 
     @FXML
     private AnchorPane generalStorePane;
 
     @FXML
-    private ImageView generalStoreCard;
-
-    @FXML
-    private ImageView gsOff11;
-
-    @FXML
-    private ImageView gsOff12;
-
-    @FXML
-    private ImageView gsOff13;
-
-    @FXML
     private AnchorPane mainStreetPane;
-
-    @FXML
-    private ImageView mainStreetCard;
-
-    @FXML
-    private ImageView sOff13;
 
     @FXML
     private AnchorPane ranchPane;
 
     @FXML
-    private ImageView ranchCard;
-
-    @FXML
     private AnchorPane bankPane;
-
-    @FXML
-    private ImageView bankCard;
 
     @FXML
     private AnchorPane saloonPane;
 
     @FXML
-    private ImageView saloonCard;
-
-    @FXML
-    private ImageView sOff11;
-
-    @FXML
-    private ImageView sOff12;
-
-    @FXML
     private AnchorPane secretHideoutPane;
-
-    @FXML
-    private ImageView secretHideoutCard;
 
     @FXML
     private AnchorPane churchPane;
 
     @FXML
-    private ImageView churchCard;
-
-    @FXML
     private AnchorPane hotelPane;
-
-    @FXML
-    private ImageView hotelCard;
 
     @FXML
     private ImageView gsOff1;
@@ -307,6 +261,294 @@ public class GameViewController {
 
     @FXML
     private ImageView sOff1;
+
+    @FXML
+    private ImageView jV0;
+
+    @FXML
+    private ImageView jV1;
+
+    @FXML
+    private ImageView jV2;
+
+    @FXML
+    private ImageView jV3;
+
+    @FXML
+    private ImageView jV4;
+
+    @FXML
+    private ImageView jV5;
+
+    @FXML
+    private ImageView jV6;
+
+    @FXML
+    private ImageView jV7;
+
+    @FXML
+    private ImageView hV0;
+
+    @FXML
+    private ImageView hV1;
+
+    @FXML
+    private ImageView hV2;
+
+    @FXML
+    private ImageView hV3;
+
+    @FXML
+    private ImageView tV0;
+
+    @FXML
+    private ImageView tV1;
+
+    @FXML
+    private ImageView tV2;
+
+    @FXML
+    private ImageView tV3;
+
+    @FXML
+    private ImageView tV4;
+
+    @FXML
+    private ImageView tV5;
+
+    @FXML
+    private ImageView tV6;
+
+    @FXML
+    private ImageView tV7;
+
+    @FXML
+    private ImageView msV0;
+
+    @FXML
+    private ImageView msV1;
+
+    @FXML
+    private ImageView msV2;
+
+    @FXML
+    private ImageView msV3;
+
+    @FXML
+    private ImageView msV4;
+
+    @FXML
+    private ImageView msV5;
+
+    @FXML
+    private ImageView msV6;
+
+    @FXML
+    private ImageView msV7;
+
+    @FXML
+    private ImageView cV0;
+
+    @FXML
+    private ImageView cV1;
+
+    @FXML
+    private ImageView cV2;
+
+    @FXML
+    private ImageView cV3;
+
+    @FXML
+    private ImageView cV4;
+
+    @FXML
+    private ImageView cV5;
+
+    @FXML
+    private ImageView cV6;
+
+    @FXML
+    private ImageView cV7;
+
+    @FXML
+    private ImageView rV0;
+
+    @FXML
+    private ImageView rV1;
+
+    @FXML
+    private ImageView rV2;
+
+    @FXML
+    private ImageView rV3;
+
+    @FXML
+    private ImageView rV4;
+
+    @FXML
+    private ImageView rV5;
+
+    @FXML
+    private ImageView rV6;
+
+    @FXML
+    private ImageView rV7;
+
+    @FXML
+    private ImageView shV0;
+
+    @FXML
+    private ImageView shV1;
+
+    @FXML
+    private ImageView shV2;
+
+    @FXML
+    private ImageView shV3;
+
+    @FXML
+    private ImageView shV4;
+
+    @FXML
+    private ImageView shV5;
+
+    @FXML
+    private ImageView shV6;
+
+    @FXML
+    private ImageView shV7;
+
+    @FXML
+    private ImageView coV0;
+
+    @FXML
+    private ImageView coV1;
+
+    @FXML
+    private ImageView coV2;
+
+    @FXML
+    private ImageView coV3;
+
+    @FXML
+    private ImageView coV4;
+
+    @FXML
+    private ImageView coV5;
+
+    @FXML
+    private ImageView coV6;
+
+    @FXML
+    private ImageView coV7;
+
+    @FXML
+    private ImageView gsV0;
+
+    @FXML
+    private ImageView gsV1;
+
+    @FXML
+    private ImageView gsV2;
+
+    @FXML
+    private ImageView gsV3;
+
+    @FXML
+    private ImageView gsV4;
+
+    @FXML
+    private ImageView gsV5;
+
+    @FXML
+    private ImageView gsV6;
+
+    @FXML
+    private ImageView gsV7;
+
+    @FXML
+    private ImageView bV0;
+
+    @FXML
+    private ImageView bV1;
+
+    @FXML
+    private ImageView bV2;
+
+    @FXML
+    private ImageView bV3;
+
+    @FXML
+    private ImageView bV4;
+
+    @FXML
+    private ImageView bV5;
+
+    @FXML
+    private ImageView bV6;
+
+    @FXML
+    private ImageView bV7;
+
+    @FXML
+    private ImageView sV0;
+
+    @FXML
+    private ImageView sV1;
+
+    @FXML
+    private ImageView sV2;
+
+    @FXML
+    private ImageView sV3;
+
+    @FXML
+    private ImageView sV4;
+
+    @FXML
+    private ImageView sV5;
+
+    @FXML
+    private ImageView sV6;
+
+    @FXML
+    private ImageView sV7;
+
+    @FXML
+    private ImageView tsV4;
+
+    @FXML
+    private ImageView tsV5;
+
+    @FXML
+    private ImageView tsV6;
+
+    @FXML
+    private ImageView tsV7;
+
+    @FXML
+    private ImageView hV4;
+
+    @FXML
+    private ImageView hV5;
+
+    @FXML
+    private ImageView hV6;
+
+    @FXML
+    private ImageView hV7;
+
+    @FXML
+    private ImageView tsV0;
+
+    @FXML
+    private ImageView tsV1;
+
+    @FXML
+    private ImageView tsV2;
+
+    @FXML
+    private ImageView tsV3;
 
     @FXML
     private VBox p1StatBox;
@@ -519,4 +761,3 @@ public class GameViewController {
     }
 
 }
-

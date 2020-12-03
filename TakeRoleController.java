@@ -3,8 +3,15 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 
 public class TakeRoleController {
+
+    private Stage stage;
+
+    public void addStage(Stage stage) {
+        this.stage = stage;
+    }
 
     @FXML
     private Button onCardButton1;

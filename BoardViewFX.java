@@ -7,12 +7,12 @@ public class BoardViewFX implements BoardView {
         this.players = players;
     }
 
-    public void update() {
+    public void update(String options) {
 
     }
 
     public void printBoard(Board board) {
-
+        update("");
     }
 
 }

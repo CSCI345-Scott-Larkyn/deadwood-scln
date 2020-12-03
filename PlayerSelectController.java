@@ -11,7 +11,13 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PlayerSelectController implements Initializable{
+public class PlayerSelectController implements Initializable {
+
+    private Stage stage;
+
+    public void addStage(Stage stage) {
+        this.stage = stage;
+    }
 
     @FXML
     private Spinner<Integer> playerNumSpinner;
@@ -19,8 +25,6 @@ public class PlayerSelectController implements Initializable{
 
     @FXML
     private Button startButton;
-    private static boolean startBtnClick;
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -29,24 +33,7 @@ public class PlayerSelectController implements Initializable{
 
     @FXML
     void startButtonClicked(){
-        startBtnClick = true;
-        int numPlayers = Integer.parseInt(String.valueOf(plNum.getValue()));
-        System.out.println("player button start selected..." + numPlayers);
 
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("gameViewFX.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-
-            stage.setScene(new Scene(root));
-            stage.show();
-        }catch(Exception e){
-            System.out.println("Cant load game..... try again");
-        }
-    }
-
-    public static boolean getStartBtnClick() {
-        return startBtnClick;
     }
 }
 

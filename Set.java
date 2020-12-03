@@ -60,7 +60,7 @@ public class Set{
     //  location calls this method after a scene is wrapped
     //  then location calls reclaimPlayers
     //  
-    //  random number generater is used to create dice, 
+    //  random number generator is used to create dice,
     //      number of dice is dependent on budget. 
     //      these are stored in an array of type int then sorted
     //      role ranks are compared then sorted and then reversed so they

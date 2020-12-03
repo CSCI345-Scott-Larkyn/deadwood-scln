@@ -1,4 +1,8 @@
+import javafx.application.Platform;
+
 public class PlayerViewFX implements PlayerView {
+
+    public void OnUpgrade() {}
 
     public UpgradeData promptForUpgrade(UpgradeData data) {
         //open the upgradeFX window and call the correct method on the UpgradeManager
@@ -13,7 +17,8 @@ public class PlayerViewFX implements PlayerView {
         return null;
     }
 
-    public String promptForAction(String options, int budget, int practiceChips) {
+    public String promptForAction(String options, int budget, int practiceChips)
+    {
         return null;
     }
     //enable and disable the proper buttons based on the options array
