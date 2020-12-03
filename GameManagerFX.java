@@ -33,7 +33,7 @@ public class GameManagerFX {
         modelSetup();
         curPlayer = players[0];
         primaryStage.show();
-        roleController.popup(locations[2]);
+        upgradeController.popup(curPlayer);
     }
 
     public void move(Location location) {

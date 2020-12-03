@@ -32,6 +32,7 @@ public class GameViewController {
         //whole tiles of the stat field should likely be invisible
         //cards should be face up, face down, or invisible
 
+
     }
 
     @FXML

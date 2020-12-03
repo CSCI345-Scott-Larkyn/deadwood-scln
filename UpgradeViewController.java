@@ -1,9 +1,12 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 public class UpgradeViewController {
 
@@ -20,6 +23,12 @@ public class UpgradeViewController {
 
     public void updateGUI(Player player) {
         //mostly just make sure the three elements at the bottom are correct
+        upgradingPlayerCredits.setText(Integer.toString(player.getCredits()));
+        upgradingPlayerDollars.setText(Integer.toString(player.getDollars()));
+        PlayerImageCalculator pRank = new PlayerImageCalculator();
+        String playerImage = pRank.getPlayerImage(player);
+        Image updRole = new Image(getClass().getResourceAsStream(playerImage));
+        upgradingPlayerRank.setImage(updRole);
     }
 
     @FXML
