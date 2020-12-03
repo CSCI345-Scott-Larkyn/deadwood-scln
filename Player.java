@@ -42,20 +42,20 @@ public class Player {
     
     //what GameManager calls
     //keeps running as long as the player has viable actions
-    public void takeTurn() {
-        //playerView.printTurnStartStats(dollars, credits, rank, location.getName());
-        hasMoved = false;
-        canAct = hasRole;
-        String turnOptions = getTurnOptions();
-        while (!turnOptions.equals("")) {
-            boolean isDone = chooseAction(turnOptions);
-            if (isDone) {
-                turnOptions = "";
-            } else {
-                turnOptions = getTurnOptions();
-            }
-        }
-    }
+//    public void takeTurn() {
+//        //playerView.printTurnStartStats(dollars, credits, rank, location.getName());
+//        hasMoved = false;
+//        canAct = hasRole;
+//        String turnOptions = getTurnOptions();
+//        while (!turnOptions.equals("")) {
+//            boolean isDone = chooseAction(turnOptions);
+//            if (isDone) {
+//                turnOptions = "";
+//            } else {
+//                turnOptions = getTurnOptions();
+//            }
+//        }
+//    }
     
     //returns a string of the initials of all allowed actions to be passed to PlayerView
     public String getTurnOptions() {
@@ -75,7 +75,7 @@ public class Player {
         if (!hasRole && !hasMoved) {
             actions = actions + "m"; //move
         }
-        if (!hasRole) {
+        if (!canAct) {
             actions = actions + "e"; //end turn
         }
         return actions;
@@ -83,46 +83,45 @@ public class Player {
     
     //gets an action from PlayerView and calls the appropriate method
     //returns isDone boolean, true if player chose to end the turn
-    public boolean chooseAction(String allowableActions) {
-        int budget = -1;
-        if (hasRole) {
-            budget = location.getSet().getCard().getBudget();
-        }
-        //String action = playerView.promptForAction(allowableActions, budget, practiceChips);
-        String action = "";
-        switch (action) {
-            case "t":  //take role
-                takeRole();
-                break;
-            case "u":  //upgrade
-                upgrade();
-                break;
-            case "a":  //act
-                act();
-                break;
-            case "r":  //rehearse
-                rehearse();
-                break;
-            case "m":  //move
-                move();
-                break;
-            case "e":  //end turn
-                return true;
-            default:
-                System.out.println("Invalid input for action");
-                break;
-        }
-        return false;
-    }
+//    public boolean chooseAction(String allowableActions) {
+//        int budget = -1;
+//        if (hasRole) {
+//            budget = location.getSet().getCard().getBudget();
+//        }
+//        //String action = playerView.promptForAction(allowableActions, budget, practiceChips);
+//        String action = "";
+//        switch (action) {
+//            case "t":  //take role
+//                takeRole();
+//                break;
+//            case "u":  //upgrade
+//                upgrade();
+//                break;
+//            case "a":  //act
+//                act();
+//                break;
+//            case "r":  //rehearse
+//                rehearse();
+//                break;
+//            case "m":  //move
+//                move();
+//                break;
+//            case "e":  //end turn
+//                return true;
+//            default:
+//                System.out.println("Invalid input for action");
+//                break;
+//        }
+//        return false;
+//    }
     
     //places player in the proper role in its location
     //and updates fields like hasRole and isOnCard accordingly
     //positive int for signedRole means on card, negative means off card
-    public void takeRole() {
+    public void takeRole(int signedRole) {
         Role[] offCardRoles = location.getSet().getOffCardRoles();
         Role[] onCardRoles = location.getSet().getCard().getRoles();
         //int signedRole = playerView.promptForRole(offCardRoles, onCardRoles, rank);
-        int signedRole = 0;
         if (signedRole < 0) {
             for (int index = 0; index < offCardRoles.length; index++) {
                 if (!hasRole && !offCardRoles[index].getIsOccupied()) {
@@ -193,12 +192,11 @@ public class Player {
     //returns a boolean telling whether the player actually moved
     //ensures players can only move once per turn
     //precondition: player is not in role
-    public boolean move() {
+    public boolean move(Location destination) {
         if (hasRole) {
             System.out.println("You just moved while in a role.");
         }
         //Location destination = playerView.promptForMove(location.getNeighbors());
-        Location destination = null;
         if (destination == null) {
             return false;
         } else {

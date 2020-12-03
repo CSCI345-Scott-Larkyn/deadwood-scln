@@ -87,7 +87,7 @@ public class GameManager {
             Player currentPlayer = players[curPlayerIndex];
             String ID = currentPlayer.getName();
             System.out.println("It is player " + (curPlayerIndex + 1) + "'s turn ('" + ID + "')");
-            currentPlayer.takeTurn();
+            //currentPlayer.takeTurn();
             scenesCompleted = checkCompletedScenes();
             turnsTaken++;
             System.out.println();
