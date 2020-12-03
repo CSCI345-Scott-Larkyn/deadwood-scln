@@ -14,12 +14,12 @@ public class TakeRoleController {
         this.stage = stage;
     }
 
-    public void popup(Location loc) {
-        updateGUI(loc);
+    public void popup(Location loc, Player curPlayer) {
+        updateGUI(loc, curPlayer);
         stage.showAndWait();
     }
 
-    public void updateGUI(Location loc) {
+    public void updateGUI(Location loc, Player player) {
         //each role should have the correct image for the rank
         //can use playerImageCalculator.getBlankPlayerImage
         //and when there are fewer than 3 on card or 4 off card roles
@@ -28,6 +28,7 @@ public class TakeRoleController {
         Role[] offCardR = curSet.getOffCardRoles();
         Role[] onCardR = curSet.getCard().getRoles();
         PlayerImageCalculator pImage = new PlayerImageCalculator();
+        int rank = player.getRank();
 
         //offCard roles
         for (int i = 0; i < 4; i++) {
@@ -41,7 +42,12 @@ public class TakeRoleController {
                     String r = pImage.getBlankPlayerImage(offCardR[i].getRank());
                     Image updRole = new Image(getClass().getResourceAsStream(r));
                     offCardPic1.setImage(updRole);
-                    offCardButton1.setVisible(true);
+                    if(rank >= offCardR[i].getRank()) {
+                        offCardButton1.setVisible(true);
+                    }else{
+                        offCardButton1.setDisable(false);
+                        //offCardButton1.setVisible(false);
+                    }
                 }
             }
             if (i == 1) {
@@ -52,7 +58,12 @@ public class TakeRoleController {
                     String r = pImage.getBlankPlayerImage(offCardR[i].getRank());
                     Image updRole = new Image(getClass().getResourceAsStream(r));
                     offCardPic2.setImage(updRole);
-                    offCardButton2.setVisible(true);
+                    if(rank >= offCardR[i].getRank()) {
+                        offCardButton2.setVisible(true);
+                    }else{
+                        offCardButton2.setDisable(false);
+                        //offCardButton2.setVisible(false);
+                    }
                 }
             }
             if (i == 2 ) {
@@ -63,7 +74,12 @@ public class TakeRoleController {
                     String r = pImage.getBlankPlayerImage(offCardR[i].getRank());
                     Image updRole = new Image(getClass().getResourceAsStream(r));
                     offCardPic3.setImage(updRole);
-                    offCardButton3.setVisible(true);
+                    if(rank >= offCardR[i].getRank()) {
+                        offCardButton3.setVisible(true);
+                    }else{
+                        offCardButton3.setDisable(false);
+                        //offCardButton3.setVisible(false);
+                    }
                 }
             }
             if (i == 3) {
@@ -74,12 +90,16 @@ public class TakeRoleController {
                     String r = pImage.getBlankPlayerImage(offCardR[i].getRank());
                     Image updRole = new Image(getClass().getResourceAsStream(r));
                     offCardPic4.setImage(updRole);
-                    offCardButton4.setVisible(true);
+                    if(rank >= offCardR[i].getRank()) {
+                        offCardButton4.setVisible(true);
+                    }else{
+                        offCardButton4.setDisable(false);
+                        //offCardButton4.setVisible(false);
+                    }
                 }
             }
         }
-        for (int j = 0; j < 2; j++) {
-
+        for (int j = 0; j < 3; j++) {
 
             if (j == 0) {
                 if(onCardR.length <= j ||onCardR[0].getIsOccupied()){
@@ -89,7 +109,12 @@ public class TakeRoleController {
                     String r = pImage.getBlankPlayerImage(onCardR[j].getRank());
                     Image updRole = new Image(getClass().getResourceAsStream(r));
                     onCardPic1.setImage(updRole);
-                    onCardButton1.setVisible(true);
+                    if(rank >= onCardR[j].getRank()) {
+                        onCardButton1.setVisible(true);
+                    }else{
+                        onCardButton1.setDisable(false);
+                        //onCardButton1.setVisible(false);
+                    }
                 }
             }
             if (j == 1) {
@@ -100,7 +125,12 @@ public class TakeRoleController {
                     String r = pImage.getBlankPlayerImage(onCardR[j].getRank());
                     Image updRole = new Image(getClass().getResourceAsStream(r));
                     onCardPic2.setImage(updRole);
-                    onCardButton2.setVisible(true);
+                    if(rank >= onCardR[j].getRank()) {
+                        onCardButton2.setVisible(true);
+                    }else{
+                        onCardButton2.setDisable(false);
+                        //onCardButton2.setVisible(false);
+                    }
                 }
             }
             if (j == 2 ) {
@@ -111,7 +141,12 @@ public class TakeRoleController {
                     String r = pImage.getBlankPlayerImage(onCardR[j].getRank());
                     Image updRole = new Image(getClass().getResourceAsStream(r));
                     onCardPic3.setImage(updRole);
-                    onCardButton3.setVisible(true);
+                    if(rank >= onCardR[j].getRank()) {
+                        onCardButton3.setVisible(true);
+                    }else{
+                        onCardButton3.setDisable(false);
+                        //onCardButton3.setVisible(false);
+                    }
                 }
             }
         }

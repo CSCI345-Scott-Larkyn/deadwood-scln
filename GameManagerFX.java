@@ -39,7 +39,7 @@ public class GameManagerFX {
         modelSetup();
         curPlayer = players[0];
         primaryStage.show();
-        roleController.popup(locations[2]);
+        roleController.popup(locations[2], curPlayer);
         locations[8].getVisitorsGUI().update(locations[8].getVisitingPlayers());
     }
 
@@ -48,7 +48,7 @@ public class GameManagerFX {
     }
 
     public void promptTakeRole() {
-        roleController.popup(curPlayer.getLocation());
+        roleController.popup(curPlayer.getLocation(), curPlayer);
     }
 
     public void promptUpgrade() {
