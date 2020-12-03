@@ -14,11 +14,11 @@ public class UpgradeViewController {
     }
 
     public void popup(Player player) {
-        updateUI(player);
+        updateGUI(player);
         stage.showAndWait();
     }
 
-    public void updateUI(Player player) {
+    public void updateGUI(Player player) {
         //mostly just make sure the three elements at the bottom are correct
     }
 

@@ -23,7 +23,7 @@ public class GameViewController {
         this.locs = board.getLocations();
     }
 
-    public void updateUI(Player curPlayer) {
+    public void updateGUI(Player curPlayer) {
         //make sure everything with an fxid is displayed correctly
         //such as buttons being enabled or disabled with curPlayer.getMoveOptions
         //on and off card roles being invisible or having the proper image
