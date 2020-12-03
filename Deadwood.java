@@ -31,7 +31,8 @@ public class Deadwood extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Deadwood- Implementation by Scott Carlson & Larkyn Nelson");
         FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("gameViewFX.fxml"));
-        primaryStage.setScene(new Scene(gameLoader.load()));
+        Scene gameScene = new Scene(gameLoader.load());
+        primaryStage.setScene(gameScene);
         GameViewController gameController = gameLoader.getController();
 
         FXMLLoader playerLoader = new FXMLLoader(getClass().getResource("playerSelectFX.fxml"));
@@ -58,7 +59,7 @@ public class Deadwood extends Application {
         TakeRoleController roleController = roleLoader.getController();
         roleController.addStage(roleStage);
 
-        GameManagerFX managerFX = new GameManagerFX(gameController, upgradeController, playerController, roleController, primaryStage);
+        GameManagerFX managerFX = new GameManagerFX(gameController, upgradeController, playerController, roleController, primaryStage, gameScene);
         managerFX.playGame();
     }
 

@@ -1,6 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -33,6 +34,72 @@ public class GameViewController {
         //cards should be face up, face down, or invisible
 
 
+    }
+
+    public RoleGUI[] hookUpExtras(Location[] locs) {
+        RoleGUI[] roleGUIS = new RoleGUI[29];
+        roleGUIS[0] = new RoleGUI(tsOff0, locs[0].getSet().getOffCardRoles()[0]);
+        roleGUIS[1] = new RoleGUI(tsOff1, locs[0].getSet().getOffCardRoles()[1]);
+        roleGUIS[2] = new RoleGUI(tsOff2, locs[0].getSet().getOffCardRoles()[2]);
+        roleGUIS[3] = new RoleGUI(tsOff3, locs[0].getSet().getOffCardRoles()[3]);
+        roleGUIS[4] = new RoleGUI(shOff0, locs[1].getSet().getOffCardRoles()[0]);
+        roleGUIS[5] = new RoleGUI(shOff1, locs[1].getSet().getOffCardRoles()[1]);
+        roleGUIS[6] = new RoleGUI(shOff2, locs[1].getSet().getOffCardRoles()[2]);
+        roleGUIS[7] = new RoleGUI(shOff3, locs[1].getSet().getOffCardRoles()[3]);
+        roleGUIS[8] = new RoleGUI(cOff0, locs[2].getSet().getOffCardRoles()[0]);
+        roleGUIS[9] = new RoleGUI(cOff1, locs[2].getSet().getOffCardRoles()[1]);
+        roleGUIS[10] = new RoleGUI(hOff0, locs[3].getSet().getOffCardRoles()[0]);
+        roleGUIS[11] = new RoleGUI(hOff1, locs[3].getSet().getOffCardRoles()[1]);
+        roleGUIS[12] = new RoleGUI(hOff2, locs[3].getSet().getOffCardRoles()[2]);
+        roleGUIS[13] = new RoleGUI(hOff3, locs[3].getSet().getOffCardRoles()[3]);
+        roleGUIS[14] = new RoleGUI(msOff0, locs[4].getSet().getOffCardRoles()[0]);
+        roleGUIS[15] = new RoleGUI(msOff1, locs[4].getSet().getOffCardRoles()[1]);
+        roleGUIS[16] = new RoleGUI(msOff2, locs[4].getSet().getOffCardRoles()[2]);
+        roleGUIS[17] = new RoleGUI(msOff3, locs[4].getSet().getOffCardRoles()[3]);
+        roleGUIS[18] = new RoleGUI(jOff0, locs[5].getSet().getOffCardRoles()[0]);
+        roleGUIS[19] = new RoleGUI(jOff1, locs[5].getSet().getOffCardRoles()[1]);
+        roleGUIS[20] = new RoleGUI(gsOff0, locs[6].getSet().getOffCardRoles()[0]);
+        roleGUIS[21] = new RoleGUI(gsOff1, locs[6].getSet().getOffCardRoles()[1]);
+        roleGUIS[22] = new RoleGUI(rOff1, locs[7].getSet().getOffCardRoles()[0]);
+        roleGUIS[23] = new RoleGUI(rOff1, locs[7].getSet().getOffCardRoles()[1]);
+        roleGUIS[24] = new RoleGUI(rOff2, locs[7].getSet().getOffCardRoles()[2]);
+        roleGUIS[25] = new RoleGUI(bOff0, locs[8].getSet().getOffCardRoles()[0]);
+        roleGUIS[26] = new RoleGUI(bOff1, locs[8].getSet().getOffCardRoles()[1]);
+        roleGUIS[27] = new RoleGUI(sOff0, locs[9].getSet().getOffCardRoles()[0]);
+        roleGUIS[28] = new RoleGUI(sOff1, locs[9].getSet().getOffCardRoles()[1]);
+        return roleGUIS;
+    }
+
+    public void hookUpVisitors(Location[] locs) {
+        VisitorsGUI tsV = new VisitorsGUI(tsV0, tsV1, tsV2, tsV3, tsV4, tsV5, tsV6, tsV7);
+        locs[0].addVisitorsGUI(tsV);
+
+        VisitorsGUI shV = new VisitorsGUI(shV0, shV1, shV2, shV3, shV4, shV5, shV6, shV7);
+        locs[1].addVisitorsGUI(shV);
+
+        VisitorsGUI cV = new VisitorsGUI(cV0, cV1, cV2, cV3, cV4, cV5, cV6, cV7);
+        locs[2].addVisitorsGUI(cV);
+
+        VisitorsGUI hV = new VisitorsGUI(hV0, hV1, hV2, hV3, hV4, hV5, hV6, hV7);
+        locs[3].addVisitorsGUI(hV);
+
+        VisitorsGUI msV = new VisitorsGUI(msV0, msV1, msV2, msV3, msV4, msV5, msV6, msV7);
+        locs[4].addVisitorsGUI(msV);
+
+        VisitorsGUI jV = new VisitorsGUI(jV0, jV1, jV2, jV3, jV4, jV5, jV6, jV7);
+        locs[5].addVisitorsGUI(jV);
+
+        VisitorsGUI gsV = new VisitorsGUI(gsV0, gsV1, gsV2, gsV3, gsV4, gsV5, gsV6, gsV7);
+        locs[6].addVisitorsGUI(gsV);
+
+        VisitorsGUI rV = new VisitorsGUI(rV0, rV1, rV2, rV3, rV4, rV5, rV6, rV7);
+        locs[7].addVisitorsGUI(rV);
+
+        VisitorsGUI bV = new VisitorsGUI(bV0, bV1, bV2, bV3, bV4, bV5, bV6, bV7);
+        locs[8].addVisitorsGUI(bV);
+
+        VisitorsGUI sV = new VisitorsGUI(sV0, sV1, sV2, sV3, sV4, sV5, sV6, sV7);
+        locs[9].addVisitorsGUI(sV);
     }
 
     @FXML
