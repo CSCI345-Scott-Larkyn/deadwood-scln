@@ -12,16 +12,23 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class GameViewController {
 
     private Board board;
     private Player[] players;
     private Location[] locs;
+    private GameManagerFX manager;
+    private List<RoleGUI> offCardRoleGUIS;
+    private StatBoxGUI[] statBoxes = new StatBoxGUI[8];
 
-    public void addFields(Board board, Player[] players) {
+    public void addFields(Board board, Player[] players, GameManagerFX manager, List<RoleGUI> offCardRoleGUIs) {
         this.board = board;
         this.players = players;
         this.locs = board.getLocations();
+        this.manager = manager;
+        this.offCardRoleGUIS = offCardRoleGUIs;
     }
 
     public void updateGUI(Player curPlayer) {
@@ -33,7 +40,50 @@ public class GameViewController {
         //whole tiles of the stat field should likely be invisible
         //cards should be face up, face down, or invisible
 
+        //for each Location (loop)
+            //visitorsGUI.update
+            //cardGUI.update
 
+        //for each offCardRoleGUI (loop)
+            //roleGUI.updateGUI
+
+        //String options = curPlayer.getTurnOptions
+        //for each button
+            //if options.contains("x")
+                //enable
+            //else
+                //disable
+        //(if act is an option, make acting stat box visible)
+        //(if acting is an option, ending wont be, so itll be made invisible there)
+        //and update those two text fields
+        //just 6 things
+
+        //for each statbox (loop)
+            //statboxgui.update (unwritten so far)
+
+        //for each moveMenuItem
+            //menuItem.setVisibiliy(findlocbyname(menuItemname, curPlayer.location.getneighbors)
+            //no loop, just gotta do it 12 times
+
+        //for each shot count icon
+            //make (in)visible
+            //either do it 22 times or make some data structure to handle the loop
+            //i was thinking if there is one shot completed on a 3-shot location
+            //then shot3 is visible and shot2 and shot1 are invisible, but we can decide
+
+        //for each anchorpane for locations
+            //add location.getcard.getcardgui.getpane
+            //cardgui.update
+            //probs no loop but idk, could make a map<anchorpane, location>, who knows
+    }
+
+    private boolean findLocationByName(String name, Location[] locs) {
+        for (Location loc : locs) {
+            if (loc.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public RoleGUI[] hookUpExtras(Location[] locs) {
@@ -100,6 +150,31 @@ public class GameViewController {
 
         VisitorsGUI sV = new VisitorsGUI(sV0, sV1, sV2, sV3, sV4, sV5, sV6, sV7);
         locs[9].addVisitorsGUI(sV);
+
+        VisitorsGUI tV = new VisitorsGUI(tV0, tV1, tV2, tV3, tV4, tV5, tV6, tV7);
+        locs[10].addVisitorsGUI(tV);
+
+        VisitorsGUI coV = new VisitorsGUI(coV0, coV1, coV2, coV3, coV4, coV5, coV6, coV7);
+        locs[11].addVisitorsGUI(coV);
+    }
+
+    public void hookUpStatBoxes() {
+        statBoxes[0] = new StatBoxGUI(p1RightLine, p1StatBox, p1DollarsString, p1CreditsString, p1RankPic, getPlayer(0));
+        statBoxes[1] = new StatBoxGUI(p2RightLine, p2StatBox, p2DollarsString, p2CreditsString, p2RankPic, getPlayer(1));
+        statBoxes[2] = new StatBoxGUI(p3RightLine, p3StatBox, p3DollarsString, p3CreditsString, p3RankPic, getPlayer(2));
+        statBoxes[3] = new StatBoxGUI(p4RightLine, p4StatBox, p4DollarsString, p4CreditsString, p4RankPic, getPlayer(3));
+        statBoxes[4] = new StatBoxGUI(p5RightLine, p5StatBox, p5DollarsString, p5CreditsString, p5RankPic, getPlayer(4));
+        statBoxes[5] = new StatBoxGUI(p6RightLine, p6StatBox, p6DollarsString, p6CreditsString, p6RankPic, getPlayer(5));
+        statBoxes[6] = new StatBoxGUI(p7RightLine, p7StatBox, p7DollarsString, p7CreditsString, p7RankPic, getPlayer(6));
+        statBoxes[7] = new StatBoxGUI(p8RightLine, p8StatBox, p8DollarsString, p8CreditsString, p8RankPic, getPlayer(7));
+    }
+
+    private Player getPlayer(int index) {
+        if (index > players.length) {
+            return null;
+        } else {
+            return players[index];
+        }
     }
 
     @FXML
@@ -761,42 +836,42 @@ public class GameViewController {
 
     @FXML
     void actClicked(ActionEvent event) {
-
+        manager.act();
     }
 
     @FXML
     void bankMoveClick(ActionEvent event) {
-
+        manager.move(locs[8]);
     }
 
     @FXML
     void coMoveClicked(ActionEvent event) {
-
+        manager.move(locs[11]);
     }
 
     @FXML
     void endTurnClicked(ActionEvent event) {
-
+        manager.endTurn();
     }
 
     @FXML
     void gsMoveClicked(ActionEvent event) {
-
+        manager.move(locs[6]);
     }
 
     @FXML
     void hotelMoveClicked(ActionEvent event) {
-
+        manager.move(locs[3]);
     }
 
     @FXML
     void jailMoveClicked(ActionEvent event) {
-
+        manager.move(locs[5]);
     }
 
     @FXML
     void moveChurchClicked(ActionEvent event) {
-
+        manager.move(locs[2]);
     }
 
     @FXML
@@ -806,47 +881,47 @@ public class GameViewController {
 
     @FXML
     void msMoveClicked(ActionEvent event) {
-
+        manager.move(locs[4]);
     }
 
     @FXML
     void ranchMoveClicked(ActionEvent event) {
-
+        manager.move(locs[7]);
     }
 
     @FXML
     void rehearseClicked(ActionEvent event) {
-
+        manager.rehearse();
     }
 
     @FXML
     void saloonMoveClicked(ActionEvent event) {
-
+        manager.move(locs[9]);
     }
 
     @FXML
     void shMoveClicked(ActionEvent event) {
-
+        manager.move(locs[1]);
     }
 
     @FXML
     void takeRoleClicked(ActionEvent event) {
-
+        manager.promptTakeRole();
     }
 
     @FXML
     void trailersMoveClicked(ActionEvent event) {
-
+        manager.move(locs[10]);
     }
 
     @FXML
     void tsMoveClicked(ActionEvent event) {
-
+        manager.move(locs[0]);
     }
 
     @FXML
     void upgradeClicked(ActionEvent event) {
-
+        manager.promptUpgrade();
     }
 
 }

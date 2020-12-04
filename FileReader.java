@@ -272,6 +272,10 @@ public class FileReader {
         return cardList;
     }
 
+    public List<RoleGUI> getOffCardRoleGUIs() {
+        return offCardRoleGUIs;
+    }
+
     //given code
 
     private Document getDocFromFile(String fileName) throws ParserConfigurationException {

@@ -20,7 +20,7 @@ public class GameManagerFX {
     private int numPlayers;
     private Player[] players;
     private Player curPlayer;
-    private RoleGUI[] roleGUIS;
+    private List<RoleGUI> offCardRoleGUIS;
     private int maxDays;
     private int daysPlayed;
 
@@ -84,6 +84,7 @@ public class GameManagerFX {
                 endDay();
             }
         }
+        curPlayer.setTurnBooleans();
         gameController.updateGUI(curPlayer);
     }
 
@@ -114,6 +115,7 @@ public class GameManagerFX {
         String cardsFileName = "cards.xml";
         FileReader fileReader = new FileReader();
         fileReader.parseBoardXML(boardFileName);
+        offCardRoleGUIS = fileReader.getOffCardRoleGUIs();
         locations = fileReader.getLocations();
         fileReader.parseCardsXML(cardsFileName);
         cards = fileReader.getCardDeck();
@@ -135,6 +137,7 @@ public class GameManagerFX {
         board.dealCards();
         maxDays = (numPlayers <= 3) ? 3 : 4;
         daysPlayed = 0;
+        gameController.addFields(board, players, this, offCardRoleGUIS);
     }
     //sets player data for small games
     private void makePlayers4OrLess(Location trailer) {

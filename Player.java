@@ -57,6 +57,10 @@ public class Player {
 //            }
 //        }
 //    }
+    public void setTurnBooleans() {
+        canAct = hasRole;
+        hasMoved = false;
+    }
     
     //returns a string of the initials of all allowed actions to be passed to PlayerView
     public String getTurnOptions() {
