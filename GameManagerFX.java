@@ -39,20 +39,29 @@ public class GameManagerFX {
         modelSetup();
         curPlayer = players[0];
         primaryStage.show();
-        roleController.popup(locations[2], curPlayer);
+        roleController.popup(locations[0], curPlayer);
         locations[8].getVisitorsGUI().update(locations[8].getVisitingPlayers());
     }
 
     public void move(Location location) {
         curPlayer.move(location);
+        gameController.updateGUI(curPlayer);
     }
 
     public void promptTakeRole() {
         roleController.popup(curPlayer.getLocation(), curPlayer);
+        int signedRole = roleController.roleToTake.getRank();
+        if (!roleController.isRoleOnCard) {
+            signedRole = -1 * signedRole;
+        }
+        curPlayer.takeRole(signedRole);
+        gameController.updateGUI(curPlayer);
     }
 
     public void promptUpgrade() {
         upgradeController.popup(curPlayer);
+        curPlayer.upgrade(upgradeController.intendedRank, upgradeController.payWithDollars);
+        gameController.updateGUI(curPlayer);
     }
 
     public void act() {

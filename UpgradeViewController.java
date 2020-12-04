@@ -11,6 +11,8 @@ import java.io.File;
 public class UpgradeViewController {
 
     private Stage stage;
+    public int intendedRank;
+    public boolean payWithDollars;
 
     public void addStage(Stage stage) {
         this.stage = stage;
@@ -72,52 +74,62 @@ public class UpgradeViewController {
 
     @FXML
     void r2CreditClicked(ActionEvent event) {
-
+        intendedRank = 2;
+        payWithDollars = false;
     }
 
     @FXML
     void r2DollarsClicked(ActionEvent event) {
-
+        intendedRank = 2;
+        payWithDollars = true;
     }
 
     @FXML
     void r3CreditClicked(ActionEvent event) {
-
+        intendedRank = 3;
+        payWithDollars = false;
     }
 
     @FXML
     void r3DollarsClicked(ActionEvent event) {
-
+        intendedRank = 3;
+        payWithDollars = true;
     }
 
     @FXML
     void r4CreditClicked(ActionEvent event) {
-
+        intendedRank = 4;
+        payWithDollars = false;
     }
 
     @FXML
     void r4DollarsClicked(ActionEvent event) {
-
+        intendedRank = 4;
+        payWithDollars = true;
     }
 
     @FXML
     void r5CreditClicked(ActionEvent event) {
-
+        intendedRank = 5;
+        payWithDollars = false;
     }
 
     @FXML
     void r5DollarsClicked(ActionEvent event) {
-
+        intendedRank = 5;
+        payWithDollars = true;
     }
 
     @FXML
     void r6CreditClicked(ActionEvent event) {
-
+        intendedRank = 6;
+        payWithDollars = false;
     }
 
     @FXML
     void r6DollarsClicked(ActionEvent event) {
-
+        intendedRank = 6;
+        payWithDollars = true;
     }
 
 }

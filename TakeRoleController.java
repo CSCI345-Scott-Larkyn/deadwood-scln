@@ -9,6 +9,10 @@ import javafx.stage.Stage;
 public class TakeRoleController {
 
     private Stage stage;
+    public Role roleToTake;
+    public boolean isRoleOnCard;
+    private Role[] offCardR;
+    private Role[] onCardR;
 
     public void addStage(Stage stage) {
         this.stage = stage;
@@ -25,10 +29,13 @@ public class TakeRoleController {
         //and when there are fewer than 3 on card or 4 off card roles
         //the rest should be invisible
         Set curSet = loc.getSet();
-        Role[] offCardR = curSet.getOffCardRoles();
-        Role[] onCardR = curSet.getCard().getRoles();
-        PlayerImageCalculator pImage = new PlayerImageCalculator();
+        offCardR = curSet.getOffCardRoles();
+        onCardR = curSet.getCard().getRoles();
         int rank = player.getRank();
+        offCardR = makeValidRoles(offCardR, rank);
+        onCardR = makeValidRoles(onCardR, rank);
+        PlayerImageCalculator pImage = new PlayerImageCalculator();
+
 
         //offCard roles
         for (int i = 0; i < 4; i++) {
@@ -46,7 +53,7 @@ public class TakeRoleController {
                         offCardButton1.setVisible(true);
                     }else{
                         offCardButton1.setDisable(false);
-                        //offCardButton1.setVisible(false);
+                        offCardButton1.setVisible(false);
                     }
                 }
             }
@@ -62,7 +69,7 @@ public class TakeRoleController {
                         offCardButton2.setVisible(true);
                     }else{
                         offCardButton2.setDisable(false);
-                        //offCardButton2.setVisible(false);
+                        offCardButton2.setVisible(false);
                     }
                 }
             }
@@ -78,7 +85,7 @@ public class TakeRoleController {
                         offCardButton3.setVisible(true);
                     }else{
                         offCardButton3.setDisable(false);
-                        //offCardButton3.setVisible(false);
+                        offCardButton3.setVisible(false);
                     }
                 }
             }
@@ -94,7 +101,7 @@ public class TakeRoleController {
                         offCardButton4.setVisible(true);
                     }else{
                         offCardButton4.setDisable(false);
-                        //offCardButton4.setVisible(false);
+                        offCardButton4.setVisible(false);
                     }
                 }
             }
@@ -113,7 +120,7 @@ public class TakeRoleController {
                         onCardButton1.setVisible(true);
                     }else{
                         onCardButton1.setDisable(false);
-                        //onCardButton1.setVisible(false);
+                        onCardButton1.setVisible(false);
                     }
                 }
             }
@@ -129,7 +136,7 @@ public class TakeRoleController {
                         onCardButton2.setVisible(true);
                     }else{
                         onCardButton2.setDisable(false);
-                        //onCardButton2.setVisible(false);
+                        onCardButton2.setVisible(false);
                     }
                 }
             }
@@ -145,11 +152,29 @@ public class TakeRoleController {
                         onCardButton3.setVisible(true);
                     }else{
                         onCardButton3.setDisable(false);
-                        //onCardButton3.setVisible(false);
+                        onCardButton3.setVisible(false);
                     }
                 }
             }
         }
+    }
+
+    private Role[] makeValidRoles(Role[] roles, int rank) {
+         int numValid = 0;
+         for (int i = 0; i < roles.length; i++) {
+             Role role = roles[i];
+             if (!role.getIsOccupied() && role.getRank() <= rank) {
+                 numValid++;
+             }
+         }
+         Role[] validRoles = new Role[numValid];
+        for (int i = 0; i < roles.length; i++) {
+            Role role = roles[i];
+            if (!role.getIsOccupied() && role.getRank() <= rank) {
+                validRoles[i] = role;
+            }
+        }
+        return validRoles;
     }
 
     @FXML
@@ -196,37 +221,51 @@ public class TakeRoleController {
 
     @FXML
     void offC1CLicked(ActionEvent event) {
-
+        roleToTake = offCardR[0];
+        isRoleOnCard = false;
+        stage.close();
     }
 
     @FXML
     void offC2Clicked(ActionEvent event) {
-
+        roleToTake = offCardR[1];
+        isRoleOnCard = false;
+        stage.close();
     }
 
     @FXML
     void offC3Clicked(ActionEvent event) {
-
+        roleToTake = offCardR[2];
+        isRoleOnCard = false;
+        stage.close();
     }
 
     @FXML
-    void offC5Clicked(ActionEvent event) {
-
+    void offC4Clicked(ActionEvent event) {
+        roleToTake = offCardR[3];
+        isRoleOnCard = false;
+        stage.close();
     }
 
     @FXML
     void onC1Clicked(ActionEvent event) {
-
+        roleToTake = onCardR[0];
+        isRoleOnCard = true;
+        stage.close();
     }
 
     @FXML
     void onC2Clicked(ActionEvent event) {
-
+        roleToTake = onCardR[1];
+        isRoleOnCard = true;
+        stage.close();
     }
 
     @FXML
     void onC3Clicked(ActionEvent event) {
-
+        roleToTake = onCardR[2];
+        isRoleOnCard = true;
+        stage.close();
     }
 
 }

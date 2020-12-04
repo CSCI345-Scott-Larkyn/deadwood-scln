@@ -22,6 +22,7 @@ public class Player {
     private boolean hasMoved = false;
     private boolean canAct = false;
     private Random randy = new Random();
+    private UpgradeManager upgrader = new UpgradeManager();
     
     public Player(String name, int playerNum, Location trailer) {
         this.name = name;
@@ -148,10 +149,15 @@ public class Player {
     }
     
     //calls on other classes for a new UpgradeData and upgrades financial fields accordingly
-    public void upgrade() {
+    public void upgrade(int intendedRank, boolean payWithDollars) {
         UpgradeData data = new UpgradeData(dollars, credits, rank);
-        //UpgradeData newData = playerView.promptForUpgrade(data);
-        UpgradeData newData = null;
+        //UpgradeData newData = up.promptForUpgrade(data);
+        UpgradeData newData;
+        if (payWithDollars) {
+            newData = upgrader.upgradeWithMoney(data, intendedRank);
+        } else {
+            newData = upgrader.upgradeWithCredits(data, intendedRank);
+        }
         if (newData != null) {
             dollars = newData.dollars;
             credits = newData.credits;
