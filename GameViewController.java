@@ -12,6 +12,8 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class GameViewController {
 
     private Board board;
@@ -26,7 +28,7 @@ public class GameViewController {
 
     public void updateGUI(Player curPlayer) {
         //make sure everything with an fxid is displayed correctly
-        //such as buttons being enabled or disabled with curPlayer.getMoveOptions
+        //  such as buttons being enabled or disabled with curPlayer.getMoveOptions
         //on and off card roles being invisible or having the proper image
         //can use PlayerImageCalculator
         //various fields in the stat box need correct values
@@ -34,7 +36,57 @@ public class GameViewController {
         //cards should be face up, face down, or invisible
 
 
+        //move button and locations within
+
+        //take role button
+
+        //upgrade button
+
+        //act button
+
+        //rehearse button
+
+        //end turn button
+
+        //underneath end turn: budget and practice chips text
+
+        //locations visible players... on card, off card, visitors
+
+
+        //cards... face up, face down, invisible
+
+
+        //stats bar at the bottom..
+            //pane invisible for less players
+            //correct rank, credits, dollars
+        int numPlayers = players.length;
+        if(numPlayers < 8){
+            p8StatBox.setVisible(false);
+            //set up rank, credit, dollars for each
+            if(numPlayers < 7 ){
+                p7StatBox.setVisible(false);
+                if(numPlayers < 6){
+                    p6StatBox.setVisible(false);
+                    if(numPlayers < 5){
+                        p5StatBox.setVisible(false);
+                        if(numPlayers < 4 ){
+                            p4StatBox.setVisible(false);
+                            if(numPlayers < 3){
+                                p3StatBox.setVisible(false);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
+
     }
+
+
 
     public RoleGUI[] hookUpExtras(Location[] locs) {
         RoleGUI[] roleGUIS = new RoleGUI[29];

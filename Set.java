@@ -55,6 +55,8 @@ public class Set{
     public int getCurrentShotCount() {
         return currentShotCount;
     }
+
+    public int getSetShotCount() { return setShotCount; }
     
     //void payActors():
     //  location calls this method after a scene is wrapped

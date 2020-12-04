@@ -38,6 +38,8 @@ public class GameManagerFX {
         numPlayers = playerController.playerNum;
         modelSetup();
         curPlayer = players[0];
+        gameController.addFields(board, players);
+        gameController.updateGUI(curPlayer);
         primaryStage.show();
         roleController.popup(locations[2], curPlayer);
         locations[8].getVisitorsGUI().update(locations[8].getVisitingPlayers());

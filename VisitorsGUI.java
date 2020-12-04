@@ -27,4 +27,7 @@ public class VisitorsGUI {
             players[i].setVisible(false);
         }
     }
+    public ImageView[] getPlayer(){
+        return players;
+    }
 }
