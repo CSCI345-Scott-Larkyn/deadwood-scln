@@ -59,7 +59,14 @@ public class Deadwood extends Application {
         TakeRoleController roleController = roleLoader.getController();
         roleController.addStage(roleStage);
 
-        GameManagerFX managerFX = new GameManagerFX(gameController, upgradeController, playerController, roleController, primaryStage, gameScene);
+        FXMLLoader winnerLoader = new FXMLLoader(getClass().getResource("showWinnersFX.fxml"));
+        Stage winnerStage = new Stage();
+        winnerStage.setScene(new Scene(winnerLoader.load()));
+        winnerStage.initModality(Modality.APPLICATION_MODAL);
+        ShowWinnersController winnersController = winnerLoader.getController();
+        winnersController.addStage(winnerStage);
+
+        GameManagerFX managerFX = new GameManagerFX(gameController, upgradeController, playerController, roleController, winnersController, primaryStage, gameScene);
         managerFX.playGame();
     }
 

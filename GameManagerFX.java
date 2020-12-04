@@ -9,6 +9,7 @@ public class GameManagerFX {
     private UpgradeViewController upgradeController;
     private PlayerSelectController playerController;
     private TakeRoleController roleController;
+    private ShowWinnersController winnersController;
     private Stage primaryStage;
     private Scene gameScene;
 
@@ -24,11 +25,12 @@ public class GameManagerFX {
     private int maxDays;
     private int daysPlayed;
 
-    public GameManagerFX(GameViewController gCon, UpgradeViewController uCon, PlayerSelectController pCon, TakeRoleController rCon, Stage primaryStage, Scene gameScene) {
+    public GameManagerFX(GameViewController gCon, UpgradeViewController uCon, PlayerSelectController pCon, TakeRoleController rCon, ShowWinnersController wCon, Stage primaryStage, Scene gameScene) {
         gameController = gCon;
         upgradeController = uCon;
         playerController = pCon;
         roleController = rCon;
+        winnersController = wCon;
         this.primaryStage = primaryStage;
         this.gameScene = gameScene;
     }
@@ -43,6 +45,19 @@ public class GameManagerFX {
         locations[8].getVisitorsGUI().update(locations[8].getVisitingPlayers());
     }
 
+//    private Player[] makeFakes() {
+//        Player[] fakes = new Player[8];
+//        fakes[0] = new Player("!", 0, 20, 1, locations[10]);
+//        fakes[1] = new Player("!", 0, 3, 2, locations[10]);
+//        fakes[2] = new Player("!", 0, 17, 3, locations[10]);
+//        fakes[3] = new Player("!", 2, 12, 4, locations[10]);
+//        fakes[4] = new Player("!", 4, 16, 5, locations[10]);
+//        fakes[5] = new Player("!", 2, 12, 6, locations[10]);
+//        fakes[6] = new Player("!", 1, 4, 7, locations[10]);
+//        fakes[7] = new Player("!", 0, 20, 8, locations[10]);
+//        return fakes;
+//    }
+
     public void move(Location location) {
         curPlayer.move(location);
         gameController.updateGUI(curPlayer);
@@ -50,12 +65,14 @@ public class GameManagerFX {
 
     public void promptTakeRole() {
         roleController.popup(curPlayer.getLocation(), curPlayer);
-        int signedRole = roleController.roleToTake.getRank();
-        if (!roleController.isRoleOnCard) {
-            signedRole = -1 * signedRole;
+        if (roleController.roleToTake != null) {
+            int signedRole = roleController.roleToTake.getRank();
+            if (!roleController.isRoleOnCard) {
+                signedRole = -1 * signedRole;
+            }
+            curPlayer.takeRole(signedRole);
+            gameController.updateGUI(curPlayer);
         }
-        curPlayer.takeRole(signedRole);
-        gameController.updateGUI(curPlayer);
     }
 
     public void promptUpgrade() {
@@ -97,7 +114,7 @@ public class GameManagerFX {
     }
 
     public void endGame() {
-        //TODO
+        winnersController.popup(players);
     }
 
     private int checkCompletedScenes() {
