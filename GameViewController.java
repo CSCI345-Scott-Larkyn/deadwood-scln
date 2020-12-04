@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -40,126 +41,139 @@ public class GameViewController {
         //whole tiles of the stat field should likely be invisible
         //cards should be face up, face down, or invisible
 
+        ///////////////////////////////////
         //currentplayer bar at the top of tool bar...
-        String curPlaySt = curPlayer.getName();     //name is acii
+        ///////////////////////////////////
+        String curPlaySt = curPlayer.getName();
 
         currentPlayerText.setText("Player " + Integer.toString(curPlayer.getPlayerNum()));
 
         String turnOptions = curPlayer.getTurnOptions();
+        //System.out.println(turnOptions);
+        //System.out.println(curPlayer.getLocation().getName());
 
-        if(turnOptions.indexOf('t') == -1){
-            takeRoleButton.setDisable(true);
+        /////////////////////////////////
+        //buttons in tool bar
+        /////////////////////////////////
+        takeRoleButton.setDisable(!turnOptions.contains("t"));
+        upgradeButton.setDisable(!turnOptions.contains("u"));
+        actButton.setDisable(!turnOptions.contains("a"));
+        if(turnOptions.contains("a")){
+            budget.setText("Budget: " + Integer.toString(curPlayer.getLocation().getSet().getCard().getBudget()));
+            practiceChips.setText("Practice Chips: " + Integer.toString(curPlayer.getPracticeChips()));
+            actingStatBox.setVisible(true);
         }else{
-            takeRoleButton.setDisable(false);
+            actingStatBox.setVisible(false);
         }
-        if(turnOptions.indexOf('u') == -1){
-            upgradeButton.setDisable(true);
-        }else{
-            upgradeButton.setDisable(false);
-        }
-        if(turnOptions.indexOf('a') == -1){
-            actButton.setDisable(true);
-        }else{
-            actButton.setDisable(false);
-        }
-        if(turnOptions.indexOf('r') == -1){
-            rehearseButton.setDisable(true);
-        }else{
-            rehearseButton.setDisable(false);
-        }
-        if(turnOptions.indexOf('e') == -1){
-            endTurnButton.setVisible(false);
-
-        }else{
-            endTurnButton.setDisable(false);
-        }
-        if(turnOptions.indexOf('m') == -1){
+        rehearseButton.setDisable(!turnOptions.contains("r"));
+        endTurnButton.setVisible(turnOptions.contains("e"));
+        if(!turnOptions.contains("m")){
             moveButton.setDisable(true);
         }else{
-            //button shows up and only certain locations in the menu are available...
+
             moveButton.setDisable(false);
+            Location[] neighbors = curPlayer.getNeighbors();
+            moveTrailers.setVisible(findLocationByName("Trailers", neighbors));
+            moveSH.setVisible(findLocationByName("Secret Hideout", neighbors));
+            moveRanch.setVisible(findLocationByName("Ranch", neighbors));
+            moveHotel.setVisible(findLocationByName("Hotel", neighbors));
+            moveCO.setVisible(findLocationByName("Casting Office", neighbors));
+            moveMS.setVisible(findLocationByName("Main Street", neighbors));
+            moveBank.setVisible(findLocationByName("Bank", neighbors));
+            moveSaloon.setVisible(findLocationByName("Saloon", neighbors));
+            moveJail.setVisible(findLocationByName("Jail", neighbors));
+            moveTS.setVisible(findLocationByName("Train Station", neighbors));
+            churchMove.setVisible(findLocationByName("Church", neighbors));
+            moveGS.setVisible(findLocationByName("General Store", neighbors));
+
 
         }
+
+
 
         //for each Location (loop)
         //visitorsGUI.update
         //cardGUI.update
+        //////////////////////////////
+        //visiting players
+        //////////////////////////////
+        hookUpVisitors(locs);
+
+        for(int i = 0; i < locs.length; i++){
+            List<Player> visitors = locs[i].getVisitingPlayers();
+            VisitorsGUI visitorsG = locs[i].getVisitorsGUI();
+            visitorsG.update(visitors);
+        }
 
         //for each offCardRoleGUI (loop)
         //roleGUI.updateGUI
+        ////////////////////////////////
+        //offCard roles
+        ////////////////////////////////
+        RoleGUI[] offCardR = hookUpExtras(locs);
+        for(int i = 0; i < offCardR.length; i++){
+            offCardR[i].updateGUI();
+        }
 
-        //String options = curPlayer.getTurnOptions
-        //for each button
-        //if options.contains("x")
-        //enable
-        //else
-        //disable
-        //(if act is an option, make acting stat box visible)
-        //(if acting is an option, ending wont be, so itll be made invisible there)
-        //and update those two text fields
-        //just 6 things
 
-        //for each statbox (loop)
-        //statboxgui.update (unwritten so far)
+        ////////////////////////////////
+        //showing card with oncard roles
+        //      for each location show back if not been visited.. function in CardGUI?
+        //      if hasbeenvisited... , show card... update.cardGUI for roles
+        ////////////////////////////////
+        //TODO: still need to show the cards and put players in roles on cards
+        //      also the takeRoleController sometimes shows the blank button without the image still. not sure why.
 
-        //for each moveMenuItem
-        //menuItem.setVisibiliy(findlocbyname(menuItemname, curPlayer.location.getneighbors)
-        //no loop, just gotta do it 12 times
 
-        //for each shot count icon
-        //make (in)visible
-        //either do it 22 times or make some data structure to handle the loop
-        //i was thinking if there is one shot completed on a 3-shot location
-        //then shot3 is visible and shot2 and shot1 are invisible, but we can decide
+
+
+        //////////////////////////////////
+        //Shot Counts
+        //  make visible if shot count == certain number of shots
+        ////////////////////////////////////////////////////////////
+
+        trainStationShot3.setVisible(locs[0].getSet().getCurrentShotCount() == 0);
+        trainStationShot2.setVisible(locs[0].getSet().getCurrentShotCount() == 1);
+        trainStationShot1.setVisible(locs[0].getSet().getCurrentShotCount() == 2);
+        secretHideoutShot3.setVisible(locs[1].getSet().getCurrentShotCount() == 0);
+        secretHideoutShot2.setVisible(locs[1].getSet().getCurrentShotCount() == 1);
+        secretHideoutShot1.setVisible(locs[1].getSet().getCurrentShotCount() == 2);
+        churchShot2.setVisible(locs[2].getSet().getCurrentShotCount() == 0);
+        churchShot1.setVisible(locs[2].getSet().getCurrentShotCount() == 1);
+        hotelShot3.setVisible(locs[3].getSet().getCurrentShotCount() == 0);
+        hotelShot2.setVisible(locs[3].getSet().getCurrentShotCount() == 1);
+        hotelShot1.setVisible(locs[3].getSet().getCurrentShotCount() == 2);
+        mainStreetShot3.setVisible(locs[4].getSet().getCurrentShotCount() == 0);
+        mainStreetShot2.setVisible(locs[4].getSet().getCurrentShotCount() == 1);
+        mainStreetShot1.setVisible(locs[4].getSet().getCurrentShotCount() == 2);
+        jailShot1.setVisible(locs[5].getSet().getCurrentShotCount() == 0);
+        generalStoreShot2.setVisible(locs[6].getSet().getCurrentShotCount() == 0);
+        generalStoreShot1.setVisible(locs[6].getSet().getCurrentShotCount() == 1);
+        ranchShot2.setVisible(locs[7].getSet().getCurrentShotCount() == 0);
+        ranchShot1.setVisible(locs[7].getSet().getCurrentShotCount() == 1);
+        bankShot1.setVisible(locs[8].getSet().getCurrentShotCount() == 0);
+        saloonShot2.setVisible(locs[9].getSet().getCurrentShotCount() == 0);
+        saloonShot1.setVisible(locs[9].getSet().getCurrentShotCount() == 1);
 
         //for each anchorpane for locations
         //add location.getcard.getcardgui.getpane
         //cardgui.update
         //probs no loop but idk, could make a map<anchorpane, location>, who knows
 
-        //move button and locations within
-
-        //take role button
-
-        //upgrade button
-
-        //act button
-
-        //rehearse button
-
-        //end turn button
-
-        //underneath end turn: budget and practice chips text
-
         //locations visible players... on card, off card, visitors
 
 
-        //cards... face up, face down, invisible
-
-
+        /////////////////////////////////////////
         //stats bar at the bottom..
-        //pane invisible for less players
-        //correct rank, credits, dollars
+        //      pane invisible for less players
+        //      correct rank, credits, dollars
+        /////////////////////////////////////////
         int numPlayers = players.length;
-        if(numPlayers < 8){
-            p8StatBox.setVisible(false);
-            //set up rank, credit, dollars for each
-            if(numPlayers < 7 ){
-                p7StatBox.setVisible(false);
-                if(numPlayers < 6){
-                    p6StatBox.setVisible(false);
-                    if(numPlayers < 5){
-                        p5StatBox.setVisible(false);
-                        if(numPlayers < 4 ){
-                            p4StatBox.setVisible(false);
-                            if(numPlayers < 3){
-                                p3StatBox.setVisible(false);
-                            }
-                        }
-                    }
-                }
-            }
+        hookUpStatBoxes();
+        for(int i = 0; i < 8; i++){
+            statBoxes[i].update();
         }
+
     }
 
 
@@ -206,7 +220,7 @@ public class GameViewController {
         roleGUIS[19] = new RoleGUI(jOff1, locs[5].getSet().getOffCardRoles()[1]);
         roleGUIS[20] = new RoleGUI(gsOff0, locs[6].getSet().getOffCardRoles()[0]);
         roleGUIS[21] = new RoleGUI(gsOff1, locs[6].getSet().getOffCardRoles()[1]);
-        roleGUIS[22] = new RoleGUI(rOff1, locs[7].getSet().getOffCardRoles()[0]);
+        roleGUIS[22] = new RoleGUI(rOff0, locs[7].getSet().getOffCardRoles()[0]);
         roleGUIS[23] = new RoleGUI(rOff1, locs[7].getSet().getOffCardRoles()[1]);
         roleGUIS[24] = new RoleGUI(rOff2, locs[7].getSet().getOffCardRoles()[2]);
         roleGUIS[25] = new RoleGUI(bOff0, locs[8].getSet().getOffCardRoles()[0]);
@@ -266,7 +280,7 @@ public class GameViewController {
     }
 
     private Player getPlayer(int index) {
-        if (index > players.length) {
+        if (index >= players.length) {
             return null;
         } else {
             return players[index];

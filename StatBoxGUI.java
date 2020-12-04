@@ -1,3 +1,4 @@
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
@@ -21,8 +22,19 @@ public class StatBoxGUI {
     }
 
     public void update() {
-        //if player == null
-            //make everything invisible
-        //else
+
+        if(player == null){
+            rightLine.setVisible(false);
+            box.setVisible(false);
+        }else{
+            rightLine.setVisible(true);
+            box.setVisible(true);
+            dollars.setText("Dollars: " + Integer.toString(player.getDollars()));
+            credits.setText("Credits: " + Integer.toString(player.getCredits()));
+            PlayerImageCalculator pImage = new PlayerImageCalculator();
+            String r = pImage.getPlayerImage(player);
+            Image pRank = new Image(getClass().getResourceAsStream(r));
+            rank.setImage(pRank);
+        }
     }
 }

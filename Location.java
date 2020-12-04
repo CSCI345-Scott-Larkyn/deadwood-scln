@@ -122,4 +122,5 @@ public class Location{
     public VisitorsGUI getVisitorsGUI() {
  	    return visitorsGUI;
     }
+
  }

@@ -170,7 +170,7 @@ public class TakeRoleController {
              }
          }
          Role[] validRoles = new Role[numValid];
-        for (int i = 0; i < roles.length; i++) {
+        for (int i = 0; i < numValid; i++) {
             Role role = roles[i];
             if (!role.getIsOccupied() && role.getRank() <= rank) {
                 validRoles[i] = role;

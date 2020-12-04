@@ -25,7 +25,7 @@
                      <children>
                         <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="470.0" prefWidth="199.0" spacing="15.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER">
+                              <Text fx:id="currentPlayerText" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
