@@ -40,6 +40,47 @@ public class GameViewController {
         //whole tiles of the stat field should likely be invisible
         //cards should be face up, face down, or invisible
 
+        //currentplayer bar at the top of tool bar...
+        String curPlaySt = curPlayer.getName();     //name is acii
+
+        currentPlayerText.setText("Player " + Integer.toString(curPlayer.getPlayerNum()));
+
+        String turnOptions = curPlayer.getTurnOptions();
+
+        if(turnOptions.indexOf('t') == -1){
+            takeRoleButton.setDisable(true);
+        }else{
+            takeRoleButton.setDisable(false);
+        }
+        if(turnOptions.indexOf('u') == -1){
+            upgradeButton.setDisable(true);
+        }else{
+            upgradeButton.setDisable(false);
+        }
+        if(turnOptions.indexOf('a') == -1){
+            actButton.setDisable(true);
+        }else{
+            actButton.setDisable(false);
+        }
+        if(turnOptions.indexOf('r') == -1){
+            rehearseButton.setDisable(true);
+        }else{
+            rehearseButton.setDisable(false);
+        }
+        if(turnOptions.indexOf('e') == -1){
+            endTurnButton.setVisible(false);
+
+        }else{
+            endTurnButton.setDisable(false);
+        }
+        if(turnOptions.indexOf('m') == -1){
+            moveButton.setDisable(true);
+        }else{
+            //button shows up and only certain locations in the menu are available...
+            moveButton.setDisable(false);
+
+        }
+
         //for each Location (loop)
         //visitorsGUI.update
         //cardGUI.update
@@ -232,6 +273,8 @@ public class GameViewController {
         }
     }
 
+    @FXML
+    private Text currentPlayerText;
     @FXML
     private MenuButton moveButton;
 

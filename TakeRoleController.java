@@ -29,130 +29,132 @@ public class TakeRoleController {
         //and when there are fewer than 3 on card or 4 off card roles
         //the rest should be invisible
         Set curSet = loc.getSet();
-        offCardR = curSet.getOffCardRoles();
-        onCardR = curSet.getCard().getRoles();
-        int rank = player.getRank();
-        offCardR = makeValidRoles(offCardR, rank);
-        onCardR = makeValidRoles(onCardR, rank);
-        PlayerImageCalculator pImage = new PlayerImageCalculator();
+        if(curSet != null) {
+            offCardR = curSet.getOffCardRoles();
+            onCardR = curSet.getCard().getRoles();
+            int rank = player.getRank();
+            offCardR = makeValidRoles(offCardR, rank);
+            onCardR = makeValidRoles(onCardR, rank);
+            PlayerImageCalculator pImage = new PlayerImageCalculator();
 
 
-        //offCard roles
-        for (int i = 0; i < 4; i++) {
+            //offCard roles
+            for (int i = 0; i < 4; i++) {
 
 
-            if (i == 0) {
-                if(offCardR.length <= i ||offCardR[0].getIsOccupied()){
-                    offCardPic1.setVisible(false);
-                    offCardButton1.setVisible(false);
-                }else{
-                    String r = pImage.getBlankPlayerImage(offCardR[i].getRank());
-                    Image updRole = new Image(getClass().getResourceAsStream(r));
-                    offCardPic1.setImage(updRole);
-                    if(rank >= offCardR[i].getRank()) {
-                        offCardButton1.setVisible(true);
-                    }else{
-                        offCardButton1.setDisable(false);
+                if (i == 0) {
+                    if (offCardR.length <= i || offCardR[0].getIsOccupied()) {
+                        offCardPic1.setVisible(false);
                         offCardButton1.setVisible(false);
+                    } else {
+                        String r = pImage.getBlankPlayerImage(offCardR[i].getRank());
+                        Image updRole = new Image(getClass().getResourceAsStream(r));
+                        offCardPic1.setImage(updRole);
+                        if (rank >= offCardR[i].getRank()) {
+                            offCardButton1.setVisible(true);
+                        } else {
+                            offCardButton1.setDisable(false);
+                            offCardButton1.setVisible(false);
+                        }
                     }
                 }
-            }
-            if (i == 1) {
-                if(offCardR.length <= i||offCardR[1].getIsOccupied()){
-                    offCardPic2.setVisible(false);
-                    offCardButton2.setVisible(false);
-                }else{
-                    String r = pImage.getBlankPlayerImage(offCardR[i].getRank());
-                    Image updRole = new Image(getClass().getResourceAsStream(r));
-                    offCardPic2.setImage(updRole);
-                    if(rank >= offCardR[i].getRank()) {
-                        offCardButton2.setVisible(true);
-                    }else{
-                        offCardButton2.setDisable(false);
+                if (i == 1) {
+                    if (offCardR.length <= i || offCardR[1].getIsOccupied()) {
+                        offCardPic2.setVisible(false);
                         offCardButton2.setVisible(false);
+                    } else {
+                        String r = pImage.getBlankPlayerImage(offCardR[i].getRank());
+                        Image updRole = new Image(getClass().getResourceAsStream(r));
+                        offCardPic2.setImage(updRole);
+                        if (rank >= offCardR[i].getRank()) {
+                            offCardButton2.setVisible(true);
+                        } else {
+                            offCardButton2.setDisable(false);
+                            offCardButton2.setVisible(false);
+                        }
                     }
                 }
-            }
-            if (i == 2 ) {
-                if(offCardR.length <= i||offCardR[2].getIsOccupied()){
-                    offCardPic3.setVisible(false);
-                    offCardButton3.setVisible(false);
-                }else{
-                    String r = pImage.getBlankPlayerImage(offCardR[i].getRank());
-                    Image updRole = new Image(getClass().getResourceAsStream(r));
-                    offCardPic3.setImage(updRole);
-                    if(rank >= offCardR[i].getRank()) {
-                        offCardButton3.setVisible(true);
-                    }else{
-                        offCardButton3.setDisable(false);
+                if (i == 2) {
+                    if (offCardR.length <= i || offCardR[2].getIsOccupied()) {
+                        offCardPic3.setVisible(false);
                         offCardButton3.setVisible(false);
+                    } else {
+                        String r = pImage.getBlankPlayerImage(offCardR[i].getRank());
+                        Image updRole = new Image(getClass().getResourceAsStream(r));
+                        offCardPic3.setImage(updRole);
+                        if (rank >= offCardR[i].getRank()) {
+                            offCardButton3.setVisible(true);
+                        } else {
+                            offCardButton3.setDisable(false);
+                            offCardButton3.setVisible(false);
+                        }
                     }
                 }
-            }
-            if (i == 3) {
-                if(offCardR.length <= i||offCardR[3].getIsOccupied()){
-                    offCardPic4.setVisible(false);
-                    offCardButton4.setVisible(false);
-                }else{
-                    String r = pImage.getBlankPlayerImage(offCardR[i].getRank());
-                    Image updRole = new Image(getClass().getResourceAsStream(r));
-                    offCardPic4.setImage(updRole);
-                    if(rank >= offCardR[i].getRank()) {
-                        offCardButton4.setVisible(true);
-                    }else{
-                        offCardButton4.setDisable(false);
+                if (i == 3) {
+                    if (offCardR.length <= i || offCardR[3].getIsOccupied()) {
+                        offCardPic4.setVisible(false);
                         offCardButton4.setVisible(false);
+                    } else {
+                        String r = pImage.getBlankPlayerImage(offCardR[i].getRank());
+                        Image updRole = new Image(getClass().getResourceAsStream(r));
+                        offCardPic4.setImage(updRole);
+                        if (rank >= offCardR[i].getRank()) {
+                            offCardButton4.setVisible(true);
+                        } else {
+                            offCardButton4.setDisable(false);
+                            offCardButton4.setVisible(false);
+                        }
                     }
                 }
             }
-        }
-        for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 3; j++) {
 
-            if (j == 0) {
-                if(onCardR.length <= j ||onCardR[0].getIsOccupied()){
-                    onCardPic1.setVisible(false);
-                    onCardButton1.setVisible(false);
-                }else{
-                    String r = pImage.getBlankPlayerImage(onCardR[j].getRank());
-                    Image updRole = new Image(getClass().getResourceAsStream(r));
-                    onCardPic1.setImage(updRole);
-                    if(rank >= onCardR[j].getRank()) {
-                        onCardButton1.setVisible(true);
-                    }else{
-                        onCardButton1.setDisable(false);
+                if (j == 0) {
+                    if (onCardR.length <= j || onCardR[0].getIsOccupied()) {
+                        onCardPic1.setVisible(false);
                         onCardButton1.setVisible(false);
+                    } else {
+                        String r = pImage.getBlankPlayerImage(onCardR[j].getRank());
+                        Image updRole = new Image(getClass().getResourceAsStream(r));
+                        onCardPic1.setImage(updRole);
+                        if (rank >= onCardR[j].getRank()) {
+                            onCardButton1.setVisible(true);
+                        } else {
+                            onCardButton1.setDisable(false);
+                            onCardButton1.setVisible(false);
+                        }
                     }
                 }
-            }
-            if (j == 1) {
-                if(onCardR.length <= j||onCardR[1].getIsOccupied()){
-                    onCardPic2.setVisible(false);
-                    onCardButton2.setVisible(false);
-                }else{
-                    String r = pImage.getBlankPlayerImage(onCardR[j].getRank());
-                    Image updRole = new Image(getClass().getResourceAsStream(r));
-                    onCardPic2.setImage(updRole);
-                    if(rank >= onCardR[j].getRank()) {
-                        onCardButton2.setVisible(true);
-                    }else{
-                        onCardButton2.setDisable(false);
+                if (j == 1) {
+                    if (onCardR.length <= j || onCardR[1].getIsOccupied()) {
+                        onCardPic2.setVisible(false);
                         onCardButton2.setVisible(false);
+                    } else {
+                        String r = pImage.getBlankPlayerImage(onCardR[j].getRank());
+                        Image updRole = new Image(getClass().getResourceAsStream(r));
+                        onCardPic2.setImage(updRole);
+                        if (rank >= onCardR[j].getRank()) {
+                            onCardButton2.setVisible(true);
+                        } else {
+                            onCardButton2.setDisable(false);
+                            onCardButton2.setVisible(false);
+                        }
                     }
                 }
-            }
-            if (j == 2 ) {
-                if(onCardR.length <= j||onCardR[2].getIsOccupied()){
-                    onCardPic3.setVisible(false);
-                    onCardButton3.setVisible(false);
-                }else{
-                    String r = pImage.getBlankPlayerImage(onCardR[j].getRank());
-                    Image updRole = new Image(getClass().getResourceAsStream(r));
-                    onCardPic3.setImage(updRole);
-                    if(rank >= onCardR[j].getRank()) {
-                        onCardButton3.setVisible(true);
-                    }else{
-                        onCardButton3.setDisable(false);
+                if (j == 2) {
+                    if (onCardR.length <= j || onCardR[2].getIsOccupied()) {
+                        onCardPic3.setVisible(false);
                         onCardButton3.setVisible(false);
+                    } else {
+                        String r = pImage.getBlankPlayerImage(onCardR[j].getRank());
+                        Image updRole = new Image(getClass().getResourceAsStream(r));
+                        onCardPic3.setImage(updRole);
+                        if (rank >= onCardR[j].getRank()) {
+                            onCardButton3.setVisible(true);
+                        } else {
+                            onCardButton3.setDisable(false);
+                            onCardButton3.setVisible(false);
+                        }
                     }
                 }
             }
