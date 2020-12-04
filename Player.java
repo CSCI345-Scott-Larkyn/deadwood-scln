@@ -9,7 +9,8 @@
 
 import java.util.*;
 
-public class Player {
+//Note: this class has a natural ordering that is inconsistent with equals
+public class Player implements Comparable<Player> {
     private String name;
     private int playerNum;
     private Location location;
@@ -154,18 +155,20 @@ public class Player {
     
     //calls on other classes for a new UpgradeData and upgrades financial fields accordingly
     public void upgrade(int intendedRank, boolean payWithDollars) {
-        UpgradeData data = new UpgradeData(dollars, credits, rank);
-        //UpgradeData newData = up.promptForUpgrade(data);
-        UpgradeData newData;
-        if (payWithDollars) {
-            newData = upgrader.upgradeWithMoney(data, intendedRank);
-        } else {
-            newData = upgrader.upgradeWithCredits(data, intendedRank);
-        }
-        if (newData != null) {
-            dollars = newData.dollars;
-            credits = newData.credits;
-            rank = newData.rank;
+        if (intendedRank >= 0) {
+            UpgradeData data = new UpgradeData(dollars, credits, rank);
+            //UpgradeData newData = up.promptForUpgrade(data);
+            UpgradeData newData;
+            if (payWithDollars) {
+                newData = upgrader.upgradeWithMoney(data, intendedRank);
+            } else {
+                newData = upgrader.upgradeWithCredits(data, intendedRank);
+            }
+            if (newData != null) {
+                dollars = newData.dollars;
+                credits = newData.credits;
+                rank = newData.rank;
+            }
         }
     }
     
@@ -246,12 +249,12 @@ public class Player {
         Role[] offCardRoles = location.getSet().getOffCardRoles();
         Role[] onCardRoles = location.getSet().getCard().getRoles();
         for (int index = 0; index < offCardRoles.length; index++) {
-            if (!offCardRoles[index].getIsOccupied()) {
+            if (!offCardRoles[index].getIsOccupied() && offCardRoles[index].getRank() <= rank) {
                 return true;
             }
         }
         for (int index = 0; index < onCardRoles.length; index++) {
-            if (!onCardRoles[index].getIsOccupied()) {
+            if (!onCardRoles[index].getIsOccupied() && offCardRoles[index].getRank() <= rank) {
                 return true;
             }
         }
@@ -294,5 +297,9 @@ public class Player {
     
     public void moveToTrailers(Location trailers) {
         location = trailers;
+    }
+
+    public int compareTo(Player player) {
+        return getScore() - player.getScore();
     }
 }

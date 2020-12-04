@@ -20,6 +20,7 @@ public class UpgradeViewController {
 
     public void popup(Player player) {
         updateGUI(player);
+        intendedRank = -1;
         stage.showAndWait();
     }
 

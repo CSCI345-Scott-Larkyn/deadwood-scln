@@ -20,6 +20,7 @@ public class TakeRoleController {
 
     public void popup(Location loc, Player curPlayer) {
         updateGUI(loc, curPlayer);
+        roleToTake = null;
         stage.showAndWait();
     }
 
