@@ -102,7 +102,7 @@ public class GameManagerFX {
             } else {
                 endDay();
             }
-        } 
+        }
         curPlayer.setTurnBooleans();
         gameController.updateGUI(curPlayer);
     }

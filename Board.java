@@ -50,6 +50,9 @@ public class Board{
     //
     //  calls deal cards() method above and moveAllToTrailers()
 	public void endDay() {
+	    for (int i = 0; i <= 9; i++) {
+	        locations[i].reclaimPlayers();
+        }
 		dealCards();
 		for (Location loc : locations) {
 		    loc.resetVisitation();
