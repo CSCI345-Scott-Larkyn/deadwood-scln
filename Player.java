@@ -155,7 +155,7 @@ public class Player implements Comparable<Player> {
     
     //calls on other classes for a new UpgradeData and upgrades financial fields accordingly
     public void upgrade(int intendedRank, boolean payWithDollars) {
-        if (intendedRank >= 0) {
+        if (intendedRank > rank) {
             UpgradeData data = new UpgradeData(dollars, credits, rank);
             //UpgradeData newData = up.promptForUpgrade(data);
             UpgradeData newData;

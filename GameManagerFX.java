@@ -102,6 +102,8 @@ public class GameManagerFX {
             } else {
                 endDay();
             }
+        } else if (checkCompletedScenes() >= 9 && daysPlayed + 1 >= maxDays) {
+            winnersController.popup(players);
         }
         curPlayer.setTurnBooleans();
         gameController.updateGUI(curPlayer);
