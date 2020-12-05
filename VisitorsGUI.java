@@ -2,6 +2,8 @@ import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+//used to give Locations in the model a route to point to the visiting player ImageViews in the GUI
+//and for handy traversal in the main GameViewController updateGUI method
 public class VisitorsGUI {
 
     private PlayerImageCalculator calc = new PlayerImageCalculator();
@@ -17,6 +19,7 @@ public class VisitorsGUI {
         players[7] = p8;
     }
 
+    //makes each visiting player imageView properly visible and with the right picture
     public void update(List<Player> visitors) {
         int num = visitors.size();
         for (int i = 0; i < num; i++) {

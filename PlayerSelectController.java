@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//pops up the spinner window for selecting the number of players for the game
 public class PlayerSelectController implements Initializable {
 
     private Stage stage;

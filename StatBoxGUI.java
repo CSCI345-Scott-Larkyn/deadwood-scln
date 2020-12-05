@@ -4,6 +4,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
+//puts all the gui elements for a players stat box in one place
+//for easy updating and disabling
 public class StatBoxGUI {
     private Line rightLine;
     private VBox box;
@@ -21,8 +23,9 @@ public class StatBoxGUI {
         this.player = player;
     }
 
+    //makes the box invisible if the player is null i.e. there aren't that many players playing
+    //otherwise it updates the GUI to keep the stats accurate
     public void update() {
-
         if(player == null){
             rightLine.setVisible(false);
             box.setVisible(false);

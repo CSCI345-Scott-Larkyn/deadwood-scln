@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+//where the program starts
+//initializes all of the GUI controllers then passes off control to the GameManagerFX
 public class Deadwood extends Application {
 
     public static void main(String[] args) {
@@ -69,30 +71,4 @@ public class Deadwood extends Application {
         GameManagerFX managerFX = new GameManagerFX(gameController, upgradeController, playerController, roleController, winnersController, primaryStage, gameScene);
         managerFX.playGame();
     }
-
-
-//    public static void main(String[] args) throws NullPointerException, ParserConfigurationException {
-//
-//        int numPlayers = Integer.parseInt(args[0]);
-//        int r = 8;
-//        if (numPlayers < 2 || numPlayers > 8) {
-//            System.out.println("That is not a valid number of players");
-//        } else {
-//            GameManager manager = new GameManager(numPlayers);
-//            manager.setup("board.xml", "cards.xml");
-//            int numDays = 4;
-//            if (numPlayers < 4)
-//                numDays = 3;
-//            for (int day = 1; day <= numDays; day++) {
-//                System.out.println("Day " + day);
-//                manager.playDay();
-//                if (day < numDays) {
-//                    manager.endDay();
-//                }
-//            }
-//            manager.decideWinner();
-//        }
-//    }
-
-
 }

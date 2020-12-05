@@ -4,6 +4,8 @@ import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 import java.util.List;
 
+//the main controller of the whole program
+//has access to all the viewControllers and the model
 public class GameManagerFX {
     private GameViewController gameController;
     private UpgradeViewController upgradeController;
@@ -35,36 +37,23 @@ public class GameManagerFX {
         this.gameScene = gameScene;
     }
 
+    //begins the game
     public void playGame() throws ParserConfigurationException {
-        //playerController.popup();
-        //numPlayers = playerController.playerNum;
-        numPlayers = 3;
+        playerController.popup();
+        numPlayers = playerController.playerNum;
         modelSetup();
         curPlayer = players[0];
         gameController.updateGUI(curPlayer);
         primaryStage.show();
-        //roleController.popup(locations[0], curPlayer);
-        //locations[8].getVisitorsGUI().update(locations[8].getVisitingPlayers());
     }
 
-//    private Player[] makeFakes() {
-//        Player[] fakes = new Player[8];
-//        fakes[0] = new Player("!", 0, 20, 1, locations[10]);
-//        fakes[1] = new Player("!", 0, 3, 2, locations[10]);
-//        fakes[2] = new Player("!", 0, 17, 3, locations[10]);
-//        fakes[3] = new Player("!", 2, 12, 4, locations[10]);
-//        fakes[4] = new Player("!", 4, 16, 5, locations[10]);
-//        fakes[5] = new Player("!", 2, 12, 6, locations[10]);
-//        fakes[6] = new Player("!", 1, 4, 7, locations[10]);
-//        fakes[7] = new Player("!", 0, 20, 8, locations[10]);
-//        return fakes;
-//    }
-
+    //tells the player to move and updates the gui
     public void move(Location location) {
         curPlayer.move(location);
         gameController.updateGUI(curPlayer);
     }
 
+    //tells the player to take a role and calls up a selection window
     public void promptTakeRole() {
         roleController.popup(curPlayer.getLocation(), curPlayer);
         if (roleController.roleToTake != null) {
@@ -77,22 +66,26 @@ public class GameManagerFX {
         }
     }
 
+    //tells the player to upgrade and calls up a selection window
     public void promptUpgrade() {
         upgradeController.popup(curPlayer);
         curPlayer.upgrade(upgradeController.intendedRank, upgradeController.payWithDollars);
         gameController.updateGUI(curPlayer);
     }
 
+    //tells the player to act and updates the gui
     public void act() {
         curPlayer.act();
         gameController.updateGUI(curPlayer);
     }
 
+    //tells the player to rehearse and updates the gui
     public void rehearse() {
         curPlayer.rehearse();
         gameController.updateGUI(curPlayer);
     }
 
+    //ends the current players turn and advances to the next one
     public void endTurn() {
         turnsTaken++;
         curPlayer = players[turnsTaken % numPlayers];
@@ -107,6 +100,7 @@ public class GameManagerFX {
         gameController.updateGUI(curPlayer);
     }
 
+    //takes care of ending the day and moving everyone back to the trailers
     public void endDay() {
         board.endDay();
         daysPlayed++;
@@ -115,10 +109,12 @@ public class GameManagerFX {
         }
     }
 
+    //pops up the scoreboard
     public void endGame() {
         winnersController.popup(players);
     }
 
+    //returns the number of completed scenes on the board
     private int checkCompletedScenes() {
         int completedScenes = 0;
         for (Location location : locations) {
@@ -129,6 +125,9 @@ public class GameManagerFX {
         return completedScenes;
     }
 
+    //calls methods to set up everything from the xml and fxml files
+    //and runs some "hookup" methods which binds some data together
+    //also creates the board and player array
     private void modelSetup() throws ParserConfigurationException {
         String boardFileName = "board.xml";
         String cardsFileName = "cards.xml";

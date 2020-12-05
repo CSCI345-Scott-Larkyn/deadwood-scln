@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.util.List;
 
+//the controller for the main game view, updates the board state after every action
 public class GameViewController {
 
     private Board board;
@@ -24,6 +25,7 @@ public class GameViewController {
     private List<RoleGUI> offCardRoleGUIS;
     private StatBoxGUI[] statBoxes = new StatBoxGUI[8];
 
+    //essentially a second round constructor to instantiate more fields
     public void addFields(Board board, Player[] players, GameManagerFX manager, List<RoleGUI> offCardRoleGUIs) {
         this.board = board;
         this.players = players;
@@ -32,25 +34,11 @@ public class GameViewController {
         this.offCardRoleGUIS = offCardRoleGUIs;
     }
 
+    //makes sure every element of the GUI is accurate according to the game state
     public void updateGUI(Player curPlayer) {
-        //make sure everything with an fxid is displayed correctly
-        //  such as buttons being enabled or disabled with curPlayer.getMoveOptions
-        //on and off card roles being invisible or having the proper image
-        //can use PlayerImageCalculator
-        //various fields in the stat box need correct values
-        //whole tiles of the stat field should likely be invisible
-        //cards should be face up, face down, or invisible
-
-        ///////////////////////////////////
-        //currentplayer bar at the top of tool bar...
-        ///////////////////////////////////
-        String curPlaySt = curPlayer.getName();
-
         currentPlayerText.setText("Player " + Integer.toString(curPlayer.getPlayerNum()));
 
         String turnOptions = curPlayer.getTurnOptions();
-        //System.out.println(turnOptions);
-        //System.out.println(curPlayer.getLocation().getName());
 
         /////////////////////////////////
         //buttons in tool bar
@@ -70,23 +58,9 @@ public class GameViewController {
         if(!turnOptions.contains("m")){
             moveButton.setDisable(true);
         }else{
-
             moveButton.setDisable(false);
-
-            moveTrailers.setVisible(false);
-            moveSH.setVisible(false);
-            moveRanch.setVisible(false);
-            moveHotel.setVisible(false);
-            moveCO.setVisible(false);
-            moveMS.setVisible(false);
-            moveBank.setVisible(false);
-            moveSaloon.setVisible(false);
-            moveJail.setVisible(false);
-            moveTS.setVisible(false);
-            churchMove.setVisible(false);
-            moveGS.setVisible(false);
-
             Location[] neighbors = curPlayer.getNeighbors();
+
             moveTrailers.setVisible(findLocationByName("Trailer", neighbors));
             moveSH.setVisible(findLocationByName("Secret Hideout", neighbors));
             moveRanch.setVisible(findLocationByName("Ranch", neighbors));
@@ -99,28 +73,17 @@ public class GameViewController {
             moveTS.setVisible(findLocationByName("Train Station", neighbors));
             churchMove.setVisible(findLocationByName("Church", neighbors));
             moveGS.setVisible(findLocationByName("General Store", neighbors));
-
-
         }
 
-
-
-        //for each Location (loop)
-        //visitorsGUI.update
-        //cardGUI.update
         //////////////////////////////
         //visiting players
         //////////////////////////////
-        //hookUpVisitors(locs);
-
         for(int i = 0; i < locs.length; i++){
             List<Player> visitors = locs[i].getVisitingPlayers();
             VisitorsGUI visitorsG = locs[i].getVisitorsGUI();
             visitorsG.update(visitors);
         }
 
-        //for each offCardRoleGUI (loop)
-        //roleGUI.updateGUI
         ////////////////////////////////
         //offCard roles
         ////////////////////////////////
@@ -129,14 +92,9 @@ public class GameViewController {
             offCardR[i].updateGUI();
         }
 
-
         ////////////////////////////////
-        //showing card with oncard roles
-        //      for each location show back if not been visited.. function in CardGUI?
-        //      if hasbeenvisited... , show card... update.cardGUI for roles
+        //cardGUIs
         ////////////////////////////////
-        //TODO: still need to show the cards and put players in roles on cards
-        //      also the takeRoleController sometimes shows the blank button without the image still. not sure why.
         for (Location loc : locs) {
             if (loc.getSet() != null && loc.getSet().getCard() != null) {
                 loc.getSet().getCard().getCardGUI().update(true);
@@ -148,7 +106,7 @@ public class GameViewController {
 
         //////////////////////////////////
         //Shot Counts
-        //  make visible if shot count >= number of shots completed
+        //  make visible if shot count < number of shots completed
         ////////////////////////////////////////////////////////////
 
         trainStationShot3.setVisible(locs[0].getSet().getCurrentShotCount() < 3);
@@ -174,17 +132,9 @@ public class GameViewController {
         saloonShot2.setVisible(locs[9].getSet().getCurrentShotCount() < 2);
         saloonShot1.setVisible(locs[9].getSet().getCurrentShotCount() < 1);
 
-        //for each anchorpane for locations
-        //add location.getcard.getcardgui.getpane
-        //cardgui.update
-        //probs no loop but idk, could make a map<anchorpane, location>, who knows
-
-        //locations visible players... on card, off card, visitors
-
-
         /////////////////////////////////////////
         //stats bar at the bottom..
-        //      pane invisible for less players
+        //      pane invisible for fewer players
         //      correct rank, credits, dollars
         /////////////////////////////////////////
         int numPlayers = players.length;
@@ -195,14 +145,7 @@ public class GameViewController {
 
     }
 
-
-
-
-
-
-
-
-
+    //returns true if an array of locations contains a particular location
     private boolean findLocationByName(String name, Location[] locs) {
         for (Location loc : locs) {
             if (loc.getName().equals(name)) {
@@ -210,11 +153,9 @@ public class GameViewController {
             }
         }
         return false;
-
     }
 
-
-
+    //data binds imageViews to offCard roles through RoleGUIs
     public RoleGUI[] hookUpExtras(Location[] locs) {
         RoleGUI[] roleGUIS = new RoleGUI[29];
         roleGUIS[0] = new RoleGUI(tsOff0, locs[0].getSet().getOffCardRoles()[0]);
@@ -249,6 +190,7 @@ public class GameViewController {
         return roleGUIS;
     }
 
+    //aids in data binding visitors and visitor imageViews
     public void hookUpVisitors(Location[] locs) {
         VisitorsGUI tsV = new VisitorsGUI(tsV0, tsV1, tsV2, tsV3, tsV4, tsV5, tsV6, tsV7);
         locs[0].addVisitorsGUI(tsV);
@@ -287,6 +229,7 @@ public class GameViewController {
         locs[11].addVisitorsGUI(coV);
     }
 
+    //assembles classes for the stat boxes at the bottom of the screen
     public void hookUpStatBoxes() {
         statBoxes[0] = new StatBoxGUI(p1RightLine, p1StatBox, p1DollarsString, p1CreditsString, p1RankPic, getPlayer(0));
         statBoxes[1] = new StatBoxGUI(p2RightLine, p2StatBox, p2DollarsString, p2CreditsString, p2RankPic, getPlayer(1));
@@ -298,6 +241,7 @@ public class GameViewController {
         statBoxes[7] = new StatBoxGUI(p8RightLine, p8StatBox, p8DollarsString, p8CreditsString, p8RankPic, getPlayer(7));
     }
 
+    //gives each location access to the anchor pane which holds cards
     public void hookUpLocationPanes() {
         locs[0].addCardPane(trainStationPane);
         locs[1].addCardPane(secretHideoutPane);
@@ -310,6 +254,7 @@ public class GameViewController {
         locs[8].addCardPane(bankPane);
         locs[9].addCardPane(saloonPane);
     }
+
 
     private Player getPlayer(int index) {
         if (index >= players.length) {

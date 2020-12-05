@@ -2,6 +2,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+//all the GUI elements of a card and its onCard roles in one place
 public class CardGUI {
     private Card card;
     AnchorPane pane;
@@ -25,6 +26,8 @@ public class CardGUI {
         }
     }
 
+    //updates all the elements of the GUI for this card
+    //makes the main update method in GameViewController cleaner
     public void update(boolean visible) {
         if (!visible) {
             pane.setVisible(false);
@@ -46,6 +49,7 @@ public class CardGUI {
         }
     }
 
+    //hard coding the imageViews for if there is only 1 onCard role
     private void makeRoles1() {
         roles = new ImageView[1];
         ImageView role1 = new ImageView();
@@ -59,6 +63,7 @@ public class CardGUI {
         pane = new AnchorPane(imageView, roles[0]);
     }
 
+    //hard coding the imageViews for if there are only 2 onCard roles
     private void makeRoles2() {
         roles = new ImageView[2];
         ImageView role1 = new ImageView();
@@ -79,7 +84,7 @@ public class CardGUI {
 
         pane = new AnchorPane(imageView, roles[0], roles[1]);
     }
-
+    //hard coding the imageViews for if there are 3 onCard roles
     private void makeRoles3() {
         roles = new ImageView[3];
 

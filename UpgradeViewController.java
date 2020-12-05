@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
+//shows the view for selecting the upgrade rank the player wants
+//changes its public fields that are available to be read by the game manager
+//reflecting the users choice
 public class UpgradeViewController {
 
     private Stage stage;
@@ -24,6 +27,7 @@ public class UpgradeViewController {
         stage.showAndWait();
     }
 
+    //sets up the bottom row of the gui to make it accurate to the players stats
     public void updateGUI(Player player) {
         //mostly just make sure the three elements at the bottom are correct
         upgradingPlayerCredits.setText(Integer.toString(player.getCredits()));

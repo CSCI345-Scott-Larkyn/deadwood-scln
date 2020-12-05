@@ -5,6 +5,8 @@ import javafx.stage.Stage;
 import java.util.Arrays;
 import java.util.Collections;
 
+//shows the scoreboard at the end of the game
+//supports ties and shows all players' scores
 public class ShowWinnersController {
 
     private Stage stage;
@@ -13,12 +15,14 @@ public class ShowWinnersController {
         this.stage = stage;
     }
 
+    //makes the window visible
     public void popup(Player[] players) {
         Player[] sortedPlayers = sortPlayers(players);
         updateGUI(sortedPlayers);
         stage.showAndWait();
     }
 
+    //creates an array of players now sorted by their score
     private Player[] sortPlayers(Player[] players) {
         Player[] sortedPlayers = new Player[players.length];
         for (int i = 0; i < players.length; i++) {
@@ -28,6 +32,7 @@ public class ShowWinnersController {
         return sortedPlayers;
     }
 
+    //makes all the data displayed in the scoreboard correct
     private void updateGUI(Player[] sortedPlayers) {
         Text[] places = new Text[] {r1Place, r2Place, r3Place, r4Place, r5Place, r6Place, r7Place, r8Place};
         Text[] players = new Text[] {r1Player, r2Player, r3Player, r4Player, r5Player, r6Player, r7Player, r8Player};

@@ -1,3 +1,4 @@
+//a class written to be useful for many other updateGUI methods throughout the project
 public class PlayerImageCalculator {
 
     private String[] player1Images = new String[6];
@@ -15,11 +16,12 @@ public class PlayerImageCalculator {
         populateArrays();
     }
 
-
+    //returns the correct url for the image, player color included
     public String getPlayerImage(Player player) {
         return players[player.getPlayerNum() - 1][player.getRank() - 1];
     }
 
+    //returns the url for the white die of the given rank
     public String getBlankPlayerImage(int rank) {
         return players[8][rank - 1];
     }

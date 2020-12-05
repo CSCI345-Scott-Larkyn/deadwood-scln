@@ -6,6 +6,8 @@ import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
+//pops up the window that lets the player choose what rank they want to take
+//saves their choice in public fields that can be accessed by the game manager later
 public class TakeRoleController {
 
     private Stage stage;
@@ -18,7 +20,7 @@ public class TakeRoleController {
     private Button[] offCardButtons;
     private Button[] onCardButtons;
 
-
+    //used for setup
     public void addStage(Stage stage) {
         this.stage = stage;
         offCardPics = new ImageView[] {offCardPic1, offCardPic2, offCardPic3, offCardPic4};
@@ -27,12 +29,14 @@ public class TakeRoleController {
         onCardButtons = new Button[] {onCardButton1, onCardButton2, onCardButton3};
     }
 
+    //makes the window visible and waits for user input
     public void popup(Location loc, Player curPlayer) {
         updateGUI(loc, curPlayer);
         roleToTake = null;
         stage.showAndWait();
     }
 
+    //updates GUI to only show roles that are unoccupied and of accessible rank
     public void updateGUI(Location loc, Player player) {
         //each role should have the correct image for the rank
         //can use playerImageCalculator.getBlankPlayerImage
