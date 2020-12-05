@@ -38,7 +38,7 @@ public class GameManagerFX {
     public void playGame() throws ParserConfigurationException {
         //playerController.popup();
         //numPlayers = playerController.playerNum;
-        numPlayers = 5;
+        numPlayers = 3;
         modelSetup();
         curPlayer = players[0];
         gameController.updateGUI(curPlayer);

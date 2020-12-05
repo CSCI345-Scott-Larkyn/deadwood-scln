@@ -40,11 +40,11 @@ public class TakeRoleController {
         //the rest should be invisible
         Set curSet = loc.getSet();
         if(curSet != null) {
-            offCardR = curSet.getOffCardRoles();
-            onCardR = curSet.getCard().getRoles();
+            Role[] offCardRoles = curSet.getOffCardRoles();
+            Role[] onCardRoles = curSet.getCard().getRoles();
             int rank = player.getRank();
-            offCardR = makeValidRoles(offCardR, rank);
-            onCardR = makeValidRoles(onCardR, rank);
+            offCardR = makeValidRoles(offCardRoles, rank);
+            onCardR = makeValidRoles(onCardRoles, rank);
             PlayerImageCalculator pImage = new PlayerImageCalculator();
 
             //off card
@@ -204,10 +204,12 @@ public class TakeRoleController {
              }
          }
          Role[] validRoles = new Role[numValid];
-        for (int i = 0; i < numValid; i++) {
+         int index = 0;
+        for (int i = 0; i < roles.length; i++) {
             Role role = roles[i];
             if (!role.getIsOccupied() && role.getRank() <= rank) {
-                validRoles[i] = role;
+                validRoles[index] = role;
+                index++;
             }
         }
         return validRoles;
