@@ -111,7 +111,7 @@ public class GameViewController {
         //////////////////////////////
         //visiting players
         //////////////////////////////
-        hookUpVisitors(locs);
+        //hookUpVisitors(locs);
 
         for(int i = 0; i < locs.length; i++){
             List<Player> visitors = locs[i].getVisitingPlayers();
