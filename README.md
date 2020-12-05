@@ -4,26 +4,10 @@ type "javac *.java" in command prompt in the proper directory to compile all the
 at once otherwise you'll run into troubles compiling files one by one
 then run Deadwood.java x, where x is the number of players you want
 
-for the ASCI board, it's a bit difficult to readbut helpful if you can understand it
-most rooms have three boxes in them like below that can hold players
-+---+
-|   |
-+---+
-each player has a one character ID corresponding to their number
-each ID is the same as shift + Player number
-the different boxes are all labelled either card, ex, or vis
-card is for the card in scenes and where on card roles are
-ex is for off-card roles (extras)
-vis is for visitors, those who are in the location but do not have a role
-the trailers and casting office only have a vis box for obvious reasons
+Running the program in an IDE is probably easiest but the command prompt is possible too
+Just make sure to add the proper modules for javafx and have it downloaded too
 
-each location has a sometimes shortened name printed in it with colon then a number
-that number is how many shots are left to be completed before the scene wraps
-
-the cards are not hidden until players show up as the rules say they should be
-it is simply to help players to know where they are and what options are available
-for the GUI version we will of course implement this
-
-at each stage when you are prompted for input, your options for what to type
-will be in parentheses. For example (m)ove means you should type "m" if you 
-want to move.
+There is a bug which we are 85% sure is javafx's fault. Sometimes in the dropdown menu for
+the moves options, two menuItems will be written over each other. Since we don't govern the
+layout of these menuItems we figure it must be some sort of glitch in how javafx lays them out.
+We can't find any patters to when it happens either.
