@@ -155,6 +155,7 @@ public class Set{
         }
         card.getCardGUI().update(false);
         card = null;
+        currentShotCount = setShotCount;
         return returners;
  	}
  }
