@@ -96,15 +96,13 @@ public class GameManagerFX {
     public void endTurn() {
         turnsTaken++;
         curPlayer = players[turnsTaken % numPlayers];
-        if (checkCompletedScenes() >= 9 && daysPlayed + 1 < maxDays) {
+        if (checkCompletedScenes() >= 9) {
             if (daysPlayed + 1 >= maxDays) {
                 endGame();
             } else {
                 endDay();
             }
-        } else if (checkCompletedScenes() >= 9 && daysPlayed + 1 >= maxDays) {
-            winnersController.popup(players);
-        }
+        } 
         curPlayer.setTurnBooleans();
         gameController.updateGUI(curPlayer);
     }
