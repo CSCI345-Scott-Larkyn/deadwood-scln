@@ -50,11 +50,6 @@ public class Board{
     //
     //  calls deal cards() method above and moveAllToTrailers()
 	public void endDay() {
-	    for (int i = 0; i <= 9; i++) {
-	        if (locations[i].getSet().getCard() != null) {
-                locations[i].reclaimPlayers();
-            }
-        }
 		dealCards();
 		for (Location loc : locations) {
 		    loc.resetVisitation();
@@ -77,7 +72,8 @@ public class Board{
         for (Location loc : locations) {
             if (!loc.getName().equals("Trailer")) {
                 List<Player> visitors = loc.getVisitingPlayers();
-                for (int i = 0; i < visitors.size(); i++) {
+                int size = visitors.size();
+                for (int i = 0; i < size; i++) {
                     trailer.addPlayer(visitors.get(i));
                     loc.removePlayer(visitors.get(i));
                 }
