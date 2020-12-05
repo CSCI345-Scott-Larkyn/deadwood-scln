@@ -74,8 +74,8 @@ public class Board{
                 List<Player> visitors = loc.getVisitingPlayers();
                 int size = visitors.size();
                 for (int i = 0; i < size; i++) {
-                    trailer.addPlayer(visitors.get(i));
-                    loc.removePlayer(visitors.get(i));
+                    trailer.addPlayer(visitors.get(0));
+                    loc.removePlayer(visitors.get(0));
                 }
             }    
         }
