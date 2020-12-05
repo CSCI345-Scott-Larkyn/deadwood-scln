@@ -254,7 +254,7 @@ public class Player implements Comparable<Player> {
             }
         }
         for (int index = 0; index < onCardRoles.length; index++) {
-            if (!onCardRoles[index].getIsOccupied() && offCardRoles[index].getRank() <= rank) {
+            if (!onCardRoles[index].getIsOccupied() && onCardRoles[index].getRank() <= rank) {
                 return true;
             }
         }

@@ -14,14 +14,13 @@ public class Board{
 	private int scenesCompleted;
 	private List<Card> cards;
 	private static int dayNum = 0;
-
+	private GameViewController gameController;
 
 	//Constructor:
-	public Board(Location[] locations, List<Card> cards){
+	public Board(Location[] locations, List<Card> cards, GameViewController gCon){
 		this.locations = locations;
 		this.cards = cards;
-		
-		
+		this.gameController = gCon;
 	}
 
 	//Methods:	
@@ -41,6 +40,7 @@ public class Board{
 			    int index = randy.nextInt(cards.size());
                 Card toAdd = cards.remove(index);
                 loc.getSet().dealCard(toAdd);
+                loc.getCardPane().getChildren().add(toAdd.getCardGUI().getCard());
             }
 		}
 	}

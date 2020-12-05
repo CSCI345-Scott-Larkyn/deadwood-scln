@@ -4,6 +4,8 @@
 //
 ////////////////////////////////////////////////////////////////
 
+import javafx.scene.layout.AnchorPane;
+
 import java.util.*;
 public class Location{ 
 
@@ -15,6 +17,7 @@ public class Location{
  	private String name;
  	private boolean hasBeenVisited;
  	private VisitorsGUI visitorsGUI;
+ 	private AnchorPane cardPane = null;
 
 
  	//Constructor:
@@ -76,7 +79,6 @@ public class Location{
             }
             hasBeenVisited = true;
         }
-
     }
     
     //void removePlayer(Player p)
@@ -123,4 +125,11 @@ public class Location{
  	    return visitorsGUI;
     }
 
+    public void addCardPane(AnchorPane pane) {
+ 	    cardPane = pane;
+    }
+
+    public AnchorPane getCardPane() {
+ 	    return cardPane;
+    }
  }

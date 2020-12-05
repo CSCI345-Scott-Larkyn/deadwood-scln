@@ -44,7 +44,7 @@ public class GameManager {
         } else {
             makePlayers5OrMore(trailer);
         }
-        board = new Board(locations, cards);
+        board = new Board(locations, cards, null);
         for (Player p : players) {
             trailer.addPlayer(p);
         }

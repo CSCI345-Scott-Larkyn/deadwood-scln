@@ -77,60 +77,70 @@ public class UpgradeViewController {
     void r2CreditClicked(ActionEvent event) {
         intendedRank = 2;
         payWithDollars = false;
+        stage.close();
     }
 
     @FXML
     void r2DollarsClicked(ActionEvent event) {
         intendedRank = 2;
         payWithDollars = true;
+        stage.close();
     }
 
     @FXML
     void r3CreditClicked(ActionEvent event) {
         intendedRank = 3;
         payWithDollars = false;
+        stage.close();
     }
 
     @FXML
     void r3DollarsClicked(ActionEvent event) {
         intendedRank = 3;
         payWithDollars = true;
+        stage.close();
     }
 
     @FXML
     void r4CreditClicked(ActionEvent event) {
         intendedRank = 4;
         payWithDollars = false;
+        stage.close();
     }
 
     @FXML
     void r4DollarsClicked(ActionEvent event) {
         intendedRank = 4;
         payWithDollars = true;
+        stage.close();
     }
 
     @FXML
     void r5CreditClicked(ActionEvent event) {
         intendedRank = 5;
         payWithDollars = false;
+        stage.close();
     }
 
     @FXML
     void r5DollarsClicked(ActionEvent event) {
         intendedRank = 5;
         payWithDollars = true;
+        stage.close();
     }
 
     @FXML
     void r6CreditClicked(ActionEvent event) {
         intendedRank = 6;
         payWithDollars = false;
+        stage.close();
     }
 
     @FXML
     void r6DollarsClicked(ActionEvent event) {
         intendedRank = 6;
         payWithDollars = true;
+        stage.close();
     }
 
 }

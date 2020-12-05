@@ -153,6 +153,7 @@ public class Set{
                 returners.add(beingMoved);
             }
         }
+        card.getCardGUI().update(false);
         card = null;
         return returners;
  	}

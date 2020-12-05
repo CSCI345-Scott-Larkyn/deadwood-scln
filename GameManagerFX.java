@@ -36,14 +36,15 @@ public class GameManagerFX {
     }
 
     public void playGame() throws ParserConfigurationException {
-        playerController.popup();
-        numPlayers = playerController.playerNum;
+        //playerController.popup();
+        //numPlayers = playerController.playerNum;
+        numPlayers = 5;
         modelSetup();
         curPlayer = players[0];
         gameController.updateGUI(curPlayer);
         primaryStage.show();
-        roleController.popup(locations[0], curPlayer);
-        locations[8].getVisitorsGUI().update(locations[8].getVisitingPlayers());
+        //roleController.popup(locations[0], curPlayer);
+        //locations[8].getVisitorsGUI().update(locations[8].getVisitingPlayers());
     }
 
 //    private Player[] makeFakes() {
@@ -145,17 +146,21 @@ public class GameManagerFX {
         } else {
             makePlayers5OrMore(trailer);
         }
-        board = new Board(locations, cards);
+        board = new Board(locations, cards, gameController);
         for (Player p : players) {
             trailer.addPlayer(p);
         }
 
         gameController.hookUpExtras(locations);
         gameController.hookUpVisitors(locations);
+        gameController.addFields(board, players, this, offCardRoleGUIS);
+        gameController.hookUpLocationPanes();
         board.dealCards();
         maxDays = (numPlayers <= 3) ? 3 : 4;
         daysPlayed = 0;
-        gameController.addFields(board, players, this, offCardRoleGUIS);
+
+        gameController.hookUpStatBoxes();
+
     }
     //sets player data for small games
     private void makePlayers4OrLess(Location trailer) {

@@ -72,8 +72,22 @@ public class GameViewController {
         }else{
 
             moveButton.setDisable(false);
+
+            moveTrailers.setVisible(false);
+            moveSH.setVisible(false);
+            moveRanch.setVisible(false);
+            moveHotel.setVisible(false);
+            moveCO.setVisible(false);
+            moveMS.setVisible(false);
+            moveBank.setVisible(false);
+            moveSaloon.setVisible(false);
+            moveJail.setVisible(false);
+            moveTS.setVisible(false);
+            churchMove.setVisible(false);
+            moveGS.setVisible(false);
+
             Location[] neighbors = curPlayer.getNeighbors();
-            moveTrailers.setVisible(findLocationByName("Trailers", neighbors));
+            moveTrailers.setVisible(findLocationByName("Trailer", neighbors));
             moveSH.setVisible(findLocationByName("Secret Hideout", neighbors));
             moveRanch.setVisible(findLocationByName("Ranch", neighbors));
             moveHotel.setVisible(findLocationByName("Hotel", neighbors));
@@ -123,37 +137,42 @@ public class GameViewController {
         ////////////////////////////////
         //TODO: still need to show the cards and put players in roles on cards
         //      also the takeRoleController sometimes shows the blank button without the image still. not sure why.
+        for (Location loc : locs) {
+            if (loc.getSet() != null && loc.getSet().getCard() != null) {
+                loc.getSet().getCard().getCardGUI().update(true);
+            }
+        }
 
 
 
 
         //////////////////////////////////
         //Shot Counts
-        //  make visible if shot count == certain number of shots
+        //  make visible if shot count >= number of shots completed
         ////////////////////////////////////////////////////////////
 
-        trainStationShot3.setVisible(locs[0].getSet().getCurrentShotCount() == 0);
-        trainStationShot2.setVisible(locs[0].getSet().getCurrentShotCount() == 1);
-        trainStationShot1.setVisible(locs[0].getSet().getCurrentShotCount() == 2);
-        secretHideoutShot3.setVisible(locs[1].getSet().getCurrentShotCount() == 0);
-        secretHideoutShot2.setVisible(locs[1].getSet().getCurrentShotCount() == 1);
-        secretHideoutShot1.setVisible(locs[1].getSet().getCurrentShotCount() == 2);
-        churchShot2.setVisible(locs[2].getSet().getCurrentShotCount() == 0);
-        churchShot1.setVisible(locs[2].getSet().getCurrentShotCount() == 1);
-        hotelShot3.setVisible(locs[3].getSet().getCurrentShotCount() == 0);
-        hotelShot2.setVisible(locs[3].getSet().getCurrentShotCount() == 1);
-        hotelShot1.setVisible(locs[3].getSet().getCurrentShotCount() == 2);
-        mainStreetShot3.setVisible(locs[4].getSet().getCurrentShotCount() == 0);
-        mainStreetShot2.setVisible(locs[4].getSet().getCurrentShotCount() == 1);
-        mainStreetShot1.setVisible(locs[4].getSet().getCurrentShotCount() == 2);
-        jailShot1.setVisible(locs[5].getSet().getCurrentShotCount() == 0);
-        generalStoreShot2.setVisible(locs[6].getSet().getCurrentShotCount() == 0);
-        generalStoreShot1.setVisible(locs[6].getSet().getCurrentShotCount() == 1);
-        ranchShot2.setVisible(locs[7].getSet().getCurrentShotCount() == 0);
-        ranchShot1.setVisible(locs[7].getSet().getCurrentShotCount() == 1);
-        bankShot1.setVisible(locs[8].getSet().getCurrentShotCount() == 0);
-        saloonShot2.setVisible(locs[9].getSet().getCurrentShotCount() == 0);
-        saloonShot1.setVisible(locs[9].getSet().getCurrentShotCount() == 1);
+        trainStationShot3.setVisible(locs[0].getSet().getCurrentShotCount() < 3);
+        trainStationShot2.setVisible(locs[0].getSet().getCurrentShotCount() < 2);
+        trainStationShot1.setVisible(locs[0].getSet().getCurrentShotCount() < 1);
+        secretHideoutShot3.setVisible(locs[1].getSet().getCurrentShotCount() < 3);
+        secretHideoutShot2.setVisible(locs[1].getSet().getCurrentShotCount() < 2);
+        secretHideoutShot1.setVisible(locs[1].getSet().getCurrentShotCount() < 1);
+        churchShot2.setVisible(locs[2].getSet().getCurrentShotCount() < 2);
+        churchShot1.setVisible(locs[2].getSet().getCurrentShotCount() < 1);
+        hotelShot3.setVisible(locs[3].getSet().getCurrentShotCount() < 3);
+        hotelShot2.setVisible(locs[3].getSet().getCurrentShotCount() < 2);
+        hotelShot1.setVisible(locs[3].getSet().getCurrentShotCount() < 1);
+        mainStreetShot3.setVisible(locs[4].getSet().getCurrentShotCount() < 3);
+        mainStreetShot2.setVisible(locs[4].getSet().getCurrentShotCount() < 2);
+        mainStreetShot1.setVisible(locs[4].getSet().getCurrentShotCount() < 1);
+        jailShot1.setVisible(locs[5].getSet().getCurrentShotCount() < 1);
+        generalStoreShot2.setVisible(locs[6].getSet().getCurrentShotCount() < 2);
+        generalStoreShot1.setVisible(locs[6].getSet().getCurrentShotCount() < 1);
+        ranchShot2.setVisible(locs[7].getSet().getCurrentShotCount() < 2);
+        ranchShot1.setVisible(locs[7].getSet().getCurrentShotCount() < 1);
+        bankShot1.setVisible(locs[8].getSet().getCurrentShotCount() < 1);
+        saloonShot2.setVisible(locs[9].getSet().getCurrentShotCount() < 2);
+        saloonShot1.setVisible(locs[9].getSet().getCurrentShotCount() < 1);
 
         //for each anchorpane for locations
         //add location.getcard.getcardgui.getpane
@@ -169,7 +188,7 @@ public class GameViewController {
         //      correct rank, credits, dollars
         /////////////////////////////////////////
         int numPlayers = players.length;
-        hookUpStatBoxes();
+        //hookUpStatBoxes();
         for(int i = 0; i < 8; i++){
             statBoxes[i].update();
         }
@@ -277,6 +296,19 @@ public class GameViewController {
         statBoxes[5] = new StatBoxGUI(p6RightLine, p6StatBox, p6DollarsString, p6CreditsString, p6RankPic, getPlayer(5));
         statBoxes[6] = new StatBoxGUI(p7RightLine, p7StatBox, p7DollarsString, p7CreditsString, p7RankPic, getPlayer(6));
         statBoxes[7] = new StatBoxGUI(p8RightLine, p8StatBox, p8DollarsString, p8CreditsString, p8RankPic, getPlayer(7));
+    }
+
+    public void hookUpLocationPanes() {
+        locs[0].addCardPane(trainStationPane);
+        locs[1].addCardPane(secretHideoutPane);
+        locs[2].addCardPane(churchPane);
+        locs[3].addCardPane(hotelPane);
+        locs[4].addCardPane(mainStreetPane);
+        locs[5].addCardPane(jailPane);
+        locs[6].addCardPane(generalStorePane);
+        locs[7].addCardPane(ranchPane);
+        locs[8].addCardPane(bankPane);
+        locs[9].addCardPane(saloonPane);
     }
 
     private Player getPlayer(int index) {

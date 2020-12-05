@@ -25,19 +25,24 @@ public class CardGUI {
         }
     }
 
-    public void update() {
-        Role[] modelRoles = card.getRoles();
-        for (int i = 0; i < roles.length; i++) {
-            if (modelRoles[i].getIsOccupied()) {
-                String fileName = calc.getPlayerImage(modelRoles[i].getPlayer());
-                roles[i].setImage(new Image(fileName));
-                roles[i].setVisible(true);
-            } else {
-                roles[i].setVisible(false);
+    public void update(boolean visible) {
+        if (!visible) {
+            pane.setVisible(false);
+        } else {
+            pane.setVisible(true);
+            Role[] modelRoles = card.getRoles();
+            for (int i = 0; i < roles.length; i++) {
+                if (modelRoles[i].getIsOccupied()) {
+                    String fileName = calc.getPlayerImage(modelRoles[i].getPlayer());
+                    roles[i].setImage(new Image(fileName));
+                    roles[i].setVisible(true);
+                } else {
+                    roles[i].setVisible(false);
+                }
             }
-        }
-        if (card.isFaceUp()) {
-            imageView.setImage(front);
+            if (card.isFaceUp()) {
+                imageView.setImage(front);
+            }
         }
     }
 
