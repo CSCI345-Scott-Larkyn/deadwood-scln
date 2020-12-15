@@ -56,10 +56,30 @@
                               </MenuButton>
                               <Button fx:id="takeRoleButton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#takeRoleClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #2196f3; -fx-font-size: 24; -fx-text-fill: black;" text="Take Role" />
                               <Button fx:id="upgradeButton" mnemonicParsing="false" onAction="#upgradeClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #2196f3; -fx-font-size: 24; -fx-text-fill: black;" text="Upgrade" />
-                              <Button fx:id="actButton" mnemonicParsing="false" onAction="#actClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #2196f3; -fx-font-size: 24; -fx-text-fill: black;" text="Act">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin></Button>
+                              <AnchorPane prefHeight="50.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="actButton" layoutX="27.0" layoutY="-13.0" mnemonicParsing="false" onAction="#actClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #2196f3; -fx-font-size: 24; -fx-text-fill: black;" text="Act" AnchorPane.topAnchor="0.0" />
+                                    <HBox fx:id="actingBox" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="10.0" visible="false">
+                                       <children>
+                                          <ImageView fx:id="leftShot" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@shot.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="actingDie" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@dice/w3.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="rightShot" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@shot.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
                               <Button fx:id="rehearseButton" minHeight="20.0" mnemonicParsing="false" onAction="#rehearseClicked" prefHeight="50.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-background-color: #2196f3; -fx-font-size: 24; -fx-text-fill: black;" text="Rehearse">
                                  <VBox.margin>
                                     <Insets />

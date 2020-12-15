@@ -43,14 +43,14 @@ public class GameManagerFX {
         numPlayers = playerController.playerNum;
         modelSetup();
         curPlayer = players[0];
-        gameController.updateGUI(curPlayer);
+        gameController.updateGUI(curPlayer, 0);
         primaryStage.show();
     }
 
     //tells the player to move and updates the gui
     public void move(Location location) {
         curPlayer.move(location);
-        gameController.updateGUI(curPlayer);
+        gameController.updateGUI(curPlayer, 0);
     }
 
     //tells the player to take a role and calls up a selection window
@@ -62,7 +62,7 @@ public class GameManagerFX {
                 signedRole = -1 * signedRole;
             }
             curPlayer.takeRole(signedRole);
-            gameController.updateGUI(curPlayer);
+            gameController.updateGUI(curPlayer, 0);
         }
     }
 
@@ -70,19 +70,19 @@ public class GameManagerFX {
     public void promptUpgrade() {
         upgradeController.popup(curPlayer);
         curPlayer.upgrade(upgradeController.intendedRank, upgradeController.payWithDollars);
-        gameController.updateGUI(curPlayer);
+        gameController.updateGUI(curPlayer, 0);
     }
 
     //tells the player to act and updates the gui
     public void act() {
-        curPlayer.act();
-        gameController.updateGUI(curPlayer);
+        int roll = curPlayer.act();
+        gameController.updateGUI(curPlayer, roll);
     }
 
     //tells the player to rehearse and updates the gui
     public void rehearse() {
         curPlayer.rehearse();
-        gameController.updateGUI(curPlayer);
+        gameController.updateGUI(curPlayer, 0);
     }
 
     //ends the current players turn and advances to the next one
@@ -97,7 +97,7 @@ public class GameManagerFX {
             }
         }
         curPlayer.setTurnBooleans();
-        gameController.updateGUI(curPlayer);
+        gameController.updateGUI(curPlayer, 0);
     }
 
     //takes care of ending the day and moving everyone back to the trailers

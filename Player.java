@@ -173,12 +173,14 @@ public class Player implements Comparable<Player> {
     }
     
     //rolls a die and counts practice chips and updates financial info according to the results
-    public void act() {
+    public int act() {
+        int roll;
         if (location.getSet() == null) {
             //playerView.printActingResults(0);
+            roll = 0;
         } else {
             int budget = location.getSet().getCard().getBudget();
-            int roll = 1 + randy.nextInt(6);
+            roll = 1 + randy.nextInt(6);
             if (roll + practiceChips >= budget) {
                 int shotsLeft = location.getSet().successfulShot();
                 getPaid("success");
@@ -190,9 +192,11 @@ public class Player implements Comparable<Player> {
             } else {
                 getPaid("failure");
                 //playerView.printActingResults((-roll));
+                roll = -roll;
             }
         }   
-        canAct = false;     
+        canAct = false;
+        return roll;
     }
     
     //simple stuff

@@ -8,6 +8,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
@@ -24,6 +25,7 @@ public class GameViewController {
     private GameManagerFX manager;
     private List<RoleGUI> offCardRoleGUIS;
     private StatBoxGUI[] statBoxes = new StatBoxGUI[8];
+    private PlayerImageCalculator imageCalc = new PlayerImageCalculator();
 
     //essentially a second round constructor to instantiate more fields
     public void addFields(Board board, Player[] players, GameManagerFX manager, List<RoleGUI> offCardRoleGUIs) {
@@ -35,7 +37,7 @@ public class GameViewController {
     }
 
     //makes sure every element of the GUI is accurate according to the game state
-    public void updateGUI(Player curPlayer) {
+    public void updateGUI(Player curPlayer, int justActed) {
         currentPlayerText.setText("Player " + Integer.toString(curPlayer.getPlayerNum()));
 
         String turnOptions = curPlayer.getTurnOptions();
@@ -43,6 +45,7 @@ public class GameViewController {
         /////////////////////////////////
         //buttons in tool bar
         /////////////////////////////////
+        actButton.setVisible(true);
         takeRoleButton.setDisable(!turnOptions.contains("t"));
         upgradeButton.setDisable(!turnOptions.contains("u"));
         actButton.setDisable(!turnOptions.contains("a"));
@@ -61,18 +64,40 @@ public class GameViewController {
             moveButton.setDisable(false);
             Location[] neighbors = curPlayer.getNeighbors();
 
+
+            moveTS.setVisible(findLocationByName("Train Station", neighbors));
             moveTrailers.setVisible(findLocationByName("Trailer", neighbors));
             moveSH.setVisible(findLocationByName("Secret Hideout", neighbors));
-            moveRanch.setVisible(findLocationByName("Ranch", neighbors));
-            moveHotel.setVisible(findLocationByName("Hotel", neighbors));
-            moveCO.setVisible(findLocationByName("Casting Office", neighbors));
-            moveMS.setVisible(findLocationByName("Main Street", neighbors));
-            moveBank.setVisible(findLocationByName("Bank", neighbors));
             moveSaloon.setVisible(findLocationByName("Saloon", neighbors));
+            moveRanch.setVisible(findLocationByName("Ranch", neighbors));
+            moveMS.setVisible(findLocationByName("Main Street", neighbors));
             moveJail.setVisible(findLocationByName("Jail", neighbors));
-            moveTS.setVisible(findLocationByName("Train Station", neighbors));
-            churchMove.setVisible(findLocationByName("Church", neighbors));
+            moveHotel.setVisible(findLocationByName("Hotel", neighbors));
             moveGS.setVisible(findLocationByName("General Store", neighbors));
+            churchMove.setVisible(findLocationByName("Church", neighbors));
+            moveCO.setVisible(findLocationByName("Casting Office", neighbors));
+            moveBank.setVisible(findLocationByName("Bank", neighbors));
+
+        }
+
+        //////////////////////////////
+        //acting results
+        //////////////////////////////
+        if (justActed == 0) {
+            actButton.setVisible(true);
+            actingBox.setVisible(false);
+        } else {
+            actButton.setVisible(false);
+            actingBox.setVisible(true);
+            if (justActed > 0) {
+                actingDie.setImage(new Image(imageCalc.getBlankPlayerImage(justActed)));
+                leftShot.setVisible(true);
+                rightShot.setVisible(true);
+            } else {
+                actingDie.setImage(new Image(imageCalc.getBlankPlayerImage(-justActed)));
+                leftShot.setVisible(false);
+                rightShot.setVisible(false);
+            }
         }
 
         //////////////////////////////
@@ -265,7 +290,20 @@ public class GameViewController {
     }
 
     @FXML
+    private ImageView leftShot;
+
+    @FXML
+    private ImageView rightShot;
+
+    @FXML
+    private ImageView actingDie;
+
+    @FXML
+    private HBox actingBox;
+
+    @FXML
     private Text currentPlayerText;
+
     @FXML
     private MenuButton moveButton;
 
