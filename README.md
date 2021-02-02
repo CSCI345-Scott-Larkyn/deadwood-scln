@@ -11,3 +11,5 @@ There is a bug which we are 85% sure is javafx's fault. Sometimes in the dropdow
 the moves options, two menuItems will be written over each other. Since we don't govern the
 layout of these menuItems we figure it must be some sort of glitch in how javafx lays them out.
 We can't find any patters to when it happens either.
+
+Rules for Deadwood: https://cheapass.com/wp-content/uploads/2016/07/Deadwood-Free-Edition-Rules.pdf 
